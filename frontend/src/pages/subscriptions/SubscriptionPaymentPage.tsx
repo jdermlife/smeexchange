@@ -986,7 +986,7 @@ export default function SubscriptionPaymentPage() {
       <div className="standalone-card auth-screen trial-expired-page subscription-payment-guest-page">
         <h1>Subscription Payment</h1>
         <p className="intro">
-          Continue your FILSCORE access by choosing a payment channel for the selected plan.
+          Continue your FILSCORE SME access by choosing a payment channel for the selected plan.
         </p>
 
         <section className="stack-panel auth-panel trial-expired-plan-summary">
@@ -1074,7 +1074,7 @@ export default function SubscriptionPaymentPage() {
     <div className="standalone-card auth-screen trial-expired-page subscription-payment-guest-page">
       <h1>Subscription Payment</h1>
       <p className="intro">
-        Choose a secure payment option to continue or renew your FILSCORE access.
+        Choose a secure payment option to continue or renew your FILSCORE SME access.
       </p>
 
       {loadMessage ? <p className="status-message status-error">{loadMessage}</p> : null}
@@ -1117,7 +1117,7 @@ export default function SubscriptionPaymentPage() {
                 {paymentSubscription?.status === 'TRIAL'
                   ? usesNativeStore
                     ? 'Free Trial Active'
-                    : 'Continue to Financial Health'
+                    : 'Continue to SME Exchange'
                   : isStartingFreeTrial
                     ? 'Starting Free Trial...'
                     : 'Start Free Trial'}

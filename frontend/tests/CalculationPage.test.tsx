@@ -6,12 +6,12 @@ import CalculationPage from '../src/pages/admin/CalculationPage'
 describe('CalculationPage', () => {
   afterEach(() => cleanup())
 
-  it('shows the Financial Health calculation model and formulas', () => {
+  it('shows the SME Exchange calculation model and formulas', () => {
     render(<CalculationPage />)
 
     expect(screen.getByRole('heading', { name: 'Calculation Models' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Financial Vital Signs: Basis and Formulas' })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Financial Health Summary Engine' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'SME Exchange Summary Engine' })).toBeTruthy()
     expect(screen.getAllByRole('row')).toHaveLength(9)
     expect(screen.getByRole('rowheader', { name: 'Credit Health' })).toBeTruthy()
     expect(screen.getByRole('rowheader', { name: 'Goal Health' })).toBeTruthy()
@@ -22,6 +22,6 @@ describe('CalculationPage', () => {
     expect(screen.getByText('(71 x 11 + 82 x 15) / 26 = 77.3')).toBeTruthy()
     expect(screen.getByText('84.2 x 10 = 842')).toBeTruthy()
     expect(screen.getByText('Index = sum(vital score x weight) / 100')).toBeTruthy()
-    expect(screen.getByRole('heading', { name: 'Financial Health Score Bands' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'SME Exchange Score Bands' })).toBeTruthy()
   })
 })

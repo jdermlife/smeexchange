@@ -46,7 +46,7 @@ describe('CreditHealthJourney', () => {
     })
 
     expect(screen.getByText('Continue improving after Step 8')).toBeTruthy()
-    expect(screen.getByText(/Take note of the FILSCORE recommendations/)).toBeTruthy()
+    expect(screen.getByText(/Take note of the FILSCORE SME recommendations/)).toBeTruthy()
     expect(screen.getByText(/continuously improve your Credit Health while building and increasing your wealth/)).toBeTruthy()
   })
 

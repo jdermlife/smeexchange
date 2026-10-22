@@ -7,9 +7,9 @@ function getCurrentOrigin(): string {
 export const DEFAULT_GOOGLE_CLIENT_ID =
   '542183516756-2q3nuh3oui4cjdvcr7hpts6b40kfhheo.apps.googleusercontent.com'
 export const DEFAULT_API_FALLBACK_URL =
-  'https://filscore-ai.quantech.international'
+  'https://FILSCORE SME-ai.quantech.international'
 export const DEFAULT_OLLAMA_FALLBACK_URL =
-  'https://filscore-ai.quantech.international/local-ai/page-assistant'
+  'https://FILSCORE SME-ai.quantech.international/local-ai/page-assistant'
 
 export function validateConfiguredApiBase(configuredApiBase: string): string {
   const normalizedApiBase = configuredApiBase.trim().replace(/\/$/, '')
@@ -84,10 +84,10 @@ export const APP_CONFIG = {
     return resolveApiFallbackBase(import.meta.env.VITE_API_FALLBACK_URL, import.meta.env.DEV)
   },
   get appleClientId() {
-    return import.meta.env.VITE_APPLE_CLIENT_ID?.trim() || 'com.quantech.filscore.web'
+    return import.meta.env.VITE_APPLE_CLIENT_ID?.trim() || 'com.quantech.FILSCORE SME.web'
   },
   get appleIosClientId() {
-    return import.meta.env.VITE_APPLE_IOS_CLIENT_ID?.trim() || 'com.quantech.filscore'
+    return import.meta.env.VITE_APPLE_IOS_CLIENT_ID?.trim() || 'com.quantech.FILSCORE SME'
   },
   get appleRedirect() {
     const isNativeAndroid = Capacitor.isNativePlatform() && Capacitor.getPlatform() === 'android'

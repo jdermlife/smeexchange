@@ -244,7 +244,7 @@ export default function FinancialStatementModal({
     <div className="admin-statement-pages" style={{ '--statement-font-size': `${fontSize}pt` } as React.CSSProperties}>
     <main className={`admin-statement-sheet admin-statement-sheet-${paperSize} admin-statement-cover-sheet`}>
       <header className="admin-statement-heading">
-        <div><span>Financial Health · Page 1</span><h1 id="financial-statement-title">Statement of Assets and Liabilities</h1></div>
+        <div><span>SME Exchange · Page 1</span><h1 id="financial-statement-title">Statement of Assets and Liabilities</h1></div>
         <div><span>Data as of Today</span><strong>{today}</strong><small>Profile ID: {profile?.profileId || 'No active profile'}</small></div>
       </header>
 
@@ -267,13 +267,13 @@ export default function FinancialStatementModal({
           </div>
         </section>
 
-        <section className="admin-cover-health" aria-label={`Financial Health score ${financialHealthSummary.score} out of 1000`}>
-          <span className="admin-cover-kicker">FILSCORE Financial Vital Signs</span>
-          <h2>Financial Health</h2>
+        <section className="admin-cover-health" aria-label={`SME Exchange score ${financialHealthSummary.score} out of 1000`}>
+          <span className="admin-cover-kicker">FILSCORE SME Financial Vital Signs</span>
+          <h2>SME Exchange</h2>
           <div className="admin-cover-health-groups">
             {financialHealthSummary.groups.map((group) => <div key={group.id}><strong>{group.label}</strong><span>{group.description}</span></div>)}
           </div>
-          <div className="admin-cover-health-band"><i /> <strong>{financialHealthBand}</strong><span>Financial health band</span></div>
+          <div className="admin-cover-health-band"><i /> <strong>{financialHealthBand}</strong><span>SME Exchange band</span></div>
           <div className="admin-cover-health-rings">
             {financialHealthSummary.groups.map((group, index) => <div key={group.id} className={`admin-cover-ring admin-cover-ring-${index + 1}`} style={{ '--cover-ring-progress': `${group.value * 3.6}deg` } as React.CSSProperties} />)}
             <div className="admin-cover-ring-score"><strong>{financialHealthSummary.score}</strong><span>/ 1000</span></div>
@@ -283,7 +283,7 @@ export default function FinancialStatementModal({
 
         <section className="admin-cover-credit">
           <CreditHealthScoreGraph scores={creditScores} />
-          <div className="admin-cover-credit-footer"><span>FILSCORE</span><strong>{profile?.completionPercent ?? 0}% information provided</strong></div>
+          <div className="admin-cover-credit-footer"><span>FILSCORE SME</span><strong>{profile?.completionPercent ?? 0}% information provided</strong></div>
         </section>
 
         <section className="admin-cover-wealth">
@@ -300,7 +300,7 @@ export default function FinancialStatementModal({
 
     <main className={`admin-statement-sheet admin-statement-sheet-${paperSize}`}>
       <header className="admin-statement-heading">
-        <div><span>Financial Health · Page 2</span><h1>Statement of Assets and Liabilities</h1></div>
+        <div><span>SME Exchange · Page 2</span><h1>Statement of Assets and Liabilities</h1></div>
         <div><span>Data as of Today</span><strong>{today}</strong><small>Profile ID: {profile?.profileId || 'No active profile'}</small></div>
       </header>
 
@@ -327,7 +327,7 @@ export default function FinancialStatementModal({
 
     <main className={`admin-statement-sheet admin-statement-sheet-${paperSize} admin-current-net-worth-sheet`}>
       <header className="admin-statement-heading">
-        <div><span>Financial Health · Page 3</span><h1>Current Net Worth</h1></div>
+        <div><span>SME Exchange · Page 3</span><h1>Current Net Worth</h1></div>
         <div><span>Statement Date</span><strong>{profile?.values.asOfDate || today}</strong><small>Profile ID: {profile?.profileId || 'No active profile'}</small></div>
       </header>
 
@@ -346,7 +346,7 @@ export default function FinancialStatementModal({
 
     <main className={`admin-statement-sheet admin-statement-sheet-${paperSize} admin-current-financial-sheet`}>
       <header className="admin-statement-heading">
-        <div><span>Financial Health · Page 4</span><h1>Actual / Current Personal Income and Expenses with Goals and Protection</h1></div>
+        <div><span>SME Exchange · Page 4</span><h1>Actual / Current Personal Income and Expenses with Goals and Protection</h1></div>
         <div><span>Statement Date</span><strong>{profile?.values.asOfDate || today}</strong><small>Profile ID: {profile?.profileId || 'No active profile'}</small></div>
       </header>
 

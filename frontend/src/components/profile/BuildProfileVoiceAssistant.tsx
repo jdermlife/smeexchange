@@ -347,7 +347,7 @@ export default function BuildProfileVoiceAssistant({
           <button type="button" onClick={applyAllAnswers}>Apply All Answers</button>
           <button type="button" onClick={() => resetInterview('Answers discarded. Select the microphone to start again.')}>Discard and Restart</button>
         </div> : null}
-        <small className="build-profile-voice-privacy">FILSCORE does not store microphone audio. Your browser speech service may process it.</small>
+        <small className="build-profile-voice-privacy">FILSCORE SME does not store microphone audio. Your browser speech service may process it.</small>
       </div>
     </section>
   )

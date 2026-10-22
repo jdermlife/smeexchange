@@ -20,7 +20,7 @@ describe('PaymentSuccessPage', () => {
     expect(screen.getByRole('status').textContent).toContain('Access update')
     expect(
       screen.getByRole('link', {
-        name: /Continue to Financial Health/i,
+        name: /Continue to SME Exchange/i,
       }).getAttribute('href'),
     ).toBe('/financial-health-summary')
     expect(screen.getByRole('link', { name: 'View Account' }).getAttribute('href')).toBe('/build-profile')

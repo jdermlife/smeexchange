@@ -33,7 +33,7 @@ describe('FloatingChatbot', () => {
     render(<FloatingChatbot pathname="/lending-scorecard" authenticated ready />)
 
     expect(screen.getByText(AI_DISCLAIMER)).toBeTruthy()
-    await user.click(screen.getByRole('button', { name: 'Open FILSCORE AI assistant' }))
+    await user.click(screen.getByRole('button', { name: 'Open FILSCORE SME AI assistant' }))
     await user.type(screen.getByLabelText('Your question'), 'Show me the score formula and weights')
     await user.click(screen.getByRole('button', { name: 'Ask' }))
 
@@ -45,7 +45,7 @@ describe('FloatingChatbot', () => {
     const user = userEvent.setup()
     render(<FloatingChatbot pathname="/dashboard" authenticated ready />)
 
-    await user.click(screen.getByRole('button', { name: 'Open FILSCORE AI assistant' }))
+    await user.click(screen.getByRole('button', { name: 'Open FILSCORE SME AI assistant' }))
     await user.type(screen.getByLabelText('Your question'), 'Where can I update my profile?')
     await user.click(screen.getByRole('button', { name: 'Ask' }))
 

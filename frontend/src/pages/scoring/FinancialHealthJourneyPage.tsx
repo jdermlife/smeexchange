@@ -8,7 +8,7 @@ import {
 } from '../../components/financial-health/FinancialJourneyGuide'
 
 const JOURNEY_RESOURCE_LINKS = [
-  { label: 'About', to: '/about-filscore' },
+  { label: 'About', to: '/about-FILSCORE SME' },
   { label: 'Privacy', to: '/privacy' },
   { label: 'Terms', to: '/terms' },
   { label: 'Fees', to: '/fees' },
@@ -25,8 +25,8 @@ export default function FinancialHealthJourneyPage() {
     <main className="psychometric-page financial-health-journey-page">
       <section className="psychometric-hero financial-health-journey-page-hero" aria-labelledby="financial-health-journey-page-title">
         <div className="psychometric-hero-copy">
-          <span className="psychometric-eyebrow">FILSCORE Guided Assessment</span>
-          <h1 id="financial-health-journey-page-title">Your Financial Health Journey</h1>
+          <span className="psychometric-eyebrow">FILSCORE SME Guided Assessment</span>
+          <h1 id="financial-health-journey-page-title">Your SME Exchange Journey</h1>
           <p>GREETINGS! We wish you well today.</p>
           <p>Complete these steps to unlock the full power of your profile and receive more accurate financial recommendations.</p>
         </div>
@@ -48,7 +48,7 @@ export default function FinancialHealthJourneyPage() {
         <article className="psychometric-summary-card psychometric-summary-card-highlight">
           <span>Connected Outcome</span>
           <strong>3 Major Scores</strong>
-          <small>Your complete Financial Health view</small>
+          <small>Your complete SME Exchange view</small>
         </article>
         <article className="psychometric-summary-card">
           <span>Recommended Path</span>
@@ -67,14 +67,14 @@ export default function FinancialHealthJourneyPage() {
         </div>
         <Link className="financial-health-journey-page-dashboard-link" to="/financial-health-summary?register=1">
           <Gauge aria-hidden="true" />
-          <span>Open Financial Health Dashboard</span>
+          <span>Open SME Exchange Dashboard</span>
         </Link>
       </section>
 
       <section className="psychometric-panel financial-health-journey-page-path" aria-labelledby="financial-health-journey-path-title">
         <div className="psychometric-panel-header">
           <div>
-            <span className="psychometric-panel-kicker">Financial Health Journey</span>
+            <span className="psychometric-panel-kicker">SME Exchange Journey</span>
             <h2 id="financial-health-journey-path-title">Follow Your Assessment Path</h2>
           </div>
           <span className="financial-health-journey-page-sequence">01 - 06</span>
@@ -105,7 +105,7 @@ export default function FinancialHealthJourneyPage() {
         </div>
       </section>
 
-      <nav className="financial-health-journey-resource-links" aria-label="FILSCORE information and support">
+      <nav className="financial-health-journey-resource-links" aria-label="FILSCORE SME information and support">
         {JOURNEY_RESOURCE_LINKS.map((resource) => (
           <Link key={resource.to} to={resource.to}>{resource.label}</Link>
         ))}

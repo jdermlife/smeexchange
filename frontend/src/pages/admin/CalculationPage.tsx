@@ -20,12 +20,12 @@ export default function CalculationPage() {
           <span className="psychometric-eyebrow">Administration</span>
           <h1 id="calculation-page-title">Calculation Models</h1>
           <p>
-            Review the formulas and default model values used to produce the Financial Health summary.
+            Review the formulas and default model values used to produce the SME Exchange summary.
           </p>
         </div>
 
         <div className="psychometric-hero-metric">
-          <span>Default Financial Health</span>
+          <span>Default SME Exchange</span>
           <strong>{summary.score}</strong>
           <small>{summary.index.toFixed(1)} weighted index</small>
         </div>
@@ -37,7 +37,7 @@ export default function CalculationPage() {
             <span className="psychometric-panel-kicker">Model reference</span>
             <h2 id="financial-vital-reference-title">Financial Vital Signs: Basis and Formulas</h2>
             <p className="financial-health-panel-intro">
-              The dashboard starts with the default model below. Saved workflow values replace available defaults only when the user selects Compute Latest Financial Health; missing values retain their defaults and are not reweighted.
+              The dashboard starts with the default model below. Saved workflow values replace available defaults only when the user selects Compute Latest SME Exchange; missing values retain their defaults and are not reweighted.
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function CalculationPage() {
         <div className="psychometric-panel-header">
           <div>
             <span className="psychometric-panel-kicker">Calculation model</span>
-            <h2 id="financial-health-summary-engine-title">Financial Health Summary Engine</h2>
+            <h2 id="financial-health-summary-engine-title">SME Exchange Summary Engine</h2>
             <p className="financial-health-panel-intro">
               Each section is a weighted average of its indicators. The overall index uses all eight indicator weights.
             </p>
@@ -117,10 +117,10 @@ export default function CalculationPage() {
         </div>
 
         <div className="financial-health-engine-total">
-          <span>Overall Financial Health</span>
+          <span>Overall SME Exchange</span>
           <strong>{summary.index.toFixed(1)} x 10 = {summary.score}</strong>
           <code>Index = sum(vital score x weight) / 100</code>
-          <small>Financial Health Score = round(Index x 10). The eight weights total 100%.</small>
+          <small>SME Exchange Score = round(Index x 10). The eight weights total 100%.</small>
         </div>
       </section>
 
@@ -128,7 +128,7 @@ export default function CalculationPage() {
         <div className="psychometric-panel-header">
           <div>
             <span className="psychometric-panel-kicker">Interpretation reference</span>
-            <h2 id="financial-health-band-reference-title">Financial Health Score Bands</h2>
+            <h2 id="financial-health-band-reference-title">SME Exchange Score Bands</h2>
           </div>
         </div>
         <div className="calculation-band-list">

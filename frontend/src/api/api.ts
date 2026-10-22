@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const DEFAULT_API_BASE_URL =
   import.meta.env.VITE_API_URL ??
-  "https://filscore-ai.quantech.international";
+  "https://FILSCORE SME-ai.quantech.international";
 
 export const api = axios.create({
   baseURL: DEFAULT_API_BASE_URL,

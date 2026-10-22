@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getErrorMessage, login, loginWithApple, loginWithGoogle } from '../../api'
 import { requestAppleSignInToken } from '../../appleAuth'
 import { APP_NAME } from '../../brand'
-import loginLogo from '../../assets/filscore-logo-clean.png'
+import loginLogo from '../../assets/FILSCORE SME-logo-clean.png'
 import AuthProgressOverlay from '../../components/auth/AuthProgressOverlay'
 import { APP_CONFIG } from '../../config'
 import { getNativeGooglePlatform, isNativeGoogleSignIn, requestGoogleSignInToken } from '../../googleAuth'
@@ -173,7 +173,7 @@ const APPLE_CONTINUE_BUTTON_URL =
 const LIFE_QUESTION_CARDS = [
   { icon: '🏝', question: 'Can I retire at 50?', detail: 'Find out if it is possible.' },
   { icon: '📊', question: 'Is my income in the global top 10%?', detail: 'See how you compare with the world.' },
-  { icon: '💛', question: "What's my Financial Health Score?", detail: 'Know where you stand.' },
+  { icon: '💛', question: "What's my SME Exchange Score?", detail: 'Know where you stand.' },
   { icon: '📋', question: 'Why is my loan application always rejected?', detail: 'Find out the possible reasons.' },
   { icon: '🪙', question: 'What could my net worth be at 60?', detail: 'Plan for a richer future.' },
   { icon: '📈', question: 'Am I saving enough?', detail: "See if you're on track." },
@@ -359,8 +359,8 @@ export default function LoginPage() {
         <div className="login-art-brand">
           <img className="login-art-logo" src={loginLogo} alt={APP_NAME} />
           <div className="login-art-brand-copy">
-            <p className="login-art-brand-name">FINANCIAL HEALTH</p>
-            <p className="login-art-brand-tagline">FILSCORE TRACKER</p>
+            <p className="login-art-brand-name">SME Exchange</p>
+            <p className="login-art-brand-tagline">FILSCORE SME TRACKER</p>
           </div>
         </div>
 
@@ -386,7 +386,7 @@ export default function LoginPage() {
               to="/financial-health-journey"
               className="login-art-social-button login-art-social-button-apple login-art-free-access-button"
             >
-              Access FILSCORE Free
+              Access FILSCORE SME Free
             </Link>
 
             <div className="login-art-new-user">
@@ -541,7 +541,7 @@ export default function LoginPage() {
             <Link to="/fees">Fees</Link>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
-            <Link to="/about-filscore">About</Link>
+            <Link to="/about-FILSCORE SME">About</Link>
             <Link to="/return-refund-policy">Returns &amp; Refunds</Link>
             <Link to="/customer-service">Customer Service</Link>
             <Link to="/dispute-resolution">Dispute Resolution</Link>
@@ -554,8 +554,8 @@ export default function LoginPage() {
           idPrefix="login-signing"
           kicker="Secure access"
           title="Signing you in"
-          orbitLabels={['Financial Health', 'Credit Worthy', 'Networth Growth']}
-          description="Verifying your account and preparing your financial health dashboard."
+          orbitLabels={['SME Exchange', 'Credit Worthy', 'Networth Growth']}
+          description="Verifying your account and preparing your SME Exchange dashboard."
           footnote="Please keep this window open."
         />
       ) : null}

@@ -52,15 +52,15 @@ export default function FinancialJourneyGuideLauncher({
 
       <section className="financial-health-compute-bar" aria-label="Financial journey controls">
         <div>
-          <strong>Financial Health Journey</strong>
-          <span>Review the guided steps or open your Financial Health summary.</span>
+          <strong>SME Exchange Journey</strong>
+          <span>Review the guided steps or open your SME Exchange summary.</span>
         </div>
         <button
           type="button"
           className="financial-health-journey-main-fab"
           onClick={() => window.location.assign('/financial-health-summary')}
         >
-          Financial Health
+          SME Exchange
         </button>
         <button
           type="button"

@@ -71,7 +71,7 @@ function verificationData(platform: NativeStorePlatform, transaction: Transactio
 }
 
 async function accountToken(userId: number): Promise<string> {
-  const bytes = new TextEncoder().encode(`com.quantech.filscore:user:${userId}`)
+  const bytes = new TextEncoder().encode(`com.quantech.FILSCORE SME:user:${userId}`)
   const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)).slice(0, 16)
   digest[6] = (digest[6] & 0x0f) | 0x50
   digest[8] = (digest[8] & 0x3f) | 0x80

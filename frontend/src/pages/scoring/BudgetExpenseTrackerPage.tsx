@@ -983,7 +983,7 @@ export default function BudgetExpenseTrackerPage() {
               type="button"
               className="financial-health-journey-minimize"
               onClick={() => setIsAiRecommendationsOpen(false)}
-              aria-label="Close FILSCORE AI Recommendations"
+              aria-label="Close FILSCORE SME AI Recommendations"
             >
               Close
             </button>
@@ -1008,7 +1008,7 @@ export default function BudgetExpenseTrackerPage() {
               </div>
             ) : (
               <>
-                <p className="financial-health-journey-kicker">FILSCORE AI Recommendations</p>
+                <p className="financial-health-journey-kicker">FILSCORE SME AI Recommendations</p>
                 <h2 id="budget-ai-recommendations-title">Your Budget Variance Review</h2>
                 <p>
                   Step 3 is saved. Review how target-versus-actual income and expense performance affects
@@ -1740,7 +1740,7 @@ export default function BudgetExpenseTrackerPage() {
             <article className="psychometric-panel">
               <div className="psychometric-panel-header">
                 <div>
-                  <span className="psychometric-panel-kicker">FILSCORE AI Recommendations</span>
+                  <span className="psychometric-panel-kicker">FILSCORE SME AI Recommendations</span>
                   <h2>Variance coaching and trend visuals</h2>
                 </div>
               </div>

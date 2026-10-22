@@ -37,7 +37,7 @@ import {
   financialHealthMetricSources,
 } from './financialHealthComputationSources'
 import { FINANCIAL_HEALTH_TOOL_RECOMMENDATIONS } from './financialHealthToolRecommendations'
-import { toFilscore } from './filscoreScale'
+import { toFILSCORE SME } from './FILSCORE SMEScale'
 import {
   computeNetWorthBuildingScore,
   type NetWorthBuildingDraftInput,
@@ -84,7 +84,7 @@ type LendingLeafSegment = {
   id: 'credit' | 'psychometric' | 'social' | 'nonStarter'
   label: string
   score: number | null
-  filscore: number | null
+  FILSCORE SME: number | null
   path: string
   fill: string
 }
@@ -280,7 +280,7 @@ function indicatorRating(score: number): { label: string; explanation: string } 
 const FINANCIAL_HEALTH_TREND_SERIES: readonly FinancialHealthTrendSeries[] = [
   {
     id: 'healthScore',
-    label: 'Financial Health Score',
+    label: 'SME Exchange Score',
     color: '#0f766e',
     value: (point) => point.healthScore,
     plotValue: (point) => point.healthScore / 10,
@@ -812,7 +812,7 @@ export default function FinancialHealthSummaryPage() {
         setBaselineComparisonMonth(previous)
       })
       .catch((error) => {
-        if (!disposed) setSnapshotMessage(getErrorMessage(error, 'Unable to load financial health snapshots.'))
+        if (!disposed) setSnapshotMessage(getErrorMessage(error, 'Unable to load SME Exchange snapshots.'))
       })
 
     return () => {
@@ -1059,7 +1059,7 @@ const snapshot = {
 
 
 
-// No new Financial Health calculation is performed here.
+// No new SME Exchange calculation is performed here.
 useEffect(() => {
   if (!summaryInputsLoaded || !summaryComputedAt) return
 
@@ -1195,9 +1195,9 @@ useEffect(() => {
         setCurrentComparisonMonth(saved.payload.reportingMonth)
         setBaselineComparisonMonth(snapshots[snapshots.length - 2]?.payload.reportingMonth ?? '')
       }
-      setSnapshotMessage(`Snapshot saved as of ${formatReportingMonth(snapshotMonth)}. Monthly profile and Financial Health history were saved.`)
+      setSnapshotMessage(`Snapshot saved as of ${formatReportingMonth(snapshotMonth)}. Monthly profile and SME Exchange history were saved.`)
     } catch (error) {
-      setSnapshotMessage(getErrorMessage(error, 'Unable to save this financial health snapshot.'))
+      setSnapshotMessage(getErrorMessage(error, 'Unable to save this SME Exchange snapshot.'))
     } finally {
       setIsSavingSnapshot(false)
     }
@@ -1270,12 +1270,12 @@ useEffect(() => {
     ? `${formatReportingMonth(currentComparisonSnapshot.payload.reportingMonth)} vs ${formatReportingMonth(baselineComparisonSnapshot.payload.reportingMonth)}`
     : ''
   const changeNarration = financialHealthChange === null
-    ? 'Save at least two monthly snapshots to compare financial health.'
+    ? 'Save at least two monthly snapshots to compare SME Exchange.'
     : financialHealthChange === 0
-    ? 'No change in your financial health yet.'
+    ? 'No change in your SME Exchange yet.'
     : financialHealthChange > 0
-      ? `Your financial health improved. The biggest gains came from ${changeContributors.map((indicator) => indicator.label).join(', ') || 'your latest financial inputs'}.`
-      : `Your financial health declined. The biggest decreases came from ${changeContributors.map((indicator) => indicator.label).join(', ') || 'your latest financial inputs'}.`
+      ? `Your SME Exchange improved. The biggest gains came from ${changeContributors.map((indicator) => indicator.label).join(', ') || 'your latest financial inputs'}.`
+      : `Your SME Exchange declined. The biggest decreases came from ${changeContributors.map((indicator) => indicator.label).join(', ') || 'your latest financial inputs'}.`
   const financialHealthTrend = financialHealthSnapshots.map((snapshot) => ({
     period: new Intl.DateTimeFormat('en', { month: 'short', year: '2-digit', timeZone: 'UTC' })
       .format(new Date(`${snapshot.payload.reportingMonth}-01T00:00:00Z`)),
@@ -1304,7 +1304,7 @@ useEffect(() => {
   const investmentRiskAlertCount = investmentSuitabilityRisk.outsideRiskAppetite.length
   const riskNarration = riskIndicators.length === 0
     ? 'Well positioned. No alerts right now.'
-    : `${riskIndicators.map((indicator) => indicator.label).join(', ')} ${riskIndicators.length === 1 ? 'is' : 'are'} below the 80-point target and may hold back your overall financial health.`
+    : `${riskIndicators.map((indicator) => indicator.label).join(', ')} ${riskIndicators.length === 1 ? 'is' : 'are'} below the 80-point target and may hold back your overall SME Exchange.`
   const investmentRiskNarration = investmentSuitabilityRisk.profile === 'Pending'
     ? 'Complete Build Profile Step 11 Suitability Assessment to evaluate investments against your risk appetite.'
     : investmentRiskAlertCount > 0
@@ -1336,7 +1336,7 @@ useEffect(() => {
         }
       : {
           summary: 'No saved cash-flow details are available yet.',
-          actions: ['Add recurring income and expenses in Net Worth Positioning.', 'Refresh Financial Health after saving your information.'],
+          actions: ['Add recurring income and expenses in Net Worth Positioning.', 'Refresh SME Exchange after saving your information.'],
         },
     credit: lendingLeafScores
       ? {
@@ -1396,7 +1396,7 @@ useEffect(() => {
       id: 'credit',
       label: 'Credit Score',
       score: lendingLeafScores?.creditScore ?? null,
-      filscore: toFilscore(lendingLeafScores?.creditScore ?? null),
+      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.creditScore ?? null),
       path: 'M27 24H130C118 78 143 139 128 200C117 244 138 276 130 296H27Z',
       fill: scoreTone(lendingLeafScores?.creditScore ?? null),
     },
@@ -1404,7 +1404,7 @@ useEffect(() => {
       id: 'psychometric',
       label: 'Behaviour / Psychometric Score',
       score: lendingLeafScores?.psychometricScore ?? null,
-      filscore: toFilscore(lendingLeafScores?.psychometricScore ?? null),
+      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.psychometricScore ?? null),
       path: 'M130 24H233V118C205 104 174 135 134 116C140 82 123 52 130 24Z',
       fill: scoreTone(lendingLeafScores?.psychometricScore ?? null),
     },
@@ -1412,7 +1412,7 @@ useEffect(() => {
       id: 'social',
       label: 'Social Score',
       score: lendingLeafScores?.socialScore ?? null,
-      filscore: toFilscore(lendingLeafScores?.socialScore ?? null),
+      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.socialScore ?? null),
       path: 'M134 116C174 135 205 104 233 118V205C204 190 171 221 128 200C134 170 140 145 134 116Z',
       fill: scoreTone(lendingLeafScores?.socialScore ?? null),
     },
@@ -1420,7 +1420,7 @@ useEffect(() => {
       id: 'nonStarter',
       label: 'Non-Starter Score',
       score: lendingLeafScores?.nonStarterScore ?? null,
-      filscore: toFilscore(lendingLeafScores?.nonStarterScore ?? null),
+      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.nonStarterScore ?? null),
       path: 'M128 200C171 221 204 190 233 205V296H130C138 276 117 244 128 200Z',
       fill: scoreTone(lendingLeafScores?.nonStarterScore ?? null),
     },
@@ -1437,11 +1437,11 @@ useEffect(() => {
         onClose={() => setIsFinancialStatementOpen(false)}
         financialHealthSummary={publishedSummary}
         creditScores={{
-          credit: toFilscore(lendingLeafScores?.creditScore ?? null),
+          credit: toFILSCORE SME(lendingLeafScores?.creditScore ?? null),
           creditBureau: null,
-          nonStarter: toFilscore(lendingLeafScores?.nonStarterScore ?? null),
-          social: toFilscore(lendingLeafScores?.socialScore ?? null),
-          psychometric: toFilscore(lendingLeafScores?.psychometricScore ?? null),
+          nonStarter: toFILSCORE SME(lendingLeafScores?.nonStarterScore ?? null),
+          social: toFILSCORE SME(lendingLeafScores?.socialScore ?? null),
+          psychometric: toFILSCORE SME(lendingLeafScores?.psychometricScore ?? null),
         }}
       /> : null}
       <FinancialJourneyGuide
@@ -1463,8 +1463,8 @@ useEffect(() => {
 
       <section className="psychometric-hero financial-health-hero psychometric-hero-with-journey-menu" aria-labelledby="financial-health-title">
         <div className="psychometric-hero-copy financial-health-hero-copy">
-          <span className="psychometric-eyebrow">FILSCORE Financial Vital Signs</span>
-          <h1 id="financial-health-title">Financial Health</h1>
+          <span className="psychometric-eyebrow">FILSCORE SME Financial Vital Signs</span>
+          <h1 id="financial-health-title">SME Exchange</h1>
           <p hidden>
             One clear view of your financial stability, control, and future progress—calculated
             from eight weighted health indicators.
@@ -1496,7 +1496,7 @@ useEffect(() => {
 
         <figure
           className="financial-health-ring-figure"
-          aria-label={`Financial Health score ${score} out of 1000, rated ${band}`}
+          aria-label={`SME Exchange score ${score} out of 1000, rated ${band}`}
         >
           <div className="financial-health-ring-visual">
             <svg viewBox="0 0 184 184" aria-hidden="true">
@@ -1566,14 +1566,14 @@ useEffect(() => {
         </figure>
       </section>
 
-      <section className="financial-health-compute-bar" aria-label="Financial Health computation controls">
+      <section className="financial-health-compute-bar" aria-label="SME Exchange computation controls">
         <div>
-          <strong>{summaryComputedAt ? 'Latest saved inputs published' : 'Default Financial Health displayed. '}</strong>
+          <strong>{summaryComputedAt ? 'Latest saved inputs published' : 'Default SME Exchange displayed. '}</strong>
           <span>
             {summaryComputedAt
               ? `Computed ${summaryComputedAt.toLocaleString()}`
               : summaryInputsLoaded
-                ? 'Please refresh to compute the latest financial health.'
+                ? 'Please refresh to compute the latest SME Exchange.'
                 : 'Checking saved inputs...'}
           </span>
         </div>
@@ -1582,7 +1582,7 @@ useEffect(() => {
         <button
           type="button"
           className="financial-health-journey-main-fab"
-          aria-label="Refresh Financial Health"
+          aria-label="Refresh SME Exchange"
           onClick={refreshFinancialHealth}
           disabled={!summaryInputsLoaded || isRefreshingSummary}
         >
@@ -1651,7 +1651,7 @@ useEffect(() => {
         </div>
       ) : null}
 
-      <section className="financial-health-profile-line" aria-label="Selected financial health profile">
+      <section className="financial-health-profile-line" aria-label="Selected SME Exchange profile">
         <SelectedProfileIdCard className="financial-health-summary-tile financial-health-summary-tile-primary" compactId label="Record ID" nameFirst />
         <article className="financial-health-summary-tile">
           <span>Actual Net Worth</span>
@@ -1671,9 +1671,9 @@ useEffect(() => {
       </section>
 
 
-      <section className="financial-health-insight-grid" aria-label="Financial Health change, benchmarking, momentum, resilience, risks, and opportunities">
+      <section className="financial-health-insight-grid" aria-label="SME Exchange change, benchmarking, momentum, resilience, risks, and opportunities">
         <article className="financial-health-insight-card">
-          <span>1. Financial Health Change</span>
+          <span>1. SME Exchange Change</span>
           <strong>{financialHealthChange === null ? 'Pending' : `${financialHealthChange >= 0 ? '+' : ''}${financialHealthChange}`}</strong>
           {comparisonLabel ? <small>{comparisonLabel}</small> : null}
           <small>{changeNarration}</small>
@@ -1724,7 +1724,7 @@ useEffect(() => {
                 <th scope="col">Rating Explanation</th>
                 <th scope="col">Risk Alert</th>
                 <th scope="col">Opportunity</th>
-                <th scope="col">FILSCORE Tools</th>
+                <th scope="col">FILSCORE SME Tools</th>
                 <th scope="col">Generic Products</th>
               </tr>
             </thead>
@@ -1739,7 +1739,7 @@ useEffect(() => {
                     <td data-label="Rating Explanation">{rating.explanation}</td>
                     <td data-label="Risk Alert">{product.score < 80 ? guidance?.negative : 'No current alert; maintain healthy habits.'}</td>
                     <td data-label="Opportunity">{guidance?.recommendation ?? product.outcome}</td>
-                    <td data-label="FILSCORE Tools">
+                    <td data-label="FILSCORE SME Tools">
                       <div className="financial-health-tool-recommendations">
                         {tools.map((tool) => {
                           const hasActivity = journeyStepCompletion[tool.statusKey]
@@ -1770,7 +1770,7 @@ useEffect(() => {
 
 
       </section>
-  <div className="financial-health-improvement-actions" aria-label="Recommended financial health actions">
+  <div className="financial-health-improvement-actions" aria-label="Recommended SME Exchange actions">
           <div className="financial-health-improvement-action">
             <div>
               <strong>Improve Resource Optimization</strong>
@@ -1801,7 +1801,7 @@ useEffect(() => {
         </div>
 
 
-      <section className="financial-health-summary-grid financial-health-primary-summary" aria-label="Financial Health highlights">
+      <section className="financial-health-summary-grid financial-health-primary-summary" aria-label="SME Exchange highlights">
         <article className="financial-health-summary-tile financial-health-summary-tile-primary">
           <span>Foundation & reliability</span>
           <strong>{groupRings[0].displayValue}</strong>
@@ -1978,7 +1978,7 @@ useEffect(() => {
               Each displayed metric and indicator is traced to its saved workflow data and calculation rule.
               {summaryComputedAt
                 ? ' The current values were published from the latest available saved inputs.'
-                : ' Default model values remain displayed until Compute Latest Financial Health is selected.'}
+                : ' Default model values remain displayed until Compute Latest SME Exchange is selected.'}
             </p>
           </div>
         </div>
@@ -2065,7 +2065,7 @@ useEffect(() => {
             <div className="psychometric-panel-header">
               <div>
                 <span className="psychometric-panel-kicker">Up to 12 monthly snapshots</span>
-                <h2 id="financial-health-trend-title">Monthly Financial Health Trend</h2>
+                <h2 id="financial-health-trend-title">Monthly SME Exchange Trend</h2>
                 <p className="financial-health-panel-intro">
                   Published monthly history for overall health, credit health, and wealth building.
                 </p>
@@ -2076,7 +2076,7 @@ useEffect(() => {
             <figure
               className="financial-health-trend-figure"
               role="img"
-              aria-label="Monthly snapshot trend for Financial Health Score, Credit Health, and Wealth Building Score"
+              aria-label="Monthly snapshot trend for SME Exchange Score, Credit Health, and Wealth Building Score"
             >
               <div className="financial-health-trend-scroll">
                 {financialHealthTrend.length === 0 ? (
@@ -2152,7 +2152,7 @@ useEffect(() => {
                     {series.label}
                   </span>
                 ))}
-                <small>Financial Health uses the 1000-point score; lines share a normalized 0–100 plot.</small>
+                <small>SME Exchange uses the 1000-point score; lines share a normalized 0–100 plot.</small>
               </figcaption>
             </figure>
           </article>
@@ -2226,7 +2226,7 @@ useEffect(() => {
                     <span>
                       {segment.score === null
                         ? 'Pending score'
-                        : `${segment.score}/100${segment.filscore === null ? '' : ` • FILScore ${segment.filscore}`}`}
+                        : `${segment.score}/100${segment.FILSCORE SME === null ? '' : ` • FILSCORE SME ${segment.FILSCORE SME}`}`}
                     </span>
                   </div>
                 </article>
@@ -2372,7 +2372,7 @@ useEffect(() => {
             className="financial-health-graph-guide"
             id="financial-health-monitoring-content"
             kicker="Health Monitoring Style"
-            title="Financial Health Ring system"
+            title="SME Exchange Ring system"
           >
             <ul>
               <li><strong>Activity rings</strong> for the overall glance.</li>
@@ -2417,7 +2417,7 @@ useEffect(() => {
             <div className="financial-health-equation">
               {monthlyProfileResult ? (
                 <ul className="financial-health-score-summary" aria-label="Saved monthly profile scores">
-                  <li><strong>Financial Health:</strong><span>{monthlyProfileResult.snapshot.financial_health_score ?? 'Pending'} / 1000</span></li>
+                  <li><strong>SME Exchange:</strong><span>{monthlyProfileResult.snapshot.financial_health_score ?? 'Pending'} / 1000</span></li>
                   <li><strong>Credit Health:</strong><span>{monthlyProfileResult.snapshot.credit_health_score ?? 'Pending'} / 100</span></li>
                   <li><strong>Net Worth:</strong><span>{monthlyProfileResult.snapshot.net_worth_positioning_score ?? 'Pending'} / 100</span></li>
                   <li><strong>Budget Tracking:</strong><span>{monthlyProfileResult.snapshot.budget_tracking_score ?? 'Pending'} / 100</span></li>
@@ -2427,7 +2427,7 @@ useEffect(() => {
               ) : (
                 <span>No monthly profile result is available yet.</span>
               )}
-              <small>Financial Health uses a 1000-point scale; component scores use a 100-point scale.</small>
+              <small>SME Exchange uses a 1000-point scale; component scores use a 100-point scale.</small>
             </div>
             <p className="financial-health-method-note">
               Recommended as a transparent wellness index. Calibrate weights against real outcomes

@@ -72,7 +72,7 @@ export function computeFinancialHealthSummary(
     const components = definition.indicatorIds.map((indicatorId) => {
       const indicator = indicators.find((candidate) => candidate.id === indicatorId)
       if (!indicator) {
-        throw new Error(`Missing Financial Health indicator: ${indicatorId}`)
+        throw new Error(`Missing SME Exchange indicator: ${indicatorId}`)
       }
       return indicator
     })

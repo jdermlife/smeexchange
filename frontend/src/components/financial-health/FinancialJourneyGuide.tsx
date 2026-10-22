@@ -29,7 +29,7 @@ export const FINANCIAL_HEALTH_JOURNEY_STEPS: JourneyStep[] = [
     id: 'creditHealth',
     label: '2. Loan & Wealth Ready?',
     launchLabel: 'Launch Credit Health',
-    route: '/lending-scorecard/filscore',
+    route: '/lending-scorecard/FILSCORE SME',
     description: 'Launch the Credit Health section and complete your personal profile to improve score precision.',
   },
   {
@@ -66,7 +66,7 @@ export const FINANCIAL_HEALTH_JOURNEY_DETAILS: Record<JourneyDetailId, JourneyDe
   createProfile: {
     title: 'Profile',
     points: [
-      'Complete the 12-step workflow form to establish your Financial Health Summary.',
+      'Complete the 12-step workflow form to establish your SME Exchange Summary.',
       'Enter zero, none, or not applicable where relevant.',
       'A completion percentage is displayed in the main dashboard.',
       'Each step is color-coded to highlight progress and pending items.',
@@ -95,7 +95,7 @@ export const FINANCIAL_HEALTH_JOURNEY_DETAILS: Record<JourneyDetailId, JourneyDe
     points: [
       'Guides budget setup and regular updates of actual expenses.',
       'Captures both financial discipline and behavioral patterns.',
-      'Directly contributes to the Financial Health Score.',
+      'Directly contributes to the SME Exchange Score.',
     ],
   },
   billsLoans: {
@@ -112,15 +112,15 @@ export const FINANCIAL_HEALTH_JOURNEY_DETAILS: Record<JourneyDetailId, JourneyDe
     points: [
       'Enables payment reminders and monitoring of billing cycles.',
       'Reduces missed payments and strengthens financial reliability.',
-      'Integrates seamlessly into the Financial Health Scorecard.',
+      'Integrates seamlessly into the SME Exchange Scorecard.',
     ],
   },
   financialHealth: {
-    title: 'Financial Health',
+    title: 'SME Exchange',
     points: [
       'Provides an overall assessment of financial stability and resilience.',
       'Captures Stability & Reliability, Control & Resilience, and Future Progress.',
-      'Shows what your financial health is today.',
+      'Shows what your SME Exchange is today.',
       'Shows how your income compares to your work.',
       'Highlights the risks and opportunities that lie ahead.',
     ],
@@ -188,12 +188,12 @@ export default function FinancialJourneyGuide({
   return (
     <section className="financial-health-journey-overlay" role="dialog" aria-modal="true" aria-labelledby="financial-health-journey-title">
       <article className="financial-health-journey-modal">
-        <button type="button" className="financial-health-journey-minimize" onClick={onMinimize} aria-label="Minimize Financial Health Journey">
+        <button type="button" className="financial-health-journey-minimize" onClick={onMinimize} aria-label="Minimize SME Exchange Journey">
           Minimize
         </button>
 
         <p className="financial-health-journey-kicker">GREETINGS! We wish you well today.</p>
-        <h2 id="financial-health-journey-title">Welcome to Your Financial Health Journey!</h2>
+        <h2 id="financial-health-journey-title">Welcome to Your SME Exchange Journey!</h2>
         <section className="financial-health-journey-quick-tips" aria-labelledby="financial-health-journey-quick-tips-title">
           <h3 id="financial-health-journey-quick-tips-title">Quick Tips</h3>
           <ul>
@@ -209,7 +209,7 @@ export default function FinancialJourneyGuide({
           Hover over each circle to learn more, or select its button to launch that step.
         </p>
 
-        <div className="financial-health-journey-step-list financial-health-journey-cycle" role="list" aria-label="Financial Health journey checklist">
+        <div className="financial-health-journey-step-list financial-health-journey-cycle" role="list" aria-label="SME Exchange journey checklist">
           {FINANCIAL_HEALTH_JOURNEY_STEPS.map((step) => {
             const isCompleted = completion[step.id]
             return (
@@ -248,7 +248,7 @@ export default function FinancialJourneyGuide({
             onFocus={() => setActiveDetailId('financialHealth')}
             onBlur={() => setActiveDetailId(null)}
           >
-            <span>Financial Health</span>
+            <span>SME Exchange</span>
           </a>
 
           {activeDetail ? (
@@ -263,12 +263,12 @@ export default function FinancialJourneyGuide({
           ))}
         </div>
 
-        <button type="button" className="financial-health-journey-minimize" onClick={onStart} aria-label="Start Financial Health Journey">
+        <button type="button" className="financial-health-journey-minimize" onClick={onStart} aria-label="Start SME Exchange Journey">
           Start Now
         </button>
 
         <div className="financial-health-journey-progress" aria-live="polite">
-          <h3>Financial Health Journey</h3>
+          <h3>SME Exchange Journey</h3>
           <div className="financial-health-journey-progress-list">
             {FINANCIAL_HEALTH_JOURNEY_STEPS.map((step) => (
               <span key={`progress-${step.id}`}>{completion[step.id] ? '☑' : '☐'} {step.label}</span>
@@ -284,9 +284,9 @@ export default function FinancialJourneyGuide({
 
         {completionPercent >= 100 ? (
           <div className="financial-health-journey-complete">
-            <p><strong>Excellent!</strong> Your Financial Health Profile is now established.</p>
+            <p><strong>Excellent!</strong> Your SME Exchange Profile is now established.</p>
             <button type="button" className="financial-health-journey-action" onClick={() => window.location.assign('/financial-health-summary')}>
-              Go to Financial Health Dashboard
+              Go to SME Exchange Dashboard
             </button>
           </div>
         ) : null}

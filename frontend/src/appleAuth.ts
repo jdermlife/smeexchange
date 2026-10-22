@@ -12,10 +12,10 @@ let nativeInitializationRequest: Promise<void> | null = null
 // =====================================================
 
 const ANDROID_APPLE_CLIENT_ID =
-  'com.quantech.filscore.web'
+  'com.quantech.FILSCORE SME.web'
 
 const ANDROID_APPLE_REDIRECT =
-  'https://filscore-ai.quantech.international/api/auth/apple/callback'
+  'https://FILSCORE SME-ai.quantech.international/api/auth/apple/callback'
 
 // =====================================================
 // Apple JS types
@@ -209,7 +209,7 @@ export async function requestAppleSignInToken(
   // KEEP EXISTING iOS BEHAVIOR
   //
   // iOS uses:
-  // com.quantech.filscore
+  // com.quantech.FILSCORE SME
   // ===================================================
 
   if (platform === 'ios') {
@@ -226,7 +226,7 @@ export async function requestAppleSignInToken(
   // Android
   //
   // Android uses:
-  // com.quantech.filscore.web
+  // com.quantech.FILSCORE SME.web
   //
   // Apple → Render callback → Android deep link
   // ===================================================

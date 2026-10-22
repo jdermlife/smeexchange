@@ -8,7 +8,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.quantech.filscore</string>
+		<string>group.com.quantech.FILSCORE SME</string>
 	</array>
 </dict>
 </plist>

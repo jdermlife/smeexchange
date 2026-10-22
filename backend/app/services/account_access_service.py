@@ -135,7 +135,7 @@ def queue_due_trial_reminders(db, now: datetime | None = None) -> int:
         if existing:
             continue
 
-        title = "Your FILSCORE free trial is ending"
+        title = "Your FILSCORE SME free trial is ending"
         message = (
             "Your 2-day free trial expires in 8 hours. Choose a subscription and complete "
             "payment through PayMongo or PayPal to keep uninterrupted access."

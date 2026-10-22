@@ -5,8 +5,8 @@ const JOURNEY_MENU_GROUPS = [
   {
     title: 'Journey Overview',
     links: [
-      { label: 'Financial Health Journey', route: '/financial-health-journey' },
-      { label: 'Financial Health Summary', route: '/financial-health-summary' },
+      { label: 'SME Exchange Journey', route: '/financial-health-journey' },
+      { label: 'SME Exchange Summary', route: '/financial-health-summary' },
     ],
   },
   {
@@ -29,7 +29,7 @@ const JOURNEY_MENU_GROUPS = [
   {
     title: 'Track Progress',
     links: [
-      { label: 'Financial Health Dashboard', route: '/financial-health-summary' },
+      { label: 'SME Exchange Dashboard', route: '/financial-health-summary' },
       { label: 'Financial Decisions & Action Plan', route: '/financial-decisions' },
       { label: 'Reports & Statements', route: '/reports-statements' },
     ],
@@ -46,11 +46,11 @@ export default function FinancialHealthJourneyMenu({ className = '' }: Financial
       <summary>
         <span>
           <Compass aria-hidden="true" />
-          Financial Health Journey Menu
+          SME Exchange Journey Menu
         </span>
         <ChevronDown className="financial-health-journey-menu-chevron" aria-hidden="true" />
       </summary>
-      <nav className="financial-health-journey-menu-panel" aria-label="Financial Health Journey pages">
+      <nav className="financial-health-journey-menu-panel" aria-label="SME Exchange Journey pages">
         {JOURNEY_MENU_GROUPS.map((group) => (
           <section key={group.title} className="financial-health-journey-menu-group">
             <h2>{group.title}</h2>

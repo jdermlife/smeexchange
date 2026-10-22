@@ -77,7 +77,7 @@ def test_email_pre_assessment_sends_complete_plain_text_body(monkeypatch) -> Non
     assert result == {"message": "Pre-assessment emailed to advisor@example.com"}
     recipient, subject, body = deliveries[0]
     assert recipient == "advisor@example.com"
-    assert subject == "FILSCORE FINANCIAL HEALTH - Life Protect Pre-assessment - Test Applicant"
+    assert subject == "FILSCORE SME SME Exchange - Life Protect Pre-assessment - Test Applicant"
     assert "Applicant email: applicant@example.com" in body
     assert "Government ID number: TEST-123" in body
     assert "Other information: No additional information" in body

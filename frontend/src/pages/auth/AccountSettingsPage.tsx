@@ -36,7 +36,7 @@ const JOURNEY_PREFERENCE_STORAGE_KEYS = [
 ] as const
 
 const themeOptions: Array<{ id: ThemeId; label: string; description: string }> = [
-  { id: 'classic', label: 'Classic', description: 'Current gold-based FILSCORE look.' },
+  { id: 'classic', label: 'Classic', description: 'Current gold-based FILSCORE SME look.' },
   { id: 'civic', label: 'Blue/Red/Yellow/White', description: 'Brighter blue, red, yellow, and white palette.' },
   { id: 'philippine-flag', label: 'Philippine Flag', description: 'Predominantly royal blue and green with yellow highlights and white support tones.' },
 ]
@@ -252,7 +252,7 @@ export default function AccountSettingsPage() {
     try {
       JOURNEY_PREFERENCE_STORAGE_KEYS.forEach((key) => window.localStorage.removeItem(key))
       setJourneyPreferencesMessage(
-        'Welcome pop-ups restored. They will appear when you next open Financial Health, Credit Health, and Wealth Building.',
+        'Welcome pop-ups restored. They will appear when you next open SME Exchange, Credit Health, and Wealth Building.',
       )
     } catch {
       setJourneyPreferencesMessage('Unable to restore welcome pop-ups in this browser.')
@@ -378,9 +378,9 @@ export default function AccountSettingsPage() {
       <div className="card auth-helper-card">
         <h3>Connected Sign-In Providers</h3>
         <p className="intro">
-          FILSCORE uses Apple or Google identity only for sign-in and does not retain provider
+          FILSCORE SME uses Apple or Google identity only for sign-in and does not retain provider
           access tokens for ongoing access to provider data. Disconnecting does not ask you to
-          authenticate with Apple or Google again. It signs you out of all FILSCORE sessions;
+          authenticate with Apple or Google again. It signs you out of all FILSCORE SME sessions;
           signing in with that provider later reconnects it.
         </p>
         <div className="auth-profile-grid">
@@ -537,7 +537,7 @@ export default function AccountSettingsPage() {
       <div className="card auth-helper-card">
         <h3>Welcome Pop-ups</h3>
         <p className="intro">
-          Restore the Financial Health, Credit Health, and Wealth Building guides after selecting
+          Restore the SME Exchange, Credit Health, and Wealth Building guides after selecting
           &quot;Do not show this pop-up again.&quot;
         </p>
         <div className="form-actions">

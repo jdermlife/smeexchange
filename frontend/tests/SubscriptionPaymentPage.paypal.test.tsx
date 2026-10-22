@@ -558,7 +558,7 @@ describe('SubscriptionPaymentPage PayPal Buttons', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/financial-health-summary', { replace: true })
   })
 
-  it('continues an active browser trial to financial health', async () => {
+  it('continues an active browser trial to SME Exchange', async () => {
     const freePlan = {
       ...plan,
       id: 1,
@@ -585,7 +585,7 @@ describe('SubscriptionPaymentPage PayPal Buttons', () => {
       </MemoryRouter>,
     )
 
-    const continueButton = await screen.findByRole('button', { name: 'Continue to Financial Health' })
+    const continueButton = await screen.findByRole('button', { name: 'Continue to SME Exchange' })
     await act(async () => continueButton.click())
 
     expect(apiMocks.createFreeSubscription).not.toHaveBeenCalled()

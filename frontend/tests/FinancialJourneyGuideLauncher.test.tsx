@@ -10,16 +10,16 @@ describe('FinancialJourneyGuideLauncher', () => {
   it('keeps the journey closed until the User Guide button is selected', async () => {
     render(<FinancialJourneyGuideLauncher applicationNo="APP-001" currentStep="creditHealth" />)
 
-    expect(screen.queryByRole('dialog', { name: 'Welcome to Your Financial Health Journey!' })).toBeNull()
+    expect(screen.queryByRole('dialog', { name: 'Welcome to Your SME Exchange Journey!' })).toBeNull()
 
     await userEvent.click(screen.getByRole('button', { name: 'Financial Journey Guide' }))
 
-    const dialog = screen.getByRole('dialog', { name: 'Welcome to Your Financial Health Journey!' })
+    const dialog = screen.getByRole('dialog', { name: 'Welcome to Your SME Exchange Journey!' })
     expect(dialog).toBeTruthy()
     expect(screen.getByRole('listitem', { current: 'step' }).textContent).toContain('Loan & Wealth Ready?')
-    expect(screen.getByRole('link', { name: 'Financial Health' }).getAttribute('href')).toBe('/financial-health-summary')
+    expect(screen.getByRole('link', { name: 'SME Exchange' }).getAttribute('href')).toBe('/financial-health-summary')
 
-    await userEvent.click(screen.getByRole('button', { name: 'Minimize Financial Health Journey' }))
-    expect(screen.queryByRole('dialog', { name: 'Welcome to Your Financial Health Journey!' })).toBeNull()
+    await userEvent.click(screen.getByRole('button', { name: 'Minimize SME Exchange Journey' }))
+    expect(screen.queryByRole('dialog', { name: 'Welcome to Your SME Exchange Journey!' })).toBeNull()
   })
 })

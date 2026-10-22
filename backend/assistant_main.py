@@ -7,7 +7,7 @@ from app.routes.page_assistant import router as page_assistant_router
 
 
 app = FastAPI(
-    title="FILSCORE Local Assistant Fallback",
+    title="FILSCORE SME Local Assistant Fallback",
     docs_url=None,
     redoc_url=None,
     openapi_url=None,

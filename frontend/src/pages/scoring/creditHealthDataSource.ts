@@ -1,16 +1,16 @@
 export function resolveDatabaseApplicationNo(
   searchParams: URLSearchParams,
-  isFilscoreRoute: boolean,
+  isFILSCORE SMERoute: boolean,
   selectedApplicationNo: string,
 ): string {
   const applicationNo = searchParams.get('applicationNo')?.trim() || ''
   if (applicationNo) return applicationNo
 
   const profileId = searchParams.get('profileId')?.trim() || ''
-  if (isFilscoreRoute) return profileId
+  if (isFILSCORE SMERoute) return profileId
   return profileId ? '' : selectedApplicationNo
 }
 
-export function allowsLocalBuildProfile(isFilscoreRoute: boolean): boolean {
-  return !isFilscoreRoute
+export function allowsLocalBuildProfile(isFILSCORE SMERoute: boolean): boolean {
+  return !isFILSCORE SMERoute
 }

@@ -1,5 +1,5 @@
-import brandLogoImage from './assets/filscore-logo-clean.png'
+import brandLogoImage from './assets/FILSCORE SME-logo-clean.png'
 
-export const APP_NAME = 'FILSCORE'
-export const APP_TAGLINE = 'Financial Health Tracker'
+export const APP_NAME = 'FILSCORE SME'
+export const APP_TAGLINE = 'SME Exchange Tracker'
 export const brandLogoDataUri = brandLogoImage

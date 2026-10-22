@@ -54,7 +54,7 @@ final class WatchSyncReceiver: NSObject, ObservableObject, WCSessionDelegate {
     // MARK: - Storage
 
     private let appGroup =
-        "group.com.quantech.filscore"
+        "group.com.quantech.FILSCORE SME"
 
     private let snapshotKey =
         "watch.financialHealth.snapshot"
@@ -269,7 +269,7 @@ final class WatchSyncReceiver: NSObject, ObservableObject, WCSessionDelegate {
     ) {
 
         // ---------------------------------------------------------
-        // FINANCIAL HEALTH
+        // SME Exchange
         // ---------------------------------------------------------
 
         if let value = number(
@@ -284,7 +284,7 @@ final class WatchSyncReceiver: NSObject, ObservableObject, WCSessionDelegate {
             }
 
             print(
-                "[WatchSyncReceiver] Financial Health: \(value)"
+                "[WatchSyncReceiver] SME Exchange: \(value)"
             )
         }
 

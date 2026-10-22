@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFC74E5C30714FFD009C8B40"
-               BuildableName = "FINANCIAL HEALTH Watch Watch App.app"
+               BuildableName = "SME Exchange Watch Watch App.app"
                ReferencedContainer = "container:App.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFC74E5C30714FFD009C8B40"
-            BuildableName = "FINANCIAL HEALTH Watch Watch App.app"
+            BuildableName = "SME Exchange Watch Watch App.app"
             ReferencedContainer = "container:App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFC74E5C30714FFD009C8B40"
-            BuildableName = "FINANCIAL HEALTH Watch Watch App.app"
+            BuildableName = "SME Exchange Watch Watch App.app"
             ReferencedContainer = "container:App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

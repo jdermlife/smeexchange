@@ -9,7 +9,7 @@ import {
   scaleFinancialHealthIndex,
 } from '../src/pages/scoring/financialHealthModel'
 
-describe('financial health model', () => {
+describe('SME Exchange model', () => {
   it('uses a complete 100 percent weighting model', () => {
     const totalWeight = financialHealthIndicators.reduce(
       (total, indicator) => total + indicator.weight,

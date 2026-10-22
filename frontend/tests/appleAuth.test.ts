@@ -25,13 +25,13 @@ describe('requestAppleSignInToken', () => {
     })
 
     const result = await requestAppleSignInToken({
-      clientId: 'com.quantech.filscore.web',
-      iosClientId: 'com.quantech.filscore',
+      clientId: 'com.quantech.FILSCORE SME.web',
+      iosClientId: 'com.quantech.FILSCORE SME',
       redirectURI: 'https://unused-in-native.example/auth/apple/callback',
     })
 
     expect(socialLoginMocks.initialize).toHaveBeenCalledWith({
-      apple: { clientId: 'com.quantech.filscore' },
+      apple: { clientId: 'com.quantech.FILSCORE SME' },
     })
     expect(socialLoginMocks.login).toHaveBeenCalledWith({
       provider: 'apple',
@@ -63,12 +63,12 @@ describe('requestAppleSignInToken', () => {
     }
 
     const result = await requestAppleSignInToken({
-      clientId: 'com.quantech.filscore.web',
+      clientId: 'com.quantech.FILSCORE SME.web',
       redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
     })
 
     expect(init).toHaveBeenCalledWith({
-      clientId: 'com.quantech.filscore.web',
+      clientId: 'com.quantech.FILSCORE SME.web',
       scope: 'name email',
       redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
       state: expect.any(String),
@@ -82,7 +82,7 @@ describe('requestAppleSignInToken', () => {
     window.AppleID = undefined
 
     await expect(
-      requestAppleSignInToken({ clientId: 'com.quantech.filscore.web' })
+      requestAppleSignInToken({ clientId: 'com.quantech.FILSCORE SME.web' })
     ).rejects.toThrow('Apple Sign-In is not available right now.')
   })
 
@@ -101,7 +101,7 @@ describe('requestAppleSignInToken', () => {
 
     await expect(
       requestAppleSignInToken({
-        clientId: 'com.quantech.filscore.web',
+        clientId: 'com.quantech.FILSCORE SME.web',
         redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
       })
     ).rejects.toThrow('invalid authorization state')

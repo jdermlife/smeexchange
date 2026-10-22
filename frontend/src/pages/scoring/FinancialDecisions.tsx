@@ -123,7 +123,7 @@ const DECISION_CARDS: DecisionCard[] = [
   { id: 'debt', eyebrow: 'Debt strategy', title: 'Pay debt or invest?', description: 'Compare guaranteed interest savings with your realistic investment return.', icon: WalletCards, tone: 'amber' },
   { id: 'investing', eyebrow: 'Capital allocation', title: 'Where should I invest?', description: 'Balance liquidity, time horizon, and risk before allocating surplus cash.', icon: TrendingUp, tone: 'blue' },
   { id: 'emergency', eyebrow: 'Financial resilience', title: 'Emergency fund', description: 'Measure how many months of essential obligations your reserves can cover.', icon: ShieldCheck, tone: 'green' },
-  { id: 'health', eyebrow: 'Financial health', title: 'Am I financially healthy?', description: 'Review cash flow, debt capacity, reserves, and progress in one view.', icon: HeartPulse, tone: 'coral' },
+  { id: 'health', eyebrow: 'SME Exchange', title: 'Am I financially healthy?', description: 'Review cash flow, debt capacity, reserves, and progress in one view.', icon: HeartPulse, tone: 'coral' },
   { id: 'what-if', eyebrow: 'Scenario simulator', title: 'What if...?', description: 'Stress-test a change in income, expenses, rates, or purchase cost.', icon: Activity, tone: 'violet' },
 ]
 
@@ -156,7 +156,7 @@ const FIELD_GROUPS: Array<{ title: string; fields: Array<{ key: keyof Affordabil
   {
     title: 'Decision Factors',
     fields: [
-      { key: 'financialHealthScore', label: 'Financial Health', suffix: '/ 100' },
+      { key: 'financialHealthScore', label: 'SME Exchange', suffix: '/ 100' },
       { key: 'spendingStabilityScore', label: 'Spending Stability', suffix: '/ 100' },
       { key: 'goalImpactPercent', label: 'Goal Impact', suffix: '%' },
     ],
@@ -461,7 +461,7 @@ export default function FinancialDecisions() {
           <article><span>Savings Rate</span><strong>{percent.format(savingsRate)}%</strong><div className="financial-metric-track"><i style={{ width: `${Math.min(100, savingsRate)}%` }} /></div><small>{savingsRate >= 20 ? 'Healthy savings pace' : 'Below the 20% target'}</small></article>
           <article><span>Emergency Fund</span><strong>{percent.format(emergencyFundMonths)} months</strong><div className="financial-metric-track"><i style={{ width: `${Math.min(100, emergencyFundMonths / 6 * 100)}%` }} /></div><small>{emergencyFundMonths >= 6 ? 'Fully resilient' : 'Target: 6 months'}</small></article>
           <article><span>Debt-to-Income</span><strong>{percent.format(debtRatio)}%</strong><div className="financial-metric-track is-amber"><i style={{ width: `${Math.min(100, debtRatio / 50 * 100)}%` }} /></div><small>{debtRatio <= 30 ? 'Within a healthy range' : 'Requires attention'}</small></article>
-          <article><span>Financial Health</span><strong>{Math.round(inputs.financialHealthScore)} / 100</strong><div className="financial-metric-track"><i style={{ width: `${inputs.financialHealthScore}%` }} /></div><small>{inputs.financialHealthScore >= 80 ? 'Strong' : inputs.financialHealthScore >= 60 ? 'Stable' : 'Priority'}</small></article>
+          <article><span>SME Exchange</span><strong>{Math.round(inputs.financialHealthScore)} / 100</strong><div className="financial-metric-track"><i style={{ width: `${inputs.financialHealthScore}%` }} /></div><small>{inputs.financialHealthScore >= 80 ? 'Strong' : inputs.financialHealthScore >= 60 ? 'Stable' : 'Priority'}</small></article>
         </div>
       </section>
 

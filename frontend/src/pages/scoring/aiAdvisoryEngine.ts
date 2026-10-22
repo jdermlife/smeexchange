@@ -110,7 +110,7 @@ export function computeAiAdvisories({ score, amounts, labels = {}, currency = 'P
     'ai-credit-health': {
       analysis: [
         `The wealth model's leverage-control proxy is ${score.componentScores.leverageControl.toFixed(0)}/100.`,
-        'A complete Credit Health assessment also uses the FILSCORE credit score, bureau records, payment history, utilization, adverse events, and credit trend.',
+        'A complete Credit Health assessment also uses the FILSCORE SME credit score, bureau records, payment history, utilization, adverse events, and credit trend.',
         'Those credit-specific sources are not available inside this Wealth Position snapshot.',
       ],
       recommendation: `The current leverage proxy is ${score.componentScores.leverageControl.toFixed(0)}/100. Maintain timely payments and low utilization, and review the dedicated Credit Health score for lending probability and bureau analysis.`,

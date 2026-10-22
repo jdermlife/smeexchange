@@ -5,7 +5,7 @@ This checklist covers the remaining non-code submission steps after Capacitor mo
 
 ## 1. App Identity and Versioning
 - [ ] Set final Android application ID in frontend/android/app/build.gradle (default: com.fms.mobile)
-- [x] Set final iOS bundle ID in Xcode project settings (`com.quantech.filscore`)
+- [x] Set final iOS bundle ID in Xcode project settings (`com.quantech.FILSCORE SME`)
 - [ ] Set release version and build number:
   - Android: versionName + versionCode in frontend/android/app/build.gradle
   - iOS: MARKETING_VERSION + CURRENT_PROJECT_VERSION in Xcode target Build Settings
@@ -68,13 +68,13 @@ This checklist covers the remaining non-code submission steps after Capacitor mo
 - [ ] Create Android non-consumable one-time products for Reports, Statements, Certifications, and Scores.
 - [ ] Create iOS non-consumable in-app purchases for Reports, Statements, Certifications, and Scores in App Store Connect.
 - [ ] Configure backend `STORE_PRODUCT_MAPPINGS_JSON`, for example:
-  `[{"platform":"ANDROID","plan_code":"SINGLE_PROFILE","product_id":"filscore_single_monthly","base_plan_id":"monthly","product_type":"SUBS"},{"platform":"ANDROID","product_id":"filscore_reports","product_type":"INAPP","entitlement_category":"REPORTS"},{"platform":"ANDROID","product_id":"filscore_statements","product_type":"INAPP","entitlement_category":"STATEMENTS"},{"platform":"ANDROID","product_id":"filscore_certifications","product_type":"INAPP","entitlement_category":"CERTIFICATIONS"},{"platform":"ANDROID","product_id":"filscore_scores","product_type":"INAPP","entitlement_category":"SCORES"},{"platform":"IOS","plan_code":"SINGLE_PROFILE","product_id":"com.quantech.filscore.single.monthly","product_type":"SUBS"},{"platform":"IOS","product_id":"com.quantech.filscore.reports","product_type":"INAPP","entitlement_category":"REPORTS"},{"platform":"IOS","product_id":"com.quantech.filscore.statements","product_type":"INAPP","entitlement_category":"STATEMENTS"},{"platform":"IOS","product_id":"com.quantech.filscore.certifications","product_type":"INAPP","entitlement_category":"CERTIFICATIONS"},{"platform":"IOS","product_id":"com.quantech.filscore.scores","product_type":"INAPP","entitlement_category":"SCORES"}]`
+  `[{"platform":"ANDROID","plan_code":"SINGLE_PROFILE","product_id":"FILSCORE SME_single_monthly","base_plan_id":"monthly","product_type":"SUBS"},{"platform":"ANDROID","product_id":"FILSCORE SME_reports","product_type":"INAPP","entitlement_category":"REPORTS"},{"platform":"ANDROID","product_id":"FILSCORE SME_statements","product_type":"INAPP","entitlement_category":"STATEMENTS"},{"platform":"ANDROID","product_id":"FILSCORE SME_certifications","product_type":"INAPP","entitlement_category":"CERTIFICATIONS"},{"platform":"ANDROID","product_id":"FILSCORE SME_scores","product_type":"INAPP","entitlement_category":"SCORES"},{"platform":"IOS","plan_code":"SINGLE_PROFILE","product_id":"com.quantech.FILSCORE SME.single.monthly","product_type":"SUBS"},{"platform":"IOS","product_id":"com.quantech.FILSCORE SME.reports","product_type":"INAPP","entitlement_category":"REPORTS"},{"platform":"IOS","product_id":"com.quantech.FILSCORE SME.statements","product_type":"INAPP","entitlement_category":"STATEMENTS"},{"platform":"IOS","product_id":"com.quantech.FILSCORE SME.certifications","product_type":"INAPP","entitlement_category":"CERTIFICATIONS"},{"platform":"IOS","product_id":"com.quantech.FILSCORE SME.scores","product_type":"INAPP","entitlement_category":"SCORES"}]`
 - [ ] Configure `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` as service-account JSON or a secret-file path.
-- [ ] Configure `GOOGLE_PLAY_PACKAGE_NAME=com.quantech.filscore`.
+- [ ] Configure `GOOGLE_PLAY_PACKAGE_NAME=com.quantech.FILSCORE SME`.
 - [ ] Configure Google Play Real-time Developer Notifications to push to `/api/subscriptions/store-notifications/google` with OIDC authentication.
 - [ ] Configure `GOOGLE_PUBSUB_AUDIENCE` to the full notification endpoint URL and `GOOGLE_PUBSUB_SERVICE_ACCOUNT_EMAIL` to the push service account.
 - [ ] Provision Apple Root CA G3 as a backend secret file and configure `APPLE_ROOT_CA_PATH`.
-- [ ] Configure `APPLE_BUNDLE_ID=com.quantech.filscore` and `APPLE_STORE_ENVIRONMENT=Production`.
+- [ ] Configure `APPLE_BUNDLE_ID=com.quantech.FILSCORE SME` and `APPLE_STORE_ENVIRONMENT=Production`.
 - [ ] Configure App Store Server Notifications V2 to `/api/subscriptions/store-notifications/apple`.
 - [ ] Run `migrate_store_billing.py`, then verify product titles and localized prices on physical test devices.
 

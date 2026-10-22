@@ -30,7 +30,7 @@ import {
   deriveLendingLeafScores,
   type LendingLeafScores,
 } from '../scoring/lendingLeafScores'
-import { toFilscore } from '../scoring/filscoreScale'
+import { toFILSCORE SME } from '../scoring/FILSCORE SMEScale'
 import {
   computeNetWorthBuildingScore,
   type NetWorthBuildingDraftInput,
@@ -83,8 +83,8 @@ const statementItems: ReportItem[] = [
 const certificateItems: ReportItem[] = [
   {
     title: 'Credit Score Certificate',
-    description: 'Open Credit Health to review and produce the FILSCORE credit certificate.',
-    destination: '/lending-scorecard/filscore',
+    description: 'Open Credit Health to review and produce the FILSCORE SME credit certificate.',
+    destination: '/lending-scorecard/FILSCORE SME',
     icon: BadgeCheck,
   },
   {
@@ -233,11 +233,11 @@ export default function ReportsStatementsPage() {
       ))
       setWealthProtectionScore(computeWealthProtectionScore(netWorthInput, profile?.values))
       setCreditScores({
-        credit: toFilscore(lendingScores?.creditScore ?? null),
+        credit: toFILSCORE SME(lendingScores?.creditScore ?? null),
         creditBureau: null,
-        nonStarter: toFilscore(lendingScores?.nonStarterScore ?? null),
-        social: toFilscore(lendingScores?.socialScore ?? null),
-        psychometric: toFilscore(lendingScores?.psychometricScore ?? null),
+        nonStarter: toFILSCORE SME(lendingScores?.nonStarterScore ?? null),
+        social: toFILSCORE SME(lendingScores?.socialScore ?? null),
+        psychometric: toFILSCORE SME(lendingScores?.psychometricScore ?? null),
       })
     }
 
@@ -260,7 +260,7 @@ export default function ReportsStatementsPage() {
         <ReportCertificateModal
           mode="credit"
           onClose={() => setOpenCertificate(null)}
-          title="FILSCORE Credit Health Certificate"
+          title="FILSCORE SME Credit Health Certificate"
         >
           <LoanCertificationPage />
         </ReportCertificateModal>
@@ -278,7 +278,7 @@ export default function ReportsStatementsPage() {
         <ReportCertificateModal
           mode="wealth"
           onClose={() => setOpenCertificate(null)}
-          title="FILSCORE Wealth Building Score Certificate"
+          title="FILSCORE SME Wealth Building Score Certificate"
         >
           <NetWorthPositioningPage />
         </ReportCertificateModal>

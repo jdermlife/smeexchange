@@ -12,8 +12,8 @@ DEFAULT_FRONTEND_ORIGINS = (
     "https://fleetmanagement.vercel.app",
     "https://fleetmanagement-flame.vercel.app",
     "https://fleetmanagement-n8u4pr3bu-jdionedas-projects.vercel.app",
-    "https://filscore-ai.quantech.international",
-    "https://www.filscore-ai.quantech.international",
+    "https://FILSCORE SME-ai.quantech.international",
+    "https://www.FILSCORE SME-ai.quantech.international",
 )
 
 DEFAULT_FRONTEND_ORIGIN_REGEX = (

@@ -28,8 +28,8 @@ if (parsedUrl.username || parsedUrl.password || parsedUrl.search || parsedUrl.ha
 if (configuredApiUrl !== expectedApiUrl) {
   throw new Error(`Native production API mismatch. Expected ${expectedApiUrl}, received ${configuredApiUrl}.`)
 }
-if (configuredAppleIosClientId !== 'com.quantech.filscore') {
-  throw new Error('VITE_APPLE_IOS_CLIENT_ID must match the iOS bundle ID com.quantech.filscore.')
+if (configuredAppleIosClientId !== 'com.quantech.FILSCORE SME') {
+  throw new Error('VITE_APPLE_IOS_CLIENT_ID must match the iOS bundle ID com.quantech.FILSCORE SME.')
 }
 
 console.log(`Native API configuration verified: ${configuredApiUrl}`)

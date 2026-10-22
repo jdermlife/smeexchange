@@ -7,7 +7,7 @@ export default function DisputeResolutionPage() {
       <p className="intro">
         Effective Date: August 5, 2026
         <br />
-        This process covers disputes relating to FILSCORE accounts, subscriptions, payments,
+        This process covers disputes relating to FILSCORE SME accounts, subscriptions, payments,
         privacy, and digital services.
       </p>
 
@@ -40,7 +40,7 @@ export default function DisputeResolutionPage() {
         <section className="card auth-helper-card">
           <h3>3. Internal Review</h3>
           <p>
-            FILSCORE aims to acknowledge a complete formal dispute within two business days and
+            FILSCORE SME aims to acknowledge a complete formal dispute within two business days and
             provide a written outcome within ten business days. A matter involving a payment
             provider, suspected fraud, significant technical investigation, or third-party records
             may take longer. The customer will receive a status update and, where possible, a new
@@ -87,7 +87,7 @@ export default function DisputeResolutionPage() {
               <a href="https://www.bsp.gov.ph/Pages/Forms/DispForm.aspx?ID=1870" target="_blank" rel="noreferrer">
                 BSP Consumer Assistance channels
               </a> after first complaining to that institution. This reference does not represent
-              FILSCORE or Quantech.International Solutions OPC as a BSP-supervised institution.
+              FILSCORE SME or Quantech.International Solutions OPC as a BSP-supervised institution.
             </li>
           </ul>
         </section>

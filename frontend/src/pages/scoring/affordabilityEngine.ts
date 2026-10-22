@@ -146,7 +146,7 @@ export function computeAffordability(input: AffordabilityInputs): AffordabilityR
     { id: 'debt', label: 'Debt Capacity', weight: 20, score: debtCapacityScore(paymentBurdenPercent) },
     { id: 'resilience', label: 'Financial Resilience', weight: 20, score: resilienceScore(emergencyFundMonths) },
     { id: 'goal', label: 'Goal Impact', weight: 15, score: goalScore(values.goalImpactPercent) },
-    { id: 'health', label: 'Financial Health', weight: 10, score: clamp(values.financialHealthScore) },
+    { id: 'health', label: 'SME Exchange', weight: 10, score: clamp(values.financialHealthScore) },
     { id: 'stability', label: 'Spending Stability', weight: 5, score: clamp(values.spendingStabilityScore) },
   ]
   const components = componentDefinitions.map((component) => ({

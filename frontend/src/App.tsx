@@ -89,7 +89,7 @@ const RegisterPage = lazy(() => import('./pages/auth/RegisterPage'))
 const ForgotPasswordPage = lazy(() => import('./pages/auth/ForgotPasswordPage'))
 const ResetPasswordPage = lazy(() => import('./pages/auth/ResetPasswordPage'))
 const AccountSettingsPage = lazy(() => import('./pages/auth/AccountSettingsPage'))
-const AboutFilscorePage = lazy(() => import('./pages/legal/AboutFilscorePage'))
+const AboutFILSCORE SMEPage = lazy(() => import('./pages/legal/AboutFILSCORE SMEPage'))
 const PrivacyPage = lazy(() => import('./pages/legal/PrivacyPage'))
 const TermsPage = lazy(() => import('./pages/legal/TermsPage'))
 const SupportPage = lazy(() => import('./pages/legal/SupportPage'))
@@ -103,7 +103,7 @@ const PermissionManagementPage = lazy(() => import('./pages/admin/PermissionMana
 const CreditHealthMultiProductPage = lazy(() => import('./pages/admin/CreditHealthMultiProductPage'))
 const CalculationPage = lazy(() => import('./pages/admin/CalculationPage'))
 const AmlKycScoringPage = lazy(() => import('./pages/admin/AmlKycScoringPage'))
-const AboutFilscoreMobilePage = lazy(() => import('./pages/admin/AboutFilscoreMobilePage'))
+const AboutFILSCORE SMEMobilePage = lazy(() => import('./pages/admin/AboutFILSCORE SMEMobilePage'))
 const SmeLoanApplicationPage = lazy(() => import('./pages/admin/SmeLoanApplicationPage'))
 const SubscriptionManagementPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionManagementPage'))
 const SubscriptionPaymentPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionPaymentPage'))
@@ -131,7 +131,7 @@ const MeetingDetails = lazy(() => import('./pages/ai/MeetingDetails'))
 
 const menuLinks: MenuLink[] = [
   { id: 'build-profile', label: 'Profile' },
-  { id: 'financial-health-summary', label: 'Financial Health' },
+  { id: 'financial-health-summary', label: 'SME Exchange' },
   { id: 'lending-scorecard', label: 'Credit Health Score' },
   { id: 'net-worth-positioning', label: 'Wealth Building Score' },
   { id: 'budget-expense-tracker', label: 'Budget Tracker' },
@@ -170,7 +170,7 @@ const menuLinks: MenuLink[] = [
   { id: 'admin-roles', label: 'Admin Role Management' },
   { id: 'admin-permissions', label: 'Permission Management' },
   { id: 'sme', label: 'SME' },
-  { id: 'about-filscore-mobile', label: 'About FILSCORE for Apps' },
+  { id: 'about-FILSCORE SME-mobile', label: 'About FILSCORE SME for Apps' },
   { id: 'subscription-payment', label: 'Subscription Payment' },
   { id: 'trial-expired', label: 'Trial Expired Reminder' },
 ]
@@ -184,7 +184,7 @@ const GRACE_PERIOD_CLEAR_PATH_PREFIXES = [
   '/payment/success',
   '/payment/cancel',
   '/fees',
-  '/about-filscore',
+  '/about-FILSCORE SME',
   '/support',
   '/privacy',
   '/terms',
@@ -221,7 +221,7 @@ function authenticatedPage(
 function RegistrationAccessNotice({ title, description }: { title: string; description: string }) {
   return (
     <section className="financial-health-registration-notice" aria-labelledby="registration-access-title">
-      <span>Free FILSCORE access</span>
+      <span>Free FILSCORE SME access</span>
       <h2 id="registration-access-title">{title}</h2>
       <p>{description}</p>
       <div className="financial-health-registration-actions">
@@ -242,7 +242,7 @@ function SubscriptionAccessNotice({ verificationFailed = false }: { verification
       <p>
         {verificationFailed
           ? 'We could not confirm your subscription. Review your account subscription, then return to the Lending Scorecard.'
-          : 'Your trial includes a preview of Credit Health. Choose a monthly plan to use the Lending Scorecard and receive your FILSCORE assessment.'}
+          : 'Your trial includes a preview of Credit Health. Choose a monthly plan to use the Lending Scorecard and receive your FILSCORE SME assessment.'}
       </p>
       <div className="financial-health-registration-actions">
         <Link to={verificationFailed ? '/subscriptions' : '/subscription-payment'} className="financial-health-registration-primary">
@@ -266,7 +266,7 @@ function CreditHealthScorecardPreview() {
       </section>
       <section className="psychometric-summary-grid">
         <article className="psychometric-summary-card psychometric-summary-card-highlight">
-          <span>FILSCORE</span>
+          <span>FILSCORE SME</span>
           <strong>--</strong>
           <small>Complete your profile to calculate</small>
         </article>
@@ -282,7 +282,7 @@ function CreditHealthScorecardPreview() {
         </article>
       </section>
       <section className="psychometric-panel">
-        <span className="psychometric-panel-kicker">Financial Health Journey</span>
+        <span className="psychometric-panel-kicker">SME Exchange Journey</span>
         <h2>Credit Health Assessment</h2>
         <p>Build your financial profile to unlock detailed scoring, risk indicators, and personalized recommendations.</p>
       </section>
@@ -398,7 +398,7 @@ function NetWorthPositioningPreview() {
         </article>
       </section>
       <section className="psychometric-panel">
-        <span className="psychometric-panel-kicker">Financial Health Journey</span>
+        <span className="psychometric-panel-kicker">SME Exchange Journey</span>
         <h2>Net Worth Positioning</h2>
         <p>Build your balance sheet and goals to unlock wealth-building insights and recommendations.</p>
       </section>
@@ -413,7 +413,7 @@ function BudgetExpenseTrackerPreview() {
         <div className="psychometric-hero-copy">
           <span className="psychometric-eyebrow">Budget and Cash Flow Planning</span>
           <h1>Budget &amp; Expense Tracker</h1>
-          <p>Set monthly targets, monitor actual spending, and understand how cash flow affects your financial health.</p>
+          <p>Set monthly targets, monitor actual spending, and understand how cash flow affects your SME Exchange.</p>
         </div>
       </section>
       <section className="psychometric-summary-grid budget-dashboard-summary-grid">
@@ -434,7 +434,7 @@ function BudgetExpenseTrackerPreview() {
         </article>
       </section>
       <section className="psychometric-panel">
-        <span className="psychometric-panel-kicker">Financial Health Journey</span>
+        <span className="psychometric-panel-kicker">SME Exchange Journey</span>
         <h2>Budget Readiness</h2>
         <p>Build your budget to unlock spending analysis, savings targets, and personalized cash-flow recommendations.</p>
       </section>
@@ -470,7 +470,7 @@ function ResourceOptimizerPreview() {
         </article>
       </section>
       <section className="psychometric-panel">
-        <span className="psychometric-panel-kicker">Financial Health Journey</span>
+        <span className="psychometric-panel-kicker">SME Exchange Journey</span>
         <h2>Loan Monitoring</h2>
         <p>Add your loans and resources to unlock performance monitoring and personalized optimization recommendations.</p>
       </section>
@@ -506,7 +506,7 @@ function BillManagerPreview() {
         </article>
       </section>
       <section className="psychometric-panel">
-        <span className="psychometric-panel-kicker">Financial Health Journey</span>
+        <span className="psychometric-panel-kicker">SME Exchange Journey</span>
         <h2>Bill Reminder</h2>
         <p>Add your recurring bills to unlock due-date monitoring, payment tracking, and timely reminders.</p>
       </section>
@@ -578,7 +578,7 @@ const adminMenus = [
   'admin-roles',
   'admin-permissions',
   'sme',
-  'about-filscore-mobile',
+  'about-FILSCORE SME-mobile',
   'subscription-payment',
   'trial-expired',
 ]
@@ -599,7 +599,7 @@ const subscriberHiddenMenus = [
   'admin-users',
   'admin-roles',
   'admin-permissions',
-  'about-filscore-mobile',
+  'about-FILSCORE SME-mobile',
   'trial-expired',
 ]
 
@@ -778,11 +778,11 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
           {/* BRAND */}
           <div className="app-brand-block">
             <div className="app-brand-lockup">
-              <img className="app-brand-mark" src={brandLogoDataUri} alt="Financial Health logo" />
+              <img className="app-brand-mark" src={brandLogoDataUri} alt="SME Exchange logo" />
               <div className="app-brand-text">
-                <h2 className="app-brand-title">FINANCIAL HEALTH</h2>
+                <h2 className="app-brand-title">SME Exchange</h2>
                 <div className="app-brand-subtitle-row">
-                  <p className="app-brand-subtitle">FILSCORE TRACKER</p>
+                  <p className="app-brand-subtitle">FILSCORE SME TRACKER</p>
                   {shouldShowBackButton ? (
                     <div className="app-mini-nav" aria-label="Page navigation controls">
                       <button
@@ -1315,7 +1315,7 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/lending-scorecard/filscore"
+              path="/lending-scorecard/FILSCORE SME"
               element={<LendingScorecardAccessGate authReady={authReady} currentUser={currentUser} />}
             />
 
@@ -1818,7 +1818,7 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
                       <FinancialHealthSummaryPage />
                     </div>
                     <RegistrationAccessNotice
-                      title="Register to Unlock Your Financial Health"
+                      title="Register to Unlock Your SME Exchange"
                       description="Enjoy a complimentary 2‑day trial."
                     />
                   </div>
@@ -1870,10 +1870,10 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/about-filscore-mobile"
+              path="/about-FILSCORE SME-mobile"
               element={
                 <ProtectedRoute roles={['admin']}>
-                  <AboutFilscoreMobilePage />
+                  <AboutFILSCORE SMEMobilePage />
                 </ProtectedRoute>
               }
             />
@@ -1893,8 +1893,8 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/about-filscore"
-              element={<AboutFilscorePage />}
+              path="/about-FILSCORE SME"
+              element={<AboutFILSCORE SMEPage />}
             />
 
             <Route

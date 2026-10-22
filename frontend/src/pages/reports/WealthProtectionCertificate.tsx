@@ -32,7 +32,7 @@ export default function WealthProtectionCertificate({
           <ShieldCheck />
         </div>
         <div>
-          <span>FILSCORE verified assessment framework</span>
+          <span>FILSCORE SME verified assessment framework</span>
           <h2>Wealth Protection Score Certificate</h2>
           <p>Financial resilience against foreseeable shocks, independent of total wealth.</p>
         </div>

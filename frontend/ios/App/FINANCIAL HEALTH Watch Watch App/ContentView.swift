@@ -260,7 +260,7 @@ struct ContentView: View {
 
                     // MARK: Header
 
-                    Text("FINANCIAL HEALTH")
+                    Text("SME Exchange")
                         .font(.headline)
                         .fontWeight(.bold)
 
@@ -269,7 +269,7 @@ struct ContentView: View {
 
                     ZStack {
 
-                        // Financial Health
+                        // SME Exchange
                         HealthRing(
                             value:
                                 watchSync.financialHealth ?? 0,
@@ -324,7 +324,7 @@ struct ContentView: View {
                     Divider()
 
 
-                    // MARK: Financial Health
+                    // MARK: SME Exchange
 
                     NavigationLink {
 
@@ -333,7 +333,7 @@ struct ContentView: View {
                     } label: {
 
                         ScoreCard(
-                            title: "Financial Health",
+                            title: "SME Exchange",
                             value:
                                 watchSync.financialHealth.map {
                                     String(
@@ -539,7 +539,7 @@ struct BudgetWatchView: View {
                         .fontWeight(.semibold)
 
                     Text(
-                        "Data synchronized from FINANCIAL HEALTH"
+                        "Data synchronized from SME Exchange"
                     )
                     .font(.system(size: 8))
                     .foregroundStyle(.secondary)
@@ -891,7 +891,7 @@ struct ScoreCard: View {
 }
 
 
-// MARK: - Financial Health Detail
+// MARK: - SME Exchange Detail
 
 struct FinancialHealthDetailView: View {
 
@@ -934,7 +934,7 @@ struct FinancialHealthDetailView: View {
                 )
 
 
-                Text("Financial Health")
+                Text("SME Exchange")
                     .font(.headline)
 
 
@@ -954,7 +954,7 @@ struct FinancialHealthDetailView: View {
 
 
                 Text(
-                    "Your overall financial health score."
+                    "Your overall SME Exchange score."
                 )
                 .font(.caption)
                 .multilineTextAlignment(

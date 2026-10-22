@@ -62,26 +62,26 @@ describe('FinancialHealthSummaryPage', () => {
     })
   })
 
-  it('starts the Financial Health Journey with Create Profile before Credit Health', () => {
+  it('starts the SME Exchange Journey with Create Profile before Credit Health', () => {
     render(<FinancialHealthSummaryPage />)
 
-    const checklist = screen.getByRole('list', { name: 'Financial Health journey checklist' })
+    const checklist = screen.getByRole('list', { name: 'SME Exchange journey checklist' })
     const journeyItems = within(checklist).getAllByRole('listitem')
 
-    expect(within(checklist).getByText('Financial Health', { selector: '.financial-health-journey-hub span' })).toBeTruthy()
+    expect(within(checklist).getByText('SME Exchange', { selector: '.financial-health-journey-hub span' })).toBeTruthy()
     expect(within(journeyItems[0]).getByRole('heading', { name: '1.Personalize' })).toBeTruthy()
     expect(within(journeyItems[0]).getByRole('button', { name: 'Create / Update Profile' })).toBeTruthy()
     expect(within(journeyItems[1]).getByRole('heading', { name: '2. Loan & Wealth Ready?' })).toBeTruthy()
     expect(within(journeyItems[1]).getByRole('button', { name: 'Launch Credit Health' })).toBeTruthy()
   })
 
-  it('summarizes all eight Financial Health score sources at a glance', () => {
+  it('summarizes all eight SME Exchange score sources at a glance', () => {
     render(<FinancialHealthSummaryPage />)
 
     const summary = screen.getByRole('heading', { name: 'Summary Score' }).closest('article')
     expect(summary).toBeTruthy()
 
-    const sources = within(summary as HTMLElement).getByRole('list', { name: 'Financial Health score sources' })
+    const sources = within(summary as HTMLElement).getByRole('list', { name: 'SME Exchange score sources' })
     expect(within(sources).getAllByRole('listitem')).toHaveLength(8)
     expect(within(sources).getByText('Credit:')).toBeTruthy()
     expect(within(sources).getByText('lending credit score')).toBeTruthy()
@@ -203,14 +203,14 @@ describe('FinancialHealthSummaryPage', () => {
   it('reveals journey guidance when outer and central circles are hovered or focused', () => {
     render(<FinancialHealthSummaryPage />)
 
-    const checklist = screen.getByRole('list', { name: 'Financial Health journey checklist' })
+    const checklist = screen.getByRole('list', { name: 'SME Exchange journey checklist' })
     const journeyItems = within(checklist).getAllByRole('listitem')
     fireEvent.mouseEnter(journeyItems[0])
     expect(screen.getByRole('tooltip').textContent).toContain('Complete the 12-step workflow form')
     fireEvent.mouseLeave(journeyItems[0])
     expect(screen.queryByRole('tooltip')).toBeNull()
 
-    const financialHealthCircle = within(checklist).getByText('Financial Health', {
+    const financialHealthCircle = within(checklist).getByText('SME Exchange', {
       selector: '.financial-health-journey-hub span',
     }).parentElement
     expect(financialHealthCircle).toBeTruthy()
@@ -225,10 +225,10 @@ describe('FinancialHealthSummaryPage', () => {
     window.localStorage.setItem('fms:journey:minimized', '1')
     render(<FinancialHealthSummaryPage />)
 
-    const computeBar = screen.getByRole('region', { name: 'Financial Health computation controls' })
-    const modelNote = within(computeBar).getByText(/Default Financial Health displayed/)
+    const computeBar = screen.getByRole('region', { name: 'SME Exchange computation controls' })
+    const modelNote = within(computeBar).getByText(/Default SME Exchange displayed/)
     const journeyButton = within(computeBar).getByRole('button', { name: 'Financial Journey Guide' })
-    const computeButton = within(computeBar).getByRole('button', { name: 'Refresh Financial Health' })
+    const computeButton = within(computeBar).getByRole('button', { name: 'Refresh SME Exchange' })
 
     expect(modelNote.compareDocumentPosition(journeyButton) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     expect(computeButton.compareDocumentPosition(journeyButton) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
@@ -237,13 +237,13 @@ describe('FinancialHealthSummaryPage', () => {
   it('reloads all financial sources before publishing a refreshed score', async () => {
     render(<FinancialHealthSummaryPage />)
 
-    const refresh = screen.getByRole('button', { name: 'Refresh Financial Health' })
+    const refresh = screen.getByRole('button', { name: 'Refresh SME Exchange' })
     await waitFor(() => expect((refresh as HTMLButtonElement).disabled).toBe(false))
     expect(fetchAutosaveDraft).toHaveBeenCalledTimes(6)
 
     fireEvent.click(refresh)
 
-    expect(screen.getByRole('button', { name: 'Refresh Financial Health' }).textContent).toBe('Refreshing...')
+    expect(screen.getByRole('button', { name: 'Refresh SME Exchange' }).textContent).toBe('Refreshing...')
     await waitFor(() => expect(fetchAutosaveDraft).toHaveBeenCalledTimes(12))
     expect(await screen.findByText(/Computed/)).toBeTruthy()
   })
@@ -270,7 +270,7 @@ describe('FinancialHealthSummaryPage', () => {
 
     render(<FinancialHealthSummaryPage />)
 
-    const profileLine = screen.getByRole('region', { name: 'Selected financial health profile' })
+    const profileLine = screen.getByRole('region', { name: 'Selected SME Exchange profile' })
     expect(within(profileLine).getByText('Record ID')).toBeTruthy()
     expect(within(profileLine).getByText('Jane Doe')).toBeTruthy()
     expect(await within(profileLine).findByText('1,250,000')).toBeTruthy()
@@ -353,21 +353,21 @@ describe('FinancialHealthSummaryPage', () => {
   it('shows the score, band, indicators, and transparent formula', () => {
     render(<FinancialHealthSummaryPage />)
 
-    expect(screen.getByRole('heading', { name: 'Financial Health' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'SME Exchange' })).toBeTruthy()
     expect(screen.getByText('842', { selector: '.financial-health-ring-score strong' })).toBeTruthy()
     expect(screen.getAllByText('Excellent').length).toBeGreaterThan(0)
     expect(screen.getByText('84.2 × 10 = 842')).toBeTruthy()
     expect(screen.getAllByRole('heading', { name: 'Credit Health' })).toHaveLength(3)
     expect(screen.getByText('Awaiting a saved loan application draft to paint the leaf with live lending scores.')).toBeTruthy()
     const trendGraph = screen.getByRole('img', {
-      name: 'Monthly snapshot trend for Financial Health Score, Credit Health, and Wealth Building Score',
+      name: 'Monthly snapshot trend for SME Exchange Score, Credit Health, and Wealth Building Score',
     })
-    const trendPanel = screen.getByRole('heading', { name: 'Monthly Financial Health Trend' }).closest('article')
+    const trendPanel = screen.getByRole('heading', { name: 'Monthly SME Exchange Trend' }).closest('article')
     expect(trendPanel).toBeTruthy()
     expect(within(trendPanel as HTMLElement).getByText('Saved snapshots')).toBeTruthy()
     expect(trendGraph.querySelectorAll('[data-trend-series]')).toHaveLength(0)
     expect(within(trendGraph).getByText('Save a monthly snapshot to begin the trend.')).toBeTruthy()
-    expect(within(trendGraph).getByText('Financial Health Score')).toBeTruthy()
+    expect(within(trendGraph).getByText('SME Exchange Score')).toBeTruthy()
     expect(within(trendGraph).getByText('Credit Health')).toBeTruthy()
     expect(within(trendGraph).getByText('Wealth Building Score')).toBeTruthy()
     const leafGraph = screen.getByRole('img', { name: 'Leaf graph awaiting saved lending scores' })
@@ -397,7 +397,7 @@ describe('FinancialHealthSummaryPage', () => {
     expect(within(positionRings).getByRole('progressbar', { name: 'Net Worth Growth Ring: 82 out of 100' })).toBeTruthy()
     expect(within(positionRings).getByText('Progress toward your saved net-worth goal')).toBeTruthy()
     const computationSources = screen.getByRole('region', { name: 'Computation Sources' })
-    expect(within(computationSources).getByText('Overall Financial Health')).toBeTruthy()
+    expect(within(computationSources).getByText('Overall SME Exchange')).toBeTruthy()
     expect(within(computationSources).getByText('Budget & Expense Tracker draft')).toBeTruthy()
     expect(within(computationSources).getByText('Index = sum(indicator score x weight) / 100; score = round(index x 10)')).toBeTruthy()
     expect(within(computationSources).getAllByRole('row')).toHaveLength(9)
@@ -413,7 +413,7 @@ describe('FinancialHealthSummaryPage', () => {
     expect(screen.getByText('91.0', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
     expect(screen.getByText('80.5', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
     expect(screen.getByText('77.3', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
-    expect(screen.queryByRole('heading', { name: 'Financial Health Summary Engine' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'SME Exchange Summary Engine' })).toBeNull()
     expect(screen.queryByText('(91 x 15 + 88 x 14 + 94 x 14) / 43 = 91.0')).toBeNull()
     expect(screen.queryByText('Key Indicators')).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Stability and Capability' })).toBeNull()
@@ -421,10 +421,10 @@ describe('FinancialHealthSummaryPage', () => {
     expect(screen.queryByRole('heading', { name: 'Wealth Foundation Score' })).toBeNull()
     expect(screen.getAllByRole('progressbar')).toHaveLength(19)
 
-    const insights = screen.getByRole('region', { name: 'Financial Health change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
-    expect(within(insights).getByText('1. Financial Health Change')).toBeTruthy()
+    const insights = screen.getByRole('region', { name: 'SME Exchange change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
+    expect(within(insights).getByText('1. SME Exchange Change')).toBeTruthy()
     expect(within(insights).getAllByText('Pending').length).toBeGreaterThanOrEqual(2)
-    expect(within(insights).getByText('Save at least two monthly snapshots to compare financial health.')).toBeTruthy()
+    expect(within(insights).getByText('Save at least two monthly snapshots to compare SME Exchange.')).toBeTruthy()
     expect(within(insights).getByText('2. Financial Outcome')).toBeTruthy()
     expect(within(insights).queryByText(/PSA Household Income Classification/)).toBeNull()
     expect(within(insights).getByText('World Inequality Database Result: Bottom 60%', { selector: 'strong' })).toBeTruthy()
@@ -438,7 +438,7 @@ describe('FinancialHealthSummaryPage', () => {
     expect(within(insights).getByText('6. Risk Alerts')).toBeTruthy()
     expect(within(insights).getByText('7. Opportunities')).toBeTruthy()
 
-    const comparisonControls = screen.getByRole('region', { name: 'Financial Health comparison periods' })
+    const comparisonControls = screen.getByRole('region', { name: 'SME Exchange comparison periods' })
     expect(within(comparisonControls).getByText('Months being compared')).toBeTruthy()
     expect(within(comparisonControls).getByText('None - please save snapshot')).toBeTruthy()
 
@@ -471,7 +471,7 @@ describe('FinancialHealthSummaryPage', () => {
 
     render(<FinancialHealthSummaryPage />)
 
-    const insights = await screen.findByRole('region', { name: 'Financial Health change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
+    const insights = await screen.findByRole('region', { name: 'SME Exchange change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
   expect(within(insights).queryByText(/PSA Household Income Classification/)).toBeNull()
   expect(await within(insights).findByText('World Inequality Database Result: Top 20%', { selector: 'strong' })).toBeTruthy()
     expect(within(insights).getByText('Your household income is currently in the Top 10% in the Philippines.')).toBeTruthy()
@@ -528,7 +528,7 @@ describe('FinancialHealthSummaryPage', () => {
     render(<FinancialHealthSummaryPage />)
 
     expect(screen.queryByRole('region', { name: 'Computation Sources' })).toBeNull()
-    expect(screen.getByRole('heading', { name: 'Financial Health' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'SME Exchange' })).toBeTruthy()
   })
 
   it('publishes saved workflow figures only after the compute button is clicked', async () => {
@@ -622,11 +622,11 @@ describe('FinancialHealthSummaryPage', () => {
 
     render(<FinancialHealthSummaryPage />)
 
-    expect(await screen.findByText('Please refresh to compute the latest financial health.')).toBeTruthy()
+    expect(await screen.findByText('Please refresh to compute the latest SME Exchange.')).toBeTruthy()
     expect(screen.getByText('842', { selector: '.financial-health-ring-score strong' })).toBeTruthy()
     expect(screen.getByText('91.0', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
 
-    fireEvent.click(screen.getByRole('button', { name: 'Refresh Financial Health' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Refresh SME Exchange' }))
 
     expect(await screen.findByText('962', { selector: '.financial-health-ring-score strong' })).toBeTruthy()
     expect(screen.getByText('96.9', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
@@ -634,11 +634,11 @@ describe('FinancialHealthSummaryPage', () => {
     expect(screen.getByText('92.7', { selector: '.financial-health-summary-tile strong' })).toBeTruthy()
     expect(screen.getByRole('progressbar', { name: 'Cash Flow Position Ring: 100 out of 100' })).toBeTruthy()
     expect(screen.getByRole('progressbar', { name: 'Net Worth Growth Ring: 100 out of 100' })).toBeTruthy()
-    expect(screen.queryByRole('heading', { name: 'Financial Health Summary Engine' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'SME Exchange Summary Engine' })).toBeNull()
     expect(screen.queryByText('Wealth Foundation Engine')).toBeNull()
 
-    const insights = screen.getByRole('region', { name: 'Financial Health change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
-    expect(within(insights).getByText('Save at least two monthly snapshots to compare financial health.')).toBeTruthy()
+    const insights = screen.getByRole('region', { name: 'SME Exchange change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities' })
+    expect(within(insights).getByText('Save at least two monthly snapshots to compare SME Exchange.')).toBeTruthy()
     expect(within(insights).getByText('Improving')).toBeTruthy()
     expect(within(insights).getByText('Improving for the last 12 months. Keep it up.')).toBeTruthy()
     expect(within(insights).getByText('17.6 months')).toBeTruthy()
@@ -681,7 +681,7 @@ describe('FinancialHealthSummaryPage', () => {
 
     render(<FinancialHealthSummaryPage />)
 
-    const comparisonControls = await screen.findByRole('region', { name: 'Financial Health comparison periods' })
+    const comparisonControls = await screen.findByRole('region', { name: 'SME Exchange comparison periods' })
     expect(within(comparisonControls).getByText('Compare Monthly Snapshots')).toBeTruthy()
     expect(within(comparisonControls).getByText('Select Months')).toBeTruthy()
     expect((within(comparisonControls).getByRole('combobox', { name: 'Current Month' }) as HTMLSelectElement).value).toBe('2026-09')
@@ -690,7 +690,7 @@ describe('FinancialHealthSummaryPage', () => {
     expect(within(comparisonControls).getByText('September 2026 vs August 2026')).toBeTruthy()
 
     const insights = await screen.findByRole('region', {
-      name: 'Financial Health change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities',
+      name: 'SME Exchange change, financial outcome, benchmarking, momentum, resilience, risks, and opportunities',
     })
     expect(within(insights).getByText('+40')).toBeTruthy()
     expect(within(insights).getByText('September 2026 vs August 2026')).toBeTruthy()
@@ -698,7 +698,7 @@ describe('FinancialHealthSummaryPage', () => {
     expect(within(insights).getByText(/Net income \+₱10,000 · Monthly cash flow \+₱10,000/)).toBeTruthy()
 
     const trend = screen.getByRole('img', {
-      name: 'Monthly snapshot trend for Financial Health Score, Credit Health, and Wealth Building Score',
+      name: 'Monthly snapshot trend for SME Exchange Score, Credit Health, and Wealth Building Score',
     })
     await waitFor(() => expect(trend.querySelectorAll('[data-trend-series]')).toHaveLength(3))
     expect(trend.querySelectorAll('[data-trend-point]')).toHaveLength(6)
@@ -717,7 +717,7 @@ describe('FinancialHealthSummaryPage', () => {
     }))
     render(<FinancialHealthSummaryPage />)
 
-    const refresh = screen.getByRole('button', { name: 'Refresh Financial Health' })
+    const refresh = screen.getByRole('button', { name: 'Refresh SME Exchange' })
     await waitFor(() => expect((refresh as HTMLButtonElement).disabled).toBe(false))
     fireEvent.click(refresh)
     await waitFor(() => expect((refresh as HTMLButtonElement).disabled).toBe(false))

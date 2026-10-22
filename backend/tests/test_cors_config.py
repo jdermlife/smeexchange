@@ -23,8 +23,8 @@ def test_allowed_frontend_origins_include_defaults_and_configured_values():
     assert "https://localhost" in origins
     assert "capacitor://localhost" in origins
     assert "https://fleetmanagement.vercel.app" in origins
-    assert "https://filscore-ai.quantech.international" in origins
-    assert "https://www.filscore-ai.quantech.international" in origins
+    assert "https://FILSCORE SME-ai.quantech.international" in origins
+    assert "https://www.FILSCORE SME-ai.quantech.international" in origins
     assert "https://fleetmanagement-api.example.com" in origins
     assert origins.count("https://fleetmanagement.vercel.app") == 1
 

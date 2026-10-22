@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.quantech.filscore',
-  appName: 'Financial Health FS',
+  appId: 'com.quantech.FILSCORE SME',
+  appName: 'SME Exchange FS',
   webDir: 'dist',
  
   server: {

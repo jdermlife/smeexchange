@@ -72,7 +72,7 @@ export default function PaymentCancelPage() {
           </div>
           <div>
             <strong>Access unchanged</strong>
-            <span>Your current FILSCORE account and subscription remain unchanged.</span>
+            <span>Your current FILSCORE SME account and subscription remain unchanged.</span>
           </div>
         </div>
 

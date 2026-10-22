@@ -298,7 +298,7 @@ export default function LifeProtectPage() {
             </div>
             <div className="life-protect-email-sender" aria-label="Email sender">
               <span></span>
-              <strong>FINANCIAL HEALTH</strong>
+              <strong>SME Exchange</strong>
               <small></small>
             </div>
             <div className="life-protect-form-grid">

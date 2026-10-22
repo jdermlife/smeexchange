@@ -19,13 +19,13 @@ import './LandingPage.css'
 const tools = [
   {
     icon: ChartNoAxesCombined,
-    title: 'Financial Health Dashboard',
+    title: 'SME Exchange Dashboard',
     description: 'See your financial position in one clear view, with scores, trends, and priority actions that show what to improve next.',
   },
   {
     icon: ClipboardCheck,
     title: 'Build Profile',
-    description: 'Organize income, expenses, assets, debts, and goals once, creating a reliable foundation for every FILSCORE insight.',
+    description: 'Organize income, expenses, assets, debts, and goals once, creating a reliable foundation for every FILSCORE SME insight.',
   },
   {
     icon: WalletCards,
@@ -39,7 +39,7 @@ const tools = [
   },
   {
     icon: CreditCard,
-    title: 'Credit Health & FILSCORE',
+    title: 'Credit Health & FILSCORE SME',
     description: 'Evaluate credit readiness, repayment capacity, bureau factors, and fraud risk before making a borrowing decision.',
   },
   {
@@ -60,7 +60,7 @@ const tools = [
 ] as const
 
 const outcomes = [
-  'Know your current financial health score',
+  'Know your current SME Exchange score',
   'Find the strongest next action for your money',
   'Prepare for borrowing with greater confidence',
   'Track progress across one connected dashboard',
@@ -87,7 +87,7 @@ export default function LandingPage() {
           <img className="landing-hero-mark" src={brandLogoDataUri} alt="" aria-hidden="true" />
           <div className="landing-hero-copy">
             <p className="landing-eyebrow">One dashboard. Your full financial picture.</p>
-            <h1 id="landing-title">FILSCORE ai - Your Financial Health Dashboard</h1>
+            <h1 id="landing-title">FILSCORE SME ai - Your SME Exchange Dashboard</h1>
             <p className="landing-hero-lead">
               Understand your money, strengthen your credit readiness, and turn financial data into
               decisions you can act on.
@@ -102,8 +102,8 @@ export default function LandingPage() {
               <ShieldCheck size={17} aria-hidden="true" /> Secure, guided, and built around your goals.
             </p>
           </div>
-          <div className="landing-hero-score" aria-label="FILSCORE dashboard preview">
-            <span>Financial health</span>
+          <div className="landing-hero-score" aria-label="FILSCORE SME dashboard preview">
+            <span>SME Exchange</span>
             <strong>One clear view</strong>
             <div className="landing-score-track"><i /></div>
             <dl>
@@ -117,7 +117,7 @@ export default function LandingPage() {
         <section className="landing-tools" id="tools" aria-labelledby="tools-title">
           <div className="landing-section-heading">
             <p>Connected financial tools</p>
-            <h2 id="tools-title">From daily cash flow to long-term financial health</h2>
+            <h2 id="tools-title">From daily cash flow to long-term SME Exchange</h2>
             <span>Each tool adds context to your dashboard, helping you move from numbers to practical decisions.</span>
           </div>
           <div className="landing-tool-grid">
@@ -147,7 +147,7 @@ export default function LandingPage() {
         <section className="landing-trial" id="trial" aria-labelledby="trial-title">
           <div className="landing-trial-copy">
             <p>Complimentary access</p>
-            <h2 id="trial-title">Explore FILSCORE with a 2-day free trial.</h2>
+            <h2 id="trial-title">Explore FILSCORE SME with a 2-day free trial.</h2>
             <span>Build your profile, review your dashboard, and experience the premium financial tools before committing.</span>
           </div>
           <div className="landing-trial-actions">
@@ -162,7 +162,7 @@ export default function LandingPage() {
 
       <footer className="landing-footer" id="about">
         <div className="landing-footer-about">
-          <img src={brandLogoDataUri} alt="FILSCORE" />
+          <img src={brandLogoDataUri} alt="FILSCORE SME" />
           <div>
             <h2>About Quantech International</h2>
             <p>
@@ -174,7 +174,7 @@ export default function LandingPage() {
           </div>
         </div>
         <nav aria-label="Legal and support links">
-          <Link to="/about-filscore">About FILSCORE</Link>
+          <Link to="/about-FILSCORE SME">About FILSCORE SME</Link>
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
           <Link to="/customer-service">Customer Service</Link>

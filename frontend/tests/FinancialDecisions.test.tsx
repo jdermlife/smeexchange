@@ -45,10 +45,10 @@ describe('FinancialDecisions', () => {
     render(<FinancialDecisions />)
 
     expect(screen.getByRole('heading', { name: 'Financial Decisions' })).toBeTruthy()
-    const journeyMenu = screen.getByText('Financial Health Journey Menu').closest('details')
+    const journeyMenu = screen.getByText('SME Exchange Journey Menu').closest('details')
     expect(journeyMenu).toBeTruthy()
     expect(journeyMenu?.closest('.financial-decisions-header')).toBeTruthy()
-    expect(within(journeyMenu as HTMLElement).getByRole('link', { name: /Financial Health Journey/ })).toBeTruthy()
+    expect(within(journeyMenu as HTMLElement).getByRole('link', { name: /SME Exchange Journey/ })).toBeTruthy()
     const decisionsLink = within(journeyMenu as HTMLElement).getByRole('link', { name: 'Financial Decisions & Action Plan' })
     const reportsLink = within(journeyMenu as HTMLElement).getByRole('link', { name: 'Reports & Statements' })
     expect(reportsLink.getAttribute('href')).toBe('/reports-statements')

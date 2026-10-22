@@ -30,7 +30,7 @@ export default function PaymentSuccessPage() {
         <div className="payment-success-confirmation" role="status">
           <div>
             <strong>Payment received</strong>
-            <span>The transaction was returned to FILSCORE successfully.</span>
+            <span>The transaction was returned to FILSCORE SME successfully.</span>
           </div>
           <div>
             <strong>Access update</strong>
@@ -44,7 +44,7 @@ export default function PaymentSuccessPage() {
 
         <div className="payment-success-actions">
           <Link className="payment-success-action" to="/financial-health-summary">
-            Continue to Financial Health
+            Continue to SME Exchange
             <span aria-hidden="true">→</span>
           </Link>
           <Link className="payment-success-action payment-success-action-secondary" to="/build-profile">

@@ -274,10 +274,10 @@ function CreditScoring() {
     <div className="psychometric-page">
       <section className="psychometric-hero">
         <div className="psychometric-hero-copy">
-          <span className="psychometric-eyebrow">FILSCORE Assessment Model</span>
+          <span className="psychometric-eyebrow">FILSCORE SME Assessment Model</span>
           <h1>Psychometric Scoring</h1>
           <p>
-            This page follows the FILSCORE psychometric questionnaire structure and applies your
+            This page follows the FILSCORE SME psychometric questionnaire structure and applies your
             updated response scale of 0 to 4 across 10 sections with 5 questions each.
           </p>
         </div>

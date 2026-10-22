@@ -82,7 +82,7 @@ describe('LoginPage Apple sign-in', () => {
 
   beforeEach(() => {
     vi.stubEnv('VITE_GOOGLE_CLIENT_ID', 'google-client-id')
-    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.filscore.web')
+    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.FILSCORE SME.web')
     const storageMock = createStorageMock()
     Object.defineProperty(window, 'localStorage', {
       value: storageMock,
@@ -137,14 +137,14 @@ describe('LoginPage Apple sign-in', () => {
     expect(screen.getByRole('link', { name: 'Dispute Resolution' }).getAttribute('href')).toBe('/dispute-resolution')
   })
 
-  it('defaults free FILSCORE access to the Financial Health Journey page', () => {
+  it('defaults free FILSCORE SME access to the SME Exchange Journey page', () => {
     render(
       <MemoryRouter initialEntries={['/login']}>
         <LoginPage />
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('link', { name: /access filscore free/i }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: /access FILSCORE SME free/i }).getAttribute('href')).toBe(
       '/financial-health-journey',
     )
   })
@@ -316,7 +316,7 @@ describe('LoginPage Apple sign-in', () => {
     expect(screen.queryByText(/<html>/i)).toBeNull()
   })
 
-  it('clicking Continue with Apple requests token, exchanges identity token, and redirects to financial health summary', async () => {
+  it('clicking Continue with Apple requests token, exchanges identity token, and redirects to SME Exchange summary', async () => {
     mockRequestAppleSignInToken.mockResolvedValue({
       idToken: 'apple-identity-token-123',
     })
@@ -347,8 +347,8 @@ describe('LoginPage Apple sign-in', () => {
 
     await waitFor(() => {
       expect(mockRequestAppleSignInToken).toHaveBeenCalledWith({
-        clientId: 'com.quantech.filscore.web',
-        iosClientId: 'com.quantech.filscore',
+        clientId: 'com.quantech.FILSCORE SME.web',
+        iosClientId: 'com.quantech.FILSCORE SME',
         redirectURI: `${window.location.origin}/auth/apple/callback`,
       })
     })

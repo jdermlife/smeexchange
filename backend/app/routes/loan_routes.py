@@ -803,7 +803,7 @@ def compute_quant_scores(
             error=str(exc),
         )
         return {
-            "message": "FILSCORE rating generated, but the record could not be saved. Please retry saving after the database is updated.",
+            "message": "FILSCORE SME rating generated, but the record could not be saved. Please retry saving after the database is updated.",
             "application_no": scored_data.application_no,
             "quant_scores": quant_scores,
             "persisted": False,
@@ -883,7 +883,7 @@ def update_stored_wealth_score(
         db.refresh(record)
         invalidate_dashboard_statistics_cache()
         return {
-            "message": "FILSCORE Wealth score updated",
+            "message": "FILSCORE SME Wealth score updated",
             "application_no": record.application_no,
             "wealth_score": {
                 **payload.model_dump(),

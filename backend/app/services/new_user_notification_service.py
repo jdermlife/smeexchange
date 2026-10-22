@@ -29,7 +29,7 @@ def notify_admins_of_new_user(user: User, db: Session) -> datetime | None:
     created_at = user.created_at or datetime.now(timezone.utc)
     body = "\n".join(
         (
-            "A new FILSCORE user account has been created.",
+            "A new FILSCORE SME user account has been created.",
             "",
             f"User ID: {user.id}",
             f"Username: {user.username}",
@@ -40,7 +40,7 @@ def notify_admins_of_new_user(user: User, db: Session) -> datetime | None:
     )
 
     try:
-        send_email(recipients, "FILSCORE - New user created", body)
+        send_email(recipients, "FILSCORE SME - New user created", body)
         sent_at = datetime.now(timezone.utc)
         user.admin_user_notification_sent_at = sent_at
         db.commit()

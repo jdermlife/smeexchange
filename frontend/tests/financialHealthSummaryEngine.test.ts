@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { computeFinancialHealthSummary } from '../src/pages/scoring/financialHealthSummaryEngine'
 
-describe('financial health summary engine', () => {
+describe('SME Exchange summary engine', () => {
   it('shows the default weighted calculations for all three summary groups', () => {
     const result = computeFinancialHealthSummary()
 

@@ -63,7 +63,7 @@ def queue_due_bill_reminders(db, today: date | None = None) -> int:
             continue
 
         biller_name = str(row["biller_name"] or row["bill_type"] or "your bill")
-        title = f"FILSCORE bill reminder: {biller_name}"
+        title = f"FILSCORE SME bill reminder: {biller_name}"
         message = (
             f"Your {biller_name} bill for {row['amount_due']} is due on {due_date.isoformat()}. "
             f"This reminder was enabled for application {row['application_no']}."

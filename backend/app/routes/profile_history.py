@@ -81,7 +81,7 @@ def create_profile_history(
         if month_start > current_month_start:
             raise HTTPException(
                 status_code=422,
-                detail="Financial health snapshot month cannot be in the future",
+                detail="SME Exchange snapshot month cannot be in the future",
             )
         existing = _profile_query(
             db,
@@ -95,7 +95,7 @@ def create_profile_history(
         if existing is not None:
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail="A financial health snapshot already exists for this month",
+                detail="A SME Exchange snapshot already exists for this month",
             )
 
     snapshot = ProfileHistory(

@@ -220,7 +220,7 @@ def create_subscription(
         "custom_id": custom_id[:127],
         "start_time": start_time.astimezone().isoformat(timespec="seconds"),
         "application_context": {
-            "brand_name": os.getenv("PAYPAL_BRAND_NAME", "FILSCORE")[:127],
+            "brand_name": os.getenv("PAYPAL_BRAND_NAME", "FILSCORE SME")[:127],
             "cancel_url": _return_url("PAYPAL_SUBSCRIPTION_CANCEL_URL"),
             "return_url": _return_url("PAYPAL_SUBSCRIPTION_RETURN_URL"),
             "user_action": "SUBSCRIBE_NOW",

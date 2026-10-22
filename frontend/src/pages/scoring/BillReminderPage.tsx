@@ -990,7 +990,7 @@ export default function BillReminderPage() {
         outcome: 'Credit Health Overall Score',
         impact: billPaymentScoreImpact.creditImpact,
         contribution: `${creditContribution.toFixed(1)} / 14 points`,
-        basis: 'Payment Health carries a 14% weight in the overall Financial Health model.',
+        basis: 'Payment Health carries a 14% weight in the overall SME Exchange model.',
       },
       {
         outcome: 'Wealth Building Capacity Score',

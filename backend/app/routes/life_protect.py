@@ -168,7 +168,7 @@ _ASSESSMENT_SECTIONS = (
 
 def format_life_protect_email(assessment: LifeProtectAssessment) -> str:
     lines = [
-        "FILSCORE LIFE PROTECT",
+        "FILSCORE SME LIFE PROTECT",
         "Financial Planning & Need Analysis - Pre-assessment",
         "",
         "This message contains personal and sensitive personal information supplied with explicit email-delivery consent.",
@@ -211,7 +211,7 @@ async def email_pre_assessment(payload: LifeProtectEmailRequest) -> dict[str, st
         )
 
     subject_name = " ".join(payload.assessment.fullName.splitlines()).strip()
-    subject = f"FILSCORE FINANCIAL HEALTH - Life Protect Pre-assessment - {subject_name}"
+    subject = f"FILSCORE SME SME Exchange - Life Protect Pre-assessment - {subject_name}"
     body = format_life_protect_email(payload.assessment)
 
     try:

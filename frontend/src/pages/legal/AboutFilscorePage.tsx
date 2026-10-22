@@ -1,23 +1,23 @@
-export default function AboutFilscorePage() {
+export default function AboutFILSCORE SMEPage() {
   return (
     <div className="standalone-card auth-screen">
-      <h1>About FILSCORE</h1>
+      <h1>About FILSCORE SME</h1>
       <p className="intro">
-        FILSCORE is Financial Intelligence for Life Success, Credit Optimization, Resilience & Empowerment.
+        FILSCORE SME is Financial Intelligence for Life Success, Credit Optimization, Resilience & Empowerment.
       </p>
 
       <div className="stack-panel">
         <section className="card auth-helper-card">
-          <h3>What FILSCORE Does</h3>
+          <h3>What FILSCORE SME Does</h3>
           <p>
-           FILSCORE helps users understand their overall financial well-being, improve their creditworthiness, grow savings and net worth, achieve financial goals, and make informed borrowing and investment decisions through intelligent insights, AI-powered analytics, and digital financial workflows.
+           FILSCORE SME helps users understand their overall financial well-being, improve their creditworthiness, grow savings and net worth, achieve financial goals, and make informed borrowing and investment decisions through intelligent insights, AI-powered analytics, and digital financial workflows.
           </p>
         </section>
 
         <section className="card auth-helper-card">
           <h3>Core Capabilities</h3>
           <ul>
-            <li>Measure and improve their Financial Health Score.</li>
+            <li>Measure and improve their SME Exchange Score.</li>
             <li>Build wealth through better savings, budgeting, and net worth management.</li>
             <li>Optimize credit readiness and borrowing capacity.</li>
             <li>Make informed financial decisions using AI-powered insights.</li>
@@ -30,12 +30,12 @@ export default function AboutFilscorePage() {
         <section className="card auth-helper-card">
           <h3>Who It Is For</h3>
           <p>
-           FILSCORE is designed for anyone seeking to improve financial health, build wealth, and make better financial decisions.
+           FILSCORE SME is designed for anyone seeking to improve SME Exchange, build wealth, and make better financial decisions.
 
             <ul>
               <li>Individuals & Families</li>
               <li>People building savings and emergency funds</li>
-              <li>Individuals improving their financial health</li>
+              <li>Individuals improving their SME Exchange</li>
               <li>Consumers managing debt responsibly</li>
               <li>Borrowers preparing for future loans</li>
               <li>Professionals planning long-term wealth</li>

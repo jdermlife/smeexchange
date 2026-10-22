@@ -73,7 +73,7 @@ export const financialHealthIndicatorSources: readonly FinancialHealthIndicatorS
 
 export const financialHealthMetricSources: readonly FinancialHealthMetricSource[] = [
   {
-    label: 'Overall Financial Health',
+    label: 'Overall SME Exchange',
     source: 'All eight published indicator scores and model weights',
     formula: 'Index = sum(indicator score x weight) / 100; score = round(index x 10)',
   },
@@ -93,9 +93,9 @@ export const financialHealthMetricSources: readonly FinancialHealthMetricSource[
     formula: 'sum(component score x component weight) / combined component weight',
   },
   {
-    label: 'Financial Health Change',
-    source: 'Two selected published monthly financial health snapshots',
-    formula: 'current-period Financial Health score - comparison-period Financial Health score',
+    label: 'SME Exchange Change',
+    source: 'Two selected published monthly SME Exchange snapshots',
+    formula: 'current-period SME Exchange score - comparison-period SME Exchange score',
   },
   {
     label: 'Financial Outcome',
@@ -103,8 +103,8 @@ export const financialHealthMetricSources: readonly FinancialHealthMetricSource[
     formula: 'current-period amount - comparison-period amount for net worth, net income, and monthly cash flow',
   },
   {
-    label: 'Monthly Financial Health Trend',
-    source: 'Up to 12 published monthly financial health snapshots',
+    label: 'Monthly SME Exchange Trend',
+    source: 'Up to 12 published monthly SME Exchange snapshots',
     formula: 'plot each saved overall, credit, and wealth score in reporting-month order',
   },
   {
