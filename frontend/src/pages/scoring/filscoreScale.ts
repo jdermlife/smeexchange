@@ -1,12 +1,12 @@
-const filscoresme SME_MIN = 200
-const filscoresme SME_RANGE = 700
+const FILSCORE_SME_MIN = 200
+const FILSCORE_SME_RANGE = 700
 
-export type filscoresme SMEBand = {
+export type FilScoreSMEBand = {
   grade: string
   internalGrade: string
 }
 
-export const filscoresme SME_BANDS = [
+export const FILSCORE_SME_BANDS = [
   { minimum: 860, grade: 'Platinum 1', internalGrade: 'Exceptional' },
   { minimum: 820, grade: 'Platinum 2', internalGrade: 'Excellent' },
   { minimum: 780, grade: 'Gold 1', internalGrade: 'Very Strong' },
@@ -19,21 +19,21 @@ export const filscoresme SME_BANDS = [
   { minimum: 200, grade: 'Red 2', internalGrade: 'Critical Risk' },
 ] as const
 
-export const tofilscoresme SME = (internalScore: number | null | undefined) => {
+export const toFilScoreSME = (internalScore: number | null | undefined) => {
   if (typeof internalScore !== 'number' || !Number.isFinite(internalScore)) {
     return null
   }
 
   const clampedScore = Math.max(0, Math.min(100, internalScore))
-  return Math.round(filscoresme SME_MIN + (clampedScore / 100) * filscoresme SME_RANGE)
+  return Math.round(FILSCORE_SME_MIN + (clampedScore / 100) * FILSCORE_SME_RANGE)
 }
 
-export const getfilscoresme SMEBand = (filscoresme SME: number | null | undefined): filscoresme SMEBand | null => {
-  if (typeof filscoresme SME !== 'number' || !Number.isFinite(filscoresme SME)) {
+export const getFilScoreSMEBand = (filScoreSME: number | null | undefined): FilScoreSMEBand | null => {
+  if (typeof filScoreSME !== 'number' || !Number.isFinite(filScoreSME)) {
     return null
   }
 
-  const band = filscoresme SME_BANDS.find((candidate) => filscoresme SME >= candidate.minimum)
+  const band = FILSCORE_SME_BANDS.find((candidate) => filScoreSME >= candidate.minimum)
   return band
     ? { grade: band.grade, internalGrade: band.internalGrade }
     : { grade: 'Red 2', internalGrade: 'Critical Risk' }
