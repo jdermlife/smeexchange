@@ -19,7 +19,7 @@ import {
   CREDIT_RATING_MINIMUM_INFORMATION_PERCENT,
 } from './applicationCompleteness'
 import { getBuildProfileCompletionPercent, type ReplicatedBuildProfile } from './buildProfileReplication'
-import { getfilscoresme SMEBand, tofilscoresme SME } from './filscoresme SMEScale'
+import { getFilScoreSMEBand, toFilScoreSME } from './filscoreScale'
 
 type CertificationSnapshot = {
   applicationNo: string
@@ -97,14 +97,14 @@ const buildCertificationSnapshot = (
 }
 
 const formatScore = (value: number | null) => {
-  const scaledScore = tofilscoresme SME(value)
+  const scaledScore = toFilScoreSME(value)
   return typeof scaledScore === 'number' ? scaledScore.toFixed(0) : 'Pending'
 }
 
 const formatBand = (value: number | null) => {
-  const scaledScore = tofilscoresme SME(value)
-  const band = getfilscoresme SMEBand(scaledScore)
-  return band ? `${band.grade} : ${band.internalGrade}` : 'filscoresme SME : Grade : Internal Grade'
+  const scaledScore = toFilScoreSME(value)
+  const band = getFilScoreSMEBand(scaledScore)
+  return band ? `${band.grade} : ${band.internalGrade}` : 'FILSCORE SME: Grade : Internal Grade'
 }
 
 const formatInformationProvided = (value: number) =>
