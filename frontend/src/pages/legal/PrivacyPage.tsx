@@ -4,7 +4,7 @@ const privacySections = [
   {
     title: '1. Overview',
     paragraphs: [
-      'This Privacy Policy describes how FILSCORE SME handles information when users access credit-scoring, loan-origination, document-management, subscription, and AI-assisted workflow features.',
+      'This Privacy Policy describes how filscoresme SME handles information when users access credit-scoring, loan-origination, document-management, subscription, and AI-assisted workflow features.',
       'This policy is intended to reflect the current application behavior verified in the codebase for this release. If the product adds new data practices, this page should be updated before those changes are published.',
     ],
   },
@@ -33,7 +33,7 @@ const privacySections = [
   {
     title: '4. How We Use Information',
     paragraphs: [
-      'FILSCORE SME may use collected information to operate and secure the service, including to:',
+      'filscoresme SME may use collected information to operate and secure the service, including to:',
     ],
     bullets: [
       'Authenticate users, manage sessions, enforce permissions, and protect accounts.',
@@ -51,9 +51,9 @@ const privacySections = [
     ],
     bullets: [
       'Google Sign-In and Apple Sign-In flows when the user chooses those login options.',
-      'Account Settings identifies the current Apple or Google sign-in connection and allows users to disconnect it without authenticating with the provider again. FILSCORE SME revokes all account sessions and does not retain Google or Apple access tokens for ongoing access to provider data. Signing in with that provider again reconnects it.',
+      'Account Settings identifies the current Apple or Google sign-in connection and allows users to disconnect it without authenticating with the provider again. filscoresme SME revokes all account sessions and does not retain Google or Apple access tokens for ongoing access to provider data. Signing in with that provider again reconnects it.',
       'Participating lenders when a user separately consents to sharing their financial profile, loan application information, supporting documents, and credit scores for financing eligibility assessment. This consent is optional and can be withdrawn in Account Settings.',
-      'OpenAI processing is optional and requires an unchecked, contextual consent choice before each recording or document is submitted. When consent is given, FILSCORE SME sends the selected audio recording and its contents for transcription and meeting summarization, or the selected document image and its contents for structured data extraction. The backend rejects these requests without current consent and records the consent version, time, provider, and purpose in existing AI governance metadata.',
+      'OpenAI processing is optional and requires an unchecked, contextual consent choice before each recording or document is submitted. When consent is given, filscoresme SME sends the selected audio recording and its contents for transcription and meeting summarization, or the selected document image and its contents for structured data extraction. The backend rejects these requests without current consent and records the consent version, time, provider, and purpose in existing AI governance metadata.',
       'SMTP email delivery when email-related features or password-reset notifications are configured on the backend.',
       'Infrastructure, database, and operational service providers that host, route, or store application data on behalf of the service operator.',
       'Legal, security, fraud-prevention, or regulatory disclosures when required by law or necessary to protect the service or affected parties.',
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
       <p className="intro">
         Effective Date: September 12, 2026
         <br />
-        Application: FILSCORE SME / SME Exchange
+        Application: filscoresme SME / SME Exchange
         <br />
         Service Provider: Quantech.International Solutions OPC
         <br />

@@ -29,7 +29,7 @@ export const FINANCIAL_HEALTH_JOURNEY_STEPS: JourneyStep[] = [
     id: 'creditHealth',
     label: '2. Loan & Wealth Ready?',
     launchLabel: 'Launch Credit Health',
-    route: '/lending-scorecard/FILSCORE SME',
+    route: '/lending-scorecard/filscoresme SME',
     description: 'Launch the Credit Health section and complete your personal profile to improve score precision.',
   },
   {

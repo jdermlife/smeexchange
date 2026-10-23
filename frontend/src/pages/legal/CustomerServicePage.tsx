@@ -13,7 +13,7 @@ export default function CustomerServicePage() {
     <div className="standalone-card auth-screen">
       <h1>Customer Service and Contact Information</h1>
       <p className="intro">
-        Public assistance for FILSCORE SME account, subscription, payment, privacy, and service concerns.
+        Public assistance for filscoresme SME account, subscription, payment, privacy, and service concerns.
       </p>
 
       <div className="stack-panel">
@@ -21,11 +21,11 @@ export default function CustomerServicePage() {
           <h3>Service Provider</h3>
           <p>Quantech.International Solutions OPC</p>
           <p>
-            Service: FILSCORE SME / SME Exchange
+            Service: filscoresme SME / SME Exchange
             <br />
             Website:{' '}
-            <a href="https://FILSCORE SME-ai.quantech.international">
-              FILSCORE SME-ai.quantech.international
+            <a href="https://filscoresme SME-ai.quantech.international">
+              filscoresme SME-ai.quantech.international
             </a>
           </p>
         </section>
@@ -37,7 +37,7 @@ export default function CustomerServicePage() {
             <a href="mailto:admin@quantech.international">admin@quantech.international</a>
           </p>
           <p>
-            Requests are monitored on Philippine business days. FILSCORE SME aims to acknowledge a
+            Requests are monitored on Philippine business days. filscoresme SME aims to acknowledge a
             complete request within two business days and resolve ordinary requests within five
             business days. Complex technical, payment, privacy, or fraud reviews may require more
             time, in which case a status update will be provided.

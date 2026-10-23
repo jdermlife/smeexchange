@@ -47,8 +47,8 @@ describe('resolveApiBase', () => {
 
 describe('resolveOptionalApiBase', () => {
   it('normalizes a configured fallback URL and permits an omitted fallback', () => {
-    expect(resolveOptionalApiBase('https://FILSCORE SME-ai.quantech.international/')).toBe(
-      'https://FILSCORE SME-ai.quantech.international',
+    expect(resolveOptionalApiBase('https://filscoresme SME-ai.quantech.international/')).toBe(
+      'https://filscoresme SME-ai.quantech.international',
     )
     expect(resolveOptionalApiBase(undefined)).toBeNull()
   })
@@ -103,7 +103,7 @@ describe('resolveOllamaFallbackUrl', () => {
     )
   })
 
-  it('uses the secured FILSCORE SME endpoint when no build variable is configured', () => {
+  it('uses the secured filscoresme SME endpoint when no build variable is configured', () => {
     expect(resolveOllamaFallbackUrl(undefined)).toBe(DEFAULT_OLLAMA_FALLBACK_URL)
   })
 })

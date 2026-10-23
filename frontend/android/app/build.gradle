@@ -25,10 +25,10 @@ if (isReleaseBuildRequested && !hasReleaseKeystore) {
 }
 
 android {
-    namespace = "com.quantech.FILSCORE SME"
+    namespace = "com.quantech.filscoresme SME"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.quantech.FILSCORE SME"
+        applicationId "com.quantech.filscoresme SME"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 28

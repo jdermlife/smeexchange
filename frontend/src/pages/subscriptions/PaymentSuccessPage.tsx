@@ -30,7 +30,7 @@ export default function PaymentSuccessPage() {
         <div className="payment-success-confirmation" role="status">
           <div>
             <strong>Payment received</strong>
-            <span>The transaction was returned to FILSCORE SME successfully.</span>
+            <span>The transaction was returned to filscoresme SME successfully.</span>
           </div>
           <div>
             <strong>Access update</strong>

@@ -190,7 +190,7 @@ const WORKFLOW_STEPS: Array<{ id: ProfileStep; label: string; description: strin
   { id: 9, label: 'Desired / Target Financial Position', description: 'Set desired net worth, income, expenses, goals, and protection.' },
   { id: 10, label: 'Actual vs Desired / Target', description: 'Compare Step 8 actual values with the Step 9 desired target.' },
   { id: 11, label: 'Suitability Assessment', description: 'Assess investment objectives, horizon, and risk capacity.' },
-  { id: 12, label: 'FILSCORE SME Score Links', description: 'Continue to your Credit Health and Wealth Building scores.' },
+  { id: 12, label: 'filscoresme SME Score Links', description: 'Continue to your Credit Health and Wealth Building scores.' },
 ]
 
 const STEP_FIELDS: Record<Exclude<ProfileStep, 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>, FieldDefinition[]> = {
@@ -1269,7 +1269,7 @@ export default function BuildProfilePage() {
     const applicationNo = getSelectedBuildProfileApplicationNo(profileSnapshot)
     if (!applicationNo) {
       setScorePreparationStatus('error')
-      setSaveMessage('Select a repository record before preparing FILSCORE SME results.')
+      setSaveMessage('Select a repository record before preparing filscoresme SME results.')
       return Promise.reject(new Error('A repository application is required.'))
     }
 
@@ -1283,7 +1283,7 @@ export default function BuildProfilePage() {
     if (pendingPreparation?.key === preparationKey) return pendingPreparation.promise
 
     setScorePreparationStatus('preparing')
-    setSaveMessage(`Loading and preparing profile ${applicationNo} for FILSCORE SME...`)
+    setSaveMessage(`Loading and preparing profile ${applicationNo} for filscoresme SME...`)
     const promise = (async () => {
       const baseline = sourceApplication?.application_no === applicationNo
         ? sourceApplication
@@ -1347,8 +1347,8 @@ export default function BuildProfilePage() {
       const mirrorResult = mirrorResultRef.current
       if (mirrorResult?.applicationNo === profile.profileId) {
         setSaveMessage(mirrorResult.status === 'created'
-          ? `No existing loan application matched. Created ${mirrorResult.applicationNo} and computed FILSCORE SME.`
-          : `Matched loan application ${mirrorResult.applicationNo}. Profile data and FILSCORE SME were updated.`)
+          ? `No existing loan application matched. Created ${mirrorResult.applicationNo} and computed filscoresme SME.`
+          : `Matched loan application ${mirrorResult.applicationNo}. Profile data and filscoresme SME were updated.`)
         return
       }
       const applicationNo = getSelectedBuildProfileApplicationNo(profile)
@@ -1359,7 +1359,7 @@ export default function BuildProfilePage() {
         const payload = loanPayloadFromProfile(profile, baseline)
         await updateLoanApplication(applicationNo, payload)
         setSourceApplication({ ...baseline, ...payload })
-        setSaveMessage('Profile saved successfully and synchronized for FILSCORE SME computation.')
+        setSaveMessage('Profile saved successfully and synchronized for filscoresme SME computation.')
       } else {
         setSaveMessage(isAuthenticated
           ? `Saved. Profile ${profile.profileId} is synchronized in Profile Setup.`
@@ -1374,15 +1374,15 @@ export default function BuildProfilePage() {
 
   const openScorePage = async (
     key: 'creditHealthScoreOpened' | 'wealthBuildingScoreOpened',
-    destination: '/lending-scorecard/FILSCORE SME' | '/net-worth-positioning',
+    destination: '/lending-scorecard/filscoresme SME' | '/net-worth-positioning',
   ) => {
     const updatedProfile = { ...profile, values: { ...profile.values, [key]: 'true' } }
     setProfile(updatedProfile)
     if (!scoreApplicationNo) {
       persistProfileSnapshot(updatedProfile)
-      if (destination === '/lending-scorecard/FILSCORE SME') {
+      if (destination === '/lending-scorecard/filscoresme SME') {
         navigate(`/lending-scorecard?profileId=${encodeURIComponent(profile.profileId)}`, {
-          state: { scorecardAction: 'open-FILSCORE SME' },
+          state: { scorecardAction: 'open-filscoresme SME' },
         })
       } else {
         navigate(`${destination}?profileId=${encodeURIComponent(profile.profileId)}`)
@@ -1397,16 +1397,16 @@ export default function BuildProfilePage() {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 404) {
         persistProfileSnapshot(updatedProfile)
-        if (destination === '/lending-scorecard/FILSCORE SME') {
+        if (destination === '/lending-scorecard/filscoresme SME') {
           navigate(`/lending-scorecard?profileId=${encodeURIComponent(profile.profileId)}`, {
-            state: { scorecardAction: 'open-FILSCORE SME' },
+            state: { scorecardAction: 'open-filscoresme SME' },
           })
         } else {
           navigate(`${destination}?profileId=${encodeURIComponent(profile.profileId)}`)
         }
         return
       }
-      setSaveMessage('Unable to synchronize profile data and compute FILSCORE SME right now.')
+      setSaveMessage('Unable to synchronize profile data and compute filscoresme SME right now.')
     } finally {
       setPendingScorePage(null)
     }
@@ -2238,7 +2238,7 @@ export default function BuildProfilePage() {
                   {entries.map((entry) => <article key={entry.id} className={entry.autoGenerated ? 'build-profile-ai-advisory-card' : undefined} tabIndex={entry.autoGenerated ? 0 : undefined}>
                     <span>{entry.label}</span><small>{entry.category}</small>
                     {entry.autoGenerated ? <><output>{aiValues[entry.id] ?? 'Auto-calculated'}</output><aside className="build-profile-ai-advisory" role="note" aria-label={`${entry.label} AI advisory`}>
-                      <strong>FILSCORE SME AI Analysis</strong>
+                      <strong>filscoresme SME AI Analysis</strong>
                       <ul>{aiAdvisories[entry.id]?.analysis.map((item) => <li key={item}>{item}</li>)}</ul>
                       <strong>AI Recommendation</strong>
                       <p>{aiAdvisories[entry.id]?.recommendation}</p>
@@ -2488,7 +2488,7 @@ export default function BuildProfilePage() {
               {entries.length === 0 ? <p className="psychometric-section-note">No matching accounts.</p> : <div className="build-profile-wealth-entry-grid">
                 {entries.map((entry) => <article key={entry.id} className={entry.autoGenerated ? 'build-profile-ai-advisory-card' : undefined} tabIndex={entry.autoGenerated ? 0 : undefined}>
                   <span>{entry.label}</span><small>{entry.category}</small>
-                  {entry.autoGenerated ? <><output>{actualAiValues[entry.id] ?? 'Auto-calculated'}</output><aside className="build-profile-ai-advisory" role="note" aria-label={`${entry.label} target AI advisory`}><strong>FILSCORE SME AI Target Analysis</strong><ul>{actualAiAdvisories[entry.id]?.analysis.map((item) => <li key={item}>{item}</li>)}</ul><strong>AI Recommendation</strong><p>{actualAiAdvisories[entry.id]?.recommendation}</p></aside></> : <NumericFormat aria-invalid={!profile.values[`wealthActual.${entry.id}`]?.trim()} value={profile.values[`wealthActual.${entry.id}`] ?? ''} valueIsNumericString thousandSeparator="," decimalScale={2} fixedDecimalScale inputMode="decimal" allowNegative={false} placeholder="0.00" aria-label={`${entry.label} target amount`} onValueChange={({ value }) => updateDesiredWealthValue(entry.id, value)} />}
+                  {entry.autoGenerated ? <><output>{actualAiValues[entry.id] ?? 'Auto-calculated'}</output><aside className="build-profile-ai-advisory" role="note" aria-label={`${entry.label} target AI advisory`}><strong>filscoresme SME AI Target Analysis</strong><ul>{actualAiAdvisories[entry.id]?.analysis.map((item) => <li key={item}>{item}</li>)}</ul><strong>AI Recommendation</strong><p>{actualAiAdvisories[entry.id]?.recommendation}</p></aside></> : <NumericFormat aria-invalid={!profile.values[`wealthActual.${entry.id}`]?.trim()} value={profile.values[`wealthActual.${entry.id}`] ?? ''} valueIsNumericString thousandSeparator="," decimalScale={2} fixedDecimalScale inputMode="decimal" allowNegative={false} placeholder="0.00" aria-label={`${entry.label} target amount`} onValueChange={({ value }) => updateDesiredWealthValue(entry.id, value)} />}
                   {!entry.autoGenerated ? <input type="text" className="build-profile-account-remark" value={profile.values[`wealthActualRemark.${entry.id}`] ?? ''} maxLength={160} placeholder="Remarks" aria-label={`${entry.label} target remarks`} onChange={(event) => updateValue(`wealthActualRemark.${entry.id}`, event.target.value)} /> : null}
                 </article>)}
               </div>}
@@ -2784,7 +2784,7 @@ export default function BuildProfilePage() {
             </div>
           </details>
           <details className="build-profile-detail-section build-profile-net-worth-statement build-profile-ai-analysis-dropdown">
-            <summary>FILSCORE SME AI Analysis</summary>
+            <summary>filscoresme SME AI Analysis</summary>
             <div className="build-profile-ai-analysis-content">
               <p className="psychometric-section-note">
                 {completedActuals === targetRows.length
@@ -2891,8 +2891,8 @@ export default function BuildProfilePage() {
 
     if (profile.step === 12) {
       return <div className="build-profile-step-content">
-        <h3>Step 12: FILSCORE SME Credit Health and Wealth Building Score Links</h3>
-        <p className="psychometric-section-note">Use your completed profile to continue to both FILSCORE SME assessment areas. The Profile ID record is loaded and prepared automatically.</p>
+        <h3>Step 12: filscoresme SME Credit Health and Wealth Building Score Links</h3>
+        <p className="psychometric-section-note">Use your completed profile to continue to both filscoresme SME assessment areas. The Profile ID record is loaded and prepared automatically.</p>
         <p className="psychometric-section-note">
           {scorePreparationStatus === 'preparing'
             ? `Preparing ${scoreApplicationNo || 'selected profile'}...`
@@ -2906,15 +2906,15 @@ export default function BuildProfilePage() {
         </p>
         <div className="build-profile-score-links">
           <article>
-            <span>FILSCORE SME Assessment</span>
+            <span>filscoresme SME Assessment</span>
             <h4>Credit Health Score</h4>
             <p>Review credit readiness across credit, values, social, and verification indicators.</p>
-            <button type="button" aria-busy={pendingScorePage === 'creditHealthScoreOpened' || scorePreparationStatus === 'preparing'} aria-invalid={profile.values.creditHealthScoreOpened !== 'true'} disabled={pendingScorePage !== null || scorePreparationStatus === 'preparing'} onClick={() => void openScorePage('creditHealthScoreOpened', '/lending-scorecard/FILSCORE SME')}>
+            <button type="button" aria-busy={pendingScorePage === 'creditHealthScoreOpened' || scorePreparationStatus === 'preparing'} aria-invalid={profile.values.creditHealthScoreOpened !== 'true'} disabled={pendingScorePage !== null || scorePreparationStatus === 'preparing'} onClick={() => void openScorePage('creditHealthScoreOpened', '/lending-scorecard/filscoresme SME')}>
               {pendingScorePage === 'creditHealthScoreOpened' ? <><span className="build-profile-score-spinner" aria-hidden="true" />Opening Credit Health Score...</> : 'Open Credit Health Score'}
             </button>
           </article>
           <article>
-            <span>FILSCORE SME Assessment</span>
+            <span>filscoresme SME Assessment</span>
             <h4>Wealth Building Score</h4>
             <p>Review net worth positioning, financial foundations, and wealth-building behavior.</p>
             <button type="button" aria-busy={pendingScorePage === 'wealthBuildingScoreOpened' || scorePreparationStatus === 'preparing'} aria-invalid={profile.values.wealthBuildingScoreOpened !== 'true'} disabled={pendingScorePage !== null || scorePreparationStatus === 'preparing'} onClick={() => void openScorePage('wealthBuildingScoreOpened', '/net-worth-positioning')}>
@@ -3092,7 +3092,7 @@ export default function BuildProfilePage() {
                   navigate(`/lending-scorecard?profileId=${encodeURIComponent(profile.profileId)}`, { state: { scorecardAction: 'create-new' } })
                 }}>Create New Record</button>
                 <button type="button" className="build-profile-workflow-action" onClick={() => navigate('/loan-repository?status=All&origin=build-profile')}>Review Record</button>
-                <button type="button" className="build-profile-workflow-action" onClick={() => navigate('/lending-scorecard', { state: { scorecardAction: 'open-FILSCORE SME' } })}>Open FILSCORE SME Page</button>
+                <button type="button" className="build-profile-workflow-action" onClick={() => navigate('/lending-scorecard', { state: { scorecardAction: 'open-filscoresme SME' } })}>Open filscoresme SME Page</button>
                 {isAdmin ? (
                   <>
                     <button type="button" className="build-profile-workflow-action" onClick={() => navigate('/loan-repository?status=Credit%20Review')}>Approval Queue</button>
@@ -3128,7 +3128,7 @@ export default function BuildProfilePage() {
     ) : scorePreparationStatus === 'preparing' || pendingScorePage !== null ? (
       <AuthProgressOverlay
         idPrefix="build-profile-computing"
-        kicker="FILSCORE SME assessment"
+        kicker="filscoresme SME assessment"
         title={pendingScorePage === 'wealthBuildingScoreOpened' ? 'Computing Wealth Building Score' : 'Computing Credit Health Score'}
         description="Loading your profile data and preparing the latest assessment results."
         footnote="This may take a few moments."

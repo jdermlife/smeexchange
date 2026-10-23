@@ -5,8 +5,8 @@ const DEFAULT_GOOGLE_ALLOWED_HOSTS = [
   'staging.fleetmanagement.vercel.app',
   'fleetmanagement-flame.vercel.app',
    'fleetmanagement-7f0xuuk7p-jdionedas-projects.vercel.app',
-  'FILSCORE SME-ai.quantech.international',
-  'www.FILSCORE SME-ai.quantech.international',
+  'filscoresme SME-ai.quantech.international',
+  'www.filscoresme SME-ai.quantech.international',
 ]
 
 function parseHosts(rawHosts: string | undefined): string[] {

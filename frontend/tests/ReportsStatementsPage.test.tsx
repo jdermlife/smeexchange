@@ -57,8 +57,8 @@ vi.mock('../src/hooks/useSelectedAnalysisEntity', () => ({
 
 vi.mock('../src/pages/scoring/LoanCertificationPage', () => ({
   default: () => (
-    <section aria-label="FILSCORE SME Credit Health certification">
-      <h2>FILSCORE SME Credit Health Certificate</h2>
+    <section aria-label="filscoresme SME Credit Health certification">
+      <h2>filscoresme SME Credit Health Certificate</h2>
       <span>760</span>
     </section>
   ),
@@ -69,8 +69,8 @@ vi.mock('../src/pages/scoring/NetWorthPositioningPage', async (importOriginal) =
   return {
     ...actual,
     default: () => (
-      <section aria-label="FILSCORE SME wealth building certification">
-        <h2>FILSCORE SME Wealth Building Score</h2>
+      <section aria-label="filscoresme SME wealth building certification">
+        <h2>filscoresme SME Wealth Building Score</h2>
         <span>Actual Wealth Score: 88</span>
       </section>
     ),
@@ -155,13 +155,13 @@ describe('ReportsStatementsPage', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /Credit Score Certificate/ }))
 
-    const dialog = screen.getByRole('dialog', { name: 'FILSCORE SME Credit Health Certificate' })
-    const certificate = within(dialog).getByLabelText('FILSCORE SME Credit Health certification')
-    expect(within(certificate).getByRole('heading', { name: 'FILSCORE SME Credit Health Certificate', level: 2 })).toBeTruthy()
+    const dialog = screen.getByRole('dialog', { name: 'filscoresme SME Credit Health Certificate' })
+    const certificate = within(dialog).getByLabelText('filscoresme SME Credit Health certification')
+    expect(within(certificate).getByRole('heading', { name: 'filscoresme SME Credit Health Certificate', level: 2 })).toBeTruthy()
     expect(within(certificate).getByText('760')).toBeTruthy()
 
     fireEvent.click(within(dialog).getByRole('button', { name: 'Close certificate report' }))
-    expect(screen.queryByRole('dialog', { name: 'FILSCORE SME Credit Health Certificate' })).toBeNull()
+    expect(screen.queryByRole('dialog', { name: 'filscoresme SME Credit Health Certificate' })).toBeNull()
   })
 
   it('opens the existing live Wealth Building certificate in a popout', () => {
@@ -169,12 +169,12 @@ describe('ReportsStatementsPage', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /Wealth Building Score Certificate/ }))
 
-    const dialog = screen.getByRole('dialog', { name: 'FILSCORE SME Wealth Building Score Certificate' })
-    expect(within(dialog).getByRole('heading', { name: 'FILSCORE SME Wealth Building Score' })).toBeTruthy()
+    const dialog = screen.getByRole('dialog', { name: 'filscoresme SME Wealth Building Score Certificate' })
+    expect(within(dialog).getByRole('heading', { name: 'filscoresme SME Wealth Building Score' })).toBeTruthy()
     expect(within(dialog).getByText('Actual Wealth Score: 88')).toBeTruthy()
 
     fireEvent.keyDown(document, { key: 'Escape' })
-    expect(screen.queryByRole('dialog', { name: 'FILSCORE SME Wealth Building Score Certificate' })).toBeNull()
+    expect(screen.queryByRole('dialog', { name: 'filscoresme SME Wealth Building Score Certificate' })).toBeNull()
   })
 
   it('opens the Wealth Protection Score Certificate with the live assessment in a popout', async () => {

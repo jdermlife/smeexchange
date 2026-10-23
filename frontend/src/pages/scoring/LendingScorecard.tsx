@@ -69,7 +69,7 @@ import {
 } from './applicationCompleteness';
 import CreditHealthScoreGraph from './CreditHealthScoreGraph';
 import { getCanonicalBorrowerName } from './borrowerName';
-import { getFILSCORE SMEBand, toFILSCORE SME } from './FILSCORE SMEScale';
+import { getfilscoresme SMEBand, tofilscoresme SME } from './filscoresme SMEScale';
 import { allowsLocalBuildProfile, resolveDatabaseApplicationNo } from './creditHealthDataSource';
 import { buildLendingScoreTimeline, calculateAffordableLoan } from './lendingDecisionInsights';
 import { getLendingImprovementAreas } from './lendingScoreRecommendations';
@@ -2027,14 +2027,14 @@ const extractTopAdvisorActions = (advice: string): string[] => {
 // --- Main Component ---
 export default function LendingScorecard() {
   const location = useLocation();
-  const isFILSCORE SMERoute = location.pathname === '/lending-scorecard/FILSCORE SME';
+  const isfilscoresme SMERoute = location.pathname === '/lending-scorecard/filscoresme SME';
   const navigate = useNavigate();
   const forwardedActionHandledRef = useRef(false);
   const automaticScoreAttemptRef = useRef('');
   const handleStepChangeRef = useRef<(nextStep: number) => Promise<void>>(async () => undefined);
   const forwardedActionHandlersRef = useRef<{
     createNew: () => Promise<void>;
-    openFILSCORE SME: () => Promise<void>;
+    openfilscoresme SME: () => Promise<void>;
   } | null>(null);
   const [searchParams] = useSearchParams();
   const { isAdmin, user } = useAuthorization();
@@ -2043,11 +2043,11 @@ export default function LendingScorecard() {
   const requestedProfileId = searchParams.get('profileId')?.trim() || '';
   const requestedApplicationNo = resolveDatabaseApplicationNo(
     searchParams,
-    isFILSCORE SMERoute,
+    isfilscoresme SMERoute,
     selectedApplicationNo,
   );
   const replicationId = requestedApplicationNo || requestedProfileId;
-  const useLocalBuildProfile = allowsLocalBuildProfile(isFILSCORE SMERoute);
+  const useLocalBuildProfile = allowsLocalBuildProfile(isfilscoresme SMERoute);
   const [formattedNumberDrafts, setFormattedNumberDrafts] = useState<Record<string, string>>({});
   const [documentReview, setDocumentReview] = useState<DocumentParseReview | null>(null);
   const [reviewDocumentId, setReviewDocumentId] = useState<string | null>(null);
@@ -2081,12 +2081,12 @@ export default function LendingScorecard() {
   const [cardAiRiskResult, setCardAiRiskResult] = useState<CreditCardRiskCheckResult | null>(null);
   const autosaveDefaults = useMemo<LendingAutosaveDraft>(() => ({
     formData: createNewApplicationInstance(),
-    step: isFILSCORE SMERoute ? 8 : 1,
+    step: isfilscoresme SMERoute ? 8 : 1,
     formattedNumberDrafts: {},
     documentReview: null,
     reviewDocumentId: null,
     selectedWorkflowAction: 'Credit Review',
-  }), [isFILSCORE SMERoute]);
+  }), [isfilscoresme SMERoute]);
   const autosaveValue = useMemo<LendingAutosaveDraft>(() => ({
     formData,
     step,
@@ -2118,7 +2118,7 @@ export default function LendingScorecard() {
     value: autosaveValue,
     defaults: autosaveDefaults,
     onHydrate: hydrateAutosaveDraft,
-    enabled: !isFILSCORE SMERoute && (!requestedApplicationNo || hasPersistedRecord),
+    enabled: !isfilscoresme SMERoute && (!requestedApplicationNo || hasPersistedRecord),
   });
   const isHomeLoan = formData.loan.productType === 'Home Loan';
   const isPersonalLoan = formData.loan.productType === 'Personal Loan';
@@ -2993,15 +2993,15 @@ export default function LendingScorecard() {
     const boundedNextStep = Math.max(8, Math.min(nextStep, maxVisibleStep));
 
     if (nextStep !== 8) {
-      if (isFILSCORE SMERoute) {
+      if (isfilscoresme SMERoute) {
         navigate(`/lending-scorecard${getApplicationQuery()}`);
       }
       setStep(boundedNextStep);
       return;
     }
 
-    if (!isFILSCORE SMERoute && hasPersistedRecord) {
-      navigate(`/lending-scorecard/FILSCORE SME${getApplicationQuery()}`);
+    if (!isfilscoresme SMERoute && hasPersistedRecord) {
+      navigate(`/lending-scorecard/filscoresme SME${getApplicationQuery()}`);
     }
 
     setSaveMessage('');
@@ -3017,12 +3017,12 @@ export default function LendingScorecard() {
 
     try {
       setIsGeneratingScore(true);
-      setSaveMessage('Generating FILSCORE SME rating...');
+      setSaveMessage('Generating filscoresme SME rating...');
       const persistedApplicationNo = requestedApplicationNo || formData.id.trim();
-      if (isFILSCORE SMERoute && (!persistedApplicationNo || !hasPersistedRecord)) {
+      if (isfilscoresme SMERoute && (!persistedApplicationNo || !hasPersistedRecord)) {
         throw new Error('A synchronized Application No. or Profile No. is required to compute Credit Health.');
       }
-      const result = isFILSCORE SMERoute
+      const result = isfilscoresme SMERoute
         ? await recomputeStoredLoanApplicationScores(persistedApplicationNo)
         : await computeQuantScores(buildLoanPayload(formData.status)).catch((error: unknown) => {
             if (!hasPersistedRecord || !formData.id.trim()) {
@@ -3032,14 +3032,14 @@ export default function LendingScorecard() {
           });
       const quantSummary = mapBackendQuantSummary(result.quant_scores);
       if (!quantSummary) {
-        throw new Error('The scoring service returned no FILSCORE SME rating. Please retry.');
+        throw new Error('The scoring service returned no filscoresme SME rating. Please retry.');
       }
       setBackendQuantSummary(quantSummary);
       if (result.application_no && result.persisted !== false) {
         await lendingAutosave.clear();
         await loadApplication(result.application_no);
-        const editorPath = isFILSCORE SMERoute
-          ? '/lending-scorecard/FILSCORE SME'
+        const editorPath = isfilscoresme SMERoute
+          ? '/lending-scorecard/filscoresme SME'
           : '/lending-scorecard';
         navigate(
           `${editorPath}?applicationNo=${encodeURIComponent(result.application_no)}`,
@@ -3066,14 +3066,14 @@ export default function LendingScorecard() {
   }, [maxVisibleStep, step]);
 
   useEffect(() => {
-    if (isFILSCORE SMERoute && step !== 8) {
+    if (isfilscoresme SMERoute && step !== 8) {
       setStep(8);
     }
-  }, [isFILSCORE SMERoute, step]);
+  }, [isfilscoresme SMERoute, step]);
 
   useEffect(() => {
     if (
-      !isFILSCORE SMERoute
+      !isfilscoresme SMERoute
       || !requestedApplicationNo
       || !hasSufficientInformationForRating
       || backendQuantSummary
@@ -3097,7 +3097,7 @@ export default function LendingScorecard() {
     hasPersistedRecord,
     hasSufficientInformationForRating,
     informationProvidedPercent,
-    isFILSCORE SMERoute,
+    isfilscoresme SMERoute,
     isGeneratingScore,
     isLoadingApplication,
     requestedApplicationNo,
@@ -3309,8 +3309,8 @@ export default function LendingScorecard() {
       const persistedApplicationNo = result.application_no || applicationToSave.id;
       setFormData({ ...applicationToSave, id: persistedApplicationNo, status: newStatus });
       if (!requestedApplicationNo) {
-        const editorPath = isFILSCORE SMERoute
-          ? '/lending-scorecard/FILSCORE SME'
+        const editorPath = isfilscoresme SMERoute
+          ? '/lending-scorecard/filscoresme SME'
           : '/lending-scorecard';
         navigate(
           `${editorPath}?applicationNo=${encodeURIComponent(persistedApplicationNo)}`,
@@ -3552,7 +3552,7 @@ export default function LendingScorecard() {
   }, [hydrateApplication, setTransientMessage]);
 
   useEffect(() => {
-    if (isFILSCORE SMERoute && !requestedApplicationNo) {
+    if (isfilscoresme SMERoute && !requestedApplicationNo) {
       setBackendQuantSummary(null);
       setSaveMessage('A synchronized Application No. or Profile No. is required to open Credit Health.');
       return;
@@ -3562,7 +3562,7 @@ export default function LendingScorecard() {
     }
 
     void loadApplication(requestedApplicationNo);
-  }, [isFILSCORE SMERoute, loadApplication, requestedApplicationNo]);
+  }, [isfilscoresme SMERoute, loadApplication, requestedApplicationNo]);
 
   const refreshLoanCreationEntitlement = useCallback(async () => {
     try {
@@ -3615,13 +3615,13 @@ export default function LendingScorecard() {
   const forwardedScorecardAction = (location.state as { scorecardAction?: unknown } | null)?.scorecardAction;
   forwardedActionHandlersRef.current = {
     createNew: handleCreateNew,
-    openFILSCORE SME: () => handleStepChange(8),
+    openfilscoresme SME: () => handleStepChange(8),
   };
 
   useEffect(() => {
     if (
       forwardedActionHandledRef.current
-      || (forwardedScorecardAction !== 'create-new' && forwardedScorecardAction !== 'open-FILSCORE SME')
+      || (forwardedScorecardAction !== 'create-new' && forwardedScorecardAction !== 'open-filscoresme SME')
     ) {
       return;
     }
@@ -3634,7 +3634,7 @@ export default function LendingScorecard() {
       return;
     }
 
-    void forwardedActionHandlersRef.current?.openFILSCORE SME();
+    void forwardedActionHandlersRef.current?.openfilscoresme SME();
   }, [forwardedScorecardAction, location.pathname, location.search, navigate]);
 
   const enhancedDueDiligenceComplete = useMemo(
@@ -4282,7 +4282,7 @@ export default function LendingScorecard() {
       <div>
         <h4 className="font-semibold text-sm text-gray-700 mb-2">Fraud Verification & Override Checks</h4>
         <p className="text-sm text-slate-500">
-          These fields feed the FILSCORE SME fraud scoring engine directly and reduce reliance on backend fallback assumptions.
+          These fields feed the filscoresme SME fraud scoring engine directly and reduce reliance on backend fallback assumptions.
         </p>
       </div>
 
@@ -4386,7 +4386,7 @@ export default function LendingScorecard() {
 
   const handleOpenCertification = async () => {
     if (hasSufficientInformationForRating && !displayedQuantSummary) {
-      setSaveMessage('Generate FILSCORE SME first before requesting certification.');
+      setSaveMessage('Generate filscoresme SME first before requesting certification.');
       return;
     }
 
@@ -4434,8 +4434,8 @@ export default function LendingScorecard() {
     {
       label: 'Credit Score',
       value:
-        displayedQuantSummary && toFILSCORE SME(displayedQuantSummary.credit_score) !== null
-          ? toFILSCORE SME(displayedQuantSummary.credit_score)!.toString()
+        displayedQuantSummary && tofilscoresme SME(displayedQuantSummary.credit_score) !== null
+          ? tofilscoresme SME(displayedQuantSummary.credit_score)!.toString()
           : 'Pending',
     },
     {
@@ -4447,22 +4447,22 @@ export default function LendingScorecard() {
     {
       label: 'Non-Starter Score',
       value:
-        displayedQuantSummary && toFILSCORE SME(displayedQuantSummary.fraud_score) !== null
-          ? toFILSCORE SME(displayedQuantSummary.fraud_score)!.toString()
+        displayedQuantSummary && tofilscoresme SME(displayedQuantSummary.fraud_score) !== null
+          ? tofilscoresme SME(displayedQuantSummary.fraud_score)!.toString()
           : 'Pending',
     },
     {
       label: 'Social Score',
       value:
-        displayedQuantSummary && toFILSCORE SME(displayedQuantSummary.social_score) !== null
-          ? toFILSCORE SME(displayedQuantSummary.social_score)!.toString()
+        displayedQuantSummary && tofilscoresme SME(displayedQuantSummary.social_score) !== null
+          ? tofilscoresme SME(displayedQuantSummary.social_score)!.toString()
           : 'Pending',
     },
     {
       label: 'Credit Values Score',
       value:
-        displayedQuantSummary && toFILSCORE SME(displayedQuantSummary.psychometric_score) !== null
-          ? toFILSCORE SME(displayedQuantSummary.psychometric_score)!.toString()
+        displayedQuantSummary && tofilscoresme SME(displayedQuantSummary.psychometric_score) !== null
+          ? tofilscoresme SME(displayedQuantSummary.psychometric_score)!.toString()
           : 'Pending',
     },
   ];
@@ -4472,8 +4472,8 @@ export default function LendingScorecard() {
       value:
         displayedQuantSummary
           ? displayedQuantSummary.composite_score.toString()
-          : compositeInternalScore !== null && toFILSCORE SME(compositeInternalScore) !== null
-            ? toFILSCORE SME(compositeInternalScore)!.toString()
+          : compositeInternalScore !== null && tofilscoresme SME(compositeInternalScore) !== null
+            ? tofilscoresme SME(compositeInternalScore)!.toString()
             : 'Pending',
     },
     {
@@ -4528,12 +4528,12 @@ export default function LendingScorecard() {
     'Banking',
     'Collateral',
     'Documents',
-    'FILSCORE SME',
+    'filscoresme SME',
     'Approval',
     'Release & Booking',
   ];
   const visibleStepLabels = allStepLabels.slice(7, maxVisibleStep);
-  const currentStepLabel = allStepLabels[Math.max(0, step - 1)] ?? 'FILSCORE SME Report';
+  const currentStepLabel = allStepLabels[Math.max(0, step - 1)] ?? 'filscoresme SME Report';
   const completionPercent = informationProvidedPercent;
   const reportHasRating = hasSufficientInformationForRating && displayedQuantSummary !== null;
   const reportScore = (value: number | null | undefined) => {
@@ -4544,7 +4544,7 @@ export default function LendingScorecard() {
       return 'Pending';
     }
 
-    return toFILSCORE SME(value)?.toString() ?? 'Pending';
+    return tofilscoresme SME(value)?.toString() ?? 'Pending';
   };
   const reportBand = (value: number | null | undefined) => {
     if (!hasPaidScoreAccess) {
@@ -4554,15 +4554,15 @@ export default function LendingScorecard() {
       return 'Rating Not Produced';
     }
 
-    const band = getFILSCORE SMEBand(toFILSCORE SME(value));
+    const band = getfilscoresme SMEBand(tofilscoresme SME(value));
     return band ? `${band.grade} : ${band.internalGrade}` : 'Rating Pending';
   };
   const certifiedScoreComponents = [
-    { label: 'Credit', score: reportHasRating ? toFILSCORE SME(displayedQuantSummary?.credit_score) : null },
-    { label: 'Credit Bureau', score: reportHasRating ? toFILSCORE SME(displayedQuantSummary.credit_bureau_score) : null },
-    { label: 'Non-Starter', score: reportHasRating ? toFILSCORE SME(displayedQuantSummary?.fraud_score) : null },
-    { label: 'Social', score: reportHasRating ? toFILSCORE SME(displayedQuantSummary?.social_score) : null },
-    { label: 'Credit Values', score: reportHasRating ? toFILSCORE SME(displayedQuantSummary?.psychometric_score) : null },
+    { label: 'Credit', score: reportHasRating ? tofilscoresme SME(displayedQuantSummary?.credit_score) : null },
+    { label: 'Credit Bureau', score: reportHasRating ? tofilscoresme SME(displayedQuantSummary.credit_bureau_score) : null },
+    { label: 'Non-Starter', score: reportHasRating ? tofilscoresme SME(displayedQuantSummary?.fraud_score) : null },
+    { label: 'Social', score: reportHasRating ? tofilscoresme SME(displayedQuantSummary?.social_score) : null },
+    { label: 'Credit Values', score: reportHasRating ? tofilscoresme SME(displayedQuantSummary?.psychometric_score) : null },
   ];
   const rankedScoreComponents = certifiedScoreComponents
     .filter((item): item is { label: string; score: number } => item.score !== null)
@@ -4619,13 +4619,13 @@ export default function LendingScorecard() {
           <h1>Credit Health</h1>
           <p>
             Credit Health is  composed of Credit Scorecard, Credit Values Indicator and Social Scorecard. 
-            Once Steps 1 to 8 are complete, click the Credit Health Certification button to generate the FILSCORE SME Report.
+            Once Steps 1 to 8 are complete, click the Credit Health Certification button to generate the filscoresme SME Report.
                           <button
                   type="button"
                   onClick={handleOpenCertification}
                   className="loan-inline-button loan-inline-button-primary disabled:cursor-not-allowed disabled:opacity-50 px-2 py-1 text-xs"
                 >
-                  FILSCORE SME Credit Health Report
+                  filscoresme SME Credit Health Report
                 </button>
           </p>
         </div>
@@ -4635,11 +4635,11 @@ export default function LendingScorecard() {
         <div className="credit-health-score-graph-panel">
           <CreditHealthScoreGraph
             scores={{
-              credit: toFILSCORE SME(displayedQuantSummary?.credit_score),
-              creditBureau: toFILSCORE SME(displayedQuantSummary?.credit_bureau_score),
-              nonStarter: toFILSCORE SME(displayedQuantSummary?.fraud_score),
-              social: toFILSCORE SME(displayedQuantSummary?.social_score),
-              psychometric: toFILSCORE SME(displayedQuantSummary?.psychometric_score),
+              credit: tofilscoresme SME(displayedQuantSummary?.credit_score),
+              creditBureau: tofilscoresme SME(displayedQuantSummary?.credit_bureau_score),
+              nonStarter: tofilscoresme SME(displayedQuantSummary?.fraud_score),
+              social: tofilscoresme SME(displayedQuantSummary?.social_score),
+              psychometric: tofilscoresme SME(displayedQuantSummary?.psychometric_score),
             }}
           />
           <div className="credit-health-score-graph-status">
@@ -4665,7 +4665,7 @@ export default function LendingScorecard() {
               className={`lending-report-tab${step === stepNumber ? ' lending-report-tab-active' : ''}`}
               onClick={() => void handleStepChange(stepNumber)}
             >
-              {stepNumber === 8 ? 'FILSCORE SME Report' : label}
+              {stepNumber === 8 ? 'filscoresme SME Report' : label}
             </button>
           );
         })}
@@ -4730,7 +4730,7 @@ export default function LendingScorecard() {
 
           {step === 8 && (
             <>
-            <section className="loan-certification-shell lending-inline-certification" aria-label="FILSCORE SME credit health report">
+            <section className="loan-certification-shell lending-inline-certification" aria-label="filscoresme SME credit health report">
               <div className="loan-certification-frame">
                 <div className="loan-certification-ornaments" aria-hidden="true">
                   <span className="loan-certification-ornament loan-certification-ornament-top-left" />
@@ -4762,8 +4762,8 @@ export default function LendingScorecard() {
 
                   {hasSufficientInformationForRating && !reportHasRating ? (
                     <div className="loan-certification-rating-unavailable" role="status">
-                      <strong>{isGeneratingScore ? 'Generating FILSCORE SME Rating' : 'Rating Generation Pending'}</strong>
-                      <span>{isGeneratingScore ? 'Your information meets the requirement. FILSCORE SME is calculating the rating now.' : saveMessage || 'The profile is eligible, but no score result was returned. Reopen FILSCORE SME to retry.'}</span>
+                      <strong>{isGeneratingScore ? 'Generating filscoresme SME Rating' : 'Rating Generation Pending'}</strong>
+                      <span>{isGeneratingScore ? 'Your information meets the requirement. filscoresme SME is calculating the rating now.' : saveMessage || 'The profile is eligible, but no score result was returned. Reopen filscoresme SME to retry.'}</span>
                     </div>
                   ) : null}
 
@@ -5753,7 +5753,7 @@ export default function LendingScorecard() {
           )}
 
           {step === 8 && (
-            <div className="space-y-6 lending-legacy-FILSCORE SME">
+            <div className="space-y-6 lending-legacy-filscoresme SME">
               <div className="flex flex-wrap justify-end gap-3">
                 <button
                   type="button"
@@ -5777,7 +5777,7 @@ export default function LendingScorecard() {
                   <strong>Rating Not Produced</strong>
                   <span>
                     Information provided is {informationProvidedPercent}%. A minimum of{' '}
-                    {CREDIT_RATING_MINIMUM_INFORMATION_PERCENT}% is required before FILSCORE SME can
+                    {CREDIT_RATING_MINIMUM_INFORMATION_PERCENT}% is required before filscoresme SME can
                     produce a rating.
                   </span>
                   <small>
@@ -5786,7 +5786,7 @@ export default function LendingScorecard() {
                 </div>
               ) : (
               <div className="rounded-xl border border-slate-200 bg-white p-6 space-y-6">
-                <h3 className="workflow-duplicate-step-title mb-4 text-lg font-bold text-amber-900">Step 8: FILSCORE SME</h3>
+                <h3 className="workflow-duplicate-step-title mb-4 text-lg font-bold text-amber-900">Step 8: filscoresme SME</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {executiveSummaryItems.map((item) => (
                     <div
@@ -6449,7 +6449,7 @@ export default function LendingScorecard() {
                 onClick={() => void handleStepChange(8)}
                 className={`${topNavButtonClass} loan-toolbar-button-secondary lending-psychometric-tool-button`}
               >
-                Open FILSCORE SME Page
+                Open filscoresme SME Page
               </button>
               {!isBorrowerSubscriber && (
                 <button

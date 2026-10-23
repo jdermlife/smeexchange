@@ -1,4 +1,4 @@
-"""Add application-specific FILSCORE SME Wealth fields to overall_scores."""
+"""Add application-specific filscoresme SME Wealth fields to overall_scores."""
 
 from __future__ import annotations
 

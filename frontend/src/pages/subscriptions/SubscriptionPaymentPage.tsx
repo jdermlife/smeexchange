@@ -986,7 +986,7 @@ export default function SubscriptionPaymentPage() {
       <div className="standalone-card auth-screen trial-expired-page subscription-payment-guest-page">
         <h1>Subscription Payment</h1>
         <p className="intro">
-          Continue your FILSCORE SME access by choosing a payment channel for the selected plan.
+          Continue your filscoresme SME access by choosing a payment channel for the selected plan.
         </p>
 
         <section className="stack-panel auth-panel trial-expired-plan-summary">
@@ -1074,7 +1074,7 @@ export default function SubscriptionPaymentPage() {
     <div className="standalone-card auth-screen trial-expired-page subscription-payment-guest-page">
       <h1>Subscription Payment</h1>
       <p className="intro">
-        Choose a secure payment option to continue or renew your FILSCORE SME access.
+        Choose a secure payment option to continue or renew your filscoresme SME access.
       </p>
 
       {loadMessage ? <p className="status-message status-error">{loadMessage}</p> : null}

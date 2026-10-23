@@ -16,7 +16,7 @@ describe('public legal service pages', () => {
     expect(screen.getByRole('link', { name: 'Customer Service' }).getAttribute('href')).toBe('/customer-service')
     expect(screen.getByText(/does not limit remedies for defective or imperfect services/i)).toBeTruthy()
     expect(screen.getByRole('heading', { name: '7. Apple App Store Purchases' })).toBeTruthy()
-    expect(screen.getByText(/FILSCORE SME cannot approve or issue refunds for Apple-managed purchases/i)).toBeTruthy()
+    expect(screen.getByText(/filscoresme SME cannot approve or issue refunds for Apple-managed purchases/i)).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Report a Problem' }).getAttribute('href')).toBe(
       'https://reportaproblem.apple.com',
     )
@@ -38,6 +38,6 @@ describe('public legal service pages', () => {
     expect(screen.getByRole('heading', { name: 'Dispute Resolution' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: '1. Contact Customer Service First' })).toBeTruthy()
     expect(screen.getByRole('link', { name: /Department of Trade and Industry/i })).toBeTruthy()
-    expect(screen.getByText(/does not represent FILSCORE SME.*as a BSP-supervised institution/i)).toBeTruthy()
+    expect(screen.getByText(/does not represent filscoresme SME.*as a BSP-supervised institution/i)).toBeTruthy()
   })
 })

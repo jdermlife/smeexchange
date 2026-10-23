@@ -111,7 +111,7 @@ export default function CreditHealthScoreGraph({ scores }: { scores: CreditHealt
           })}
         </svg>
         <div className="credit-health-score-ring-center" aria-hidden="true">
-          <strong>FILSCORE SME</strong>
+          <strong>filscoresme SME</strong>
           <span>Credit Health</span>
         </div>
       </div>

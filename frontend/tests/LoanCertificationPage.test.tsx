@@ -61,7 +61,7 @@ describe('LoanCertificationPage', () => {
       status: 'CREDIT_REVIEW',
       requirements: { buildProfile: { completionPercent: 84 } },
       credit_bureau_reports: {
-        bureau_name: 'FILSCORE SME Credit Bureau Scorecard',
+        bureau_name: 'filscoresme SME Credit Bureau Scorecard',
         bureau_score: 91,
       },
       overall_scores: {
@@ -144,7 +144,7 @@ describe('LoanCertificationPage', () => {
       product_type: 'Personal Loan',
       status: 'APPROVED',
       credit_bureau_reports: {
-        bureau_name: 'FILSCORE SME Credit Bureau Scorecard',
+        bureau_name: 'filscoresme SME Credit Bureau Scorecard',
         bureau_score: 88,
       },
       overall_scores: {

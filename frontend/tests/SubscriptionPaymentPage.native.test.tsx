@@ -66,13 +66,13 @@ describe('SubscriptionPaymentPage native billing', () => {
         id: 12,
         plan_id: 7,
         platform: 'IOS',
-        product_id: 'com.quantech.FILSCORE SME.multiple.monthly',
+        product_id: 'com.quantech.filscoresme SME.multiple.monthly',
         base_plan_id: null,
         product_type: 'SUBS',
         entitlement_category: null,
         is_active: true,
       },
-      title: 'FILSCORE SME Multiple Profile',
+      title: 'filscoresme SME Multiple Profile',
       description: 'Monthly access for multiple profiles.',
       price: 99,
       priceString: '₱99.00',
@@ -119,7 +119,7 @@ describe('SubscriptionPaymentPage native billing', () => {
     )
 
     const terms = await screen.findByRole('region', { name: 'Apple subscription terms' })
-    expect(within(terms).getByText('FILSCORE SME Multiple Profile')).toBeTruthy()
+    expect(within(terms).getByText('filscoresme SME Multiple Profile')).toBeTruthy()
     expect(within(terms).getByText('one month')).toBeTruthy()
     expect(within(terms).getByText('₱99.00 per month')).toBeTruthy()
     expect(within(terms).getByText(/Introductory offer: free for one month.*Apple determines eligibility/i)).toBeTruthy()
@@ -140,13 +140,13 @@ describe('SubscriptionPaymentPage native billing', () => {
         id: 20,
         plan_id: 7,
         platform: 'ANDROID',
-        product_id: 'FILSCORE SME_multiple_monthly',
+        product_id: 'filscoresme SME_multiple_monthly',
         base_plan_id: 'monthly',
         product_type: 'SUBS',
         entitlement_category: null,
         is_active: true,
       },
-      title: 'FILSCORE SME Monthly',
+      title: 'filscoresme SME Monthly',
       description: 'All feature categories.',
       price: 99,
       priceString: '₱99.00',
@@ -160,7 +160,7 @@ describe('SubscriptionPaymentPage native billing', () => {
         id: 30 + index,
         plan_id: null,
         platform: 'ANDROID',
-        product_id: `FILSCORE SME_${category.toLowerCase()}`,
+        product_id: `filscoresme SME_${category.toLowerCase()}`,
         base_plan_id: null,
         product_type: 'INAPP',
         entitlement_category: category,
@@ -199,7 +199,7 @@ describe('SubscriptionPaymentPage native billing', () => {
         id: 40,
         plan_id: null,
         platform: 'IOS',
-        product_id: 'com.quantech.FILSCORE SME.reports',
+        product_id: 'com.quantech.filscoresme SME.reports',
         base_plan_id: null,
         product_type: 'INAPP',
         entitlement_category: 'REPORTS',

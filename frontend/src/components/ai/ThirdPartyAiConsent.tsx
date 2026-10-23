@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const AI_PROCESSING_CONSENT_VERSION = '2026-09-13'
 
 export const AI_PROCESSING_CONSENT_TEXT =
-  'I authorize FILSCORE SME to send this recording or document and its contents to OpenAI for transcription, summarization, or structured data extraction. It may contain data entered or uploaded in this app. I confirm that I am authorized to submit this information. Processing is optional and will not begin until I consent.'
+  'I authorize filscoresme SME to send this recording or document and its contents to OpenAI for transcription, summarization, or structured data extraction. It may contain data entered or uploaded in this app. I confirm that I am authorized to submit this information. Processing is optional and will not begin until I consent.'
 
 type ThirdPartyAiConsentProps = {
   checked: boolean

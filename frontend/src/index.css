@@ -1552,7 +1552,7 @@ textarea {
   text-align: center;
 }
 
-/* Lending Scorecard FILSCORE SME report: certificate treatment scoped to Step 8. */
+/* Lending Scorecard filscoresme SME report: certificate treatment scoped to Step 8. */
 .lending-inline-certification {
   max-width: 900px;
 }
@@ -1882,7 +1882,7 @@ textarea {
 .lending-report-page .lending-psychometric-summary-grid,
 .lending-report-page .lending-psychometric-footer,
 .lending-report-page .lending-psychometric-side-panel,
-.lending-report-page .lending-legacy-FILSCORE SME {
+.lending-report-page .lending-legacy-filscoresme SME {
   display: none;
 }
 
@@ -12608,7 +12608,7 @@ th { color: var(--dark-gold); }
   border-bottom: 0;
 }
 
-/* Psychometric treatment for public FILSCORE SME information and policy pages. */
+/* Psychometric treatment for public filscoresme SME information and policy pages. */
 :where(
   .content > .standalone-card.auth-screen:has(> .stack-panel > .auth-helper-card:nth-child(5)),
   .content > .standalone-card.auth-screen:has(> .stack-panel > .auth-helper-card:nth-child(3):last-child),

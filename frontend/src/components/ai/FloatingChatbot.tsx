@@ -24,7 +24,7 @@ function getPageTitle(pathname: string): string {
   if (/^\/(?:privacy|terms|return-refund-policy|customer-service|dispute-resolution|fees|subscription-fees)$/.test(pathname)) return 'Policies and support'
   if (/^\/(?:dashboard|snapshot|financial-health-summary)$/.test(pathname)) return 'SME Exchange overview'
   if (/^\/(?:build-profile|borrower-profile|account|settings)$/.test(pathname)) return 'Profile and account'
-  if (/^\/(?:lending-scorecard(?:\/FILSCORE SME)?|credit-scoring|calculation|aml-kyc-scoring|credit-health-multi-product)$/.test(pathname)) return 'Assessment results'
+  if (/^\/(?:lending-scorecard(?:\/filscoresme SME)?|credit-scoring|calculation|aml-kyc-scoring|credit-health-multi-product)$/.test(pathname)) return 'Assessment results'
   if (/^\/loan-/.test(pathname) || pathname === '/approval-queue' || pathname === '/credit-review-workbench') return 'Loan workflow'
   if (/^\/(?:vehicle|driver|live-gps|maintenance|insurance|fuel)/.test(pathname)) return 'Fleet management'
   if (/^\/(?:subscriptions|subscription|billing|invoices|payment-history|trial-expired)/.test(pathname)) return 'Subscription and billing'
@@ -33,7 +33,7 @@ function getPageTitle(pathname: string): string {
 }
 
 function authenticatedPageTitle(pathname: string): string {
-  return pathname === '/support' ? 'Support' : 'FILSCORE SME page'
+  return pathname === '/support' ? 'Support' : 'filscoresme SME page'
 }
 
 function welcomeMessage(authenticated: boolean): ChatMessage {
@@ -42,7 +42,7 @@ function welcomeMessage(authenticated: boolean): ChatMessage {
     role: 'assistant',
     welcome: true,
     content: authenticated
-      ? 'Ask me about this page, navigation, or how to use FILSCORE SME. I provide high-level, read-only guidance.'
+      ? 'Ask me about this page, navigation, or how to use filscoresme SME. I provide high-level, read-only guidance.'
       : 'Ask me about signing in, registration, public policies, or finding support.',
   }
 }
@@ -135,13 +135,13 @@ function FloatingChatbot({ pathname, authenticated, ready }: FloatingChatbotProp
   }
 
   return (
-    <aside className="page-assistant" aria-label="FILSCORE SME AI assistant">
+    <aside className="page-assistant" aria-label="filscoresme SME AI assistant">
       {open ? (
         <section className="page-assistant-panel" role="dialog" aria-modal="false" aria-labelledby="page-assistant-title">
           <header className="page-assistant-header">
             <div>
               <span className="page-assistant-kicker">Read-only assistant</span>
-              <h2 id="page-assistant-title">Ask FILSCORE SME AI</h2>
+              <h2 id="page-assistant-title">Ask filscoresme SME AI</h2>
               <p>{pageTitle}</p>
             </div>
             <button
@@ -160,13 +160,13 @@ function FloatingChatbot({ pathname, authenticated, ready }: FloatingChatbotProp
                 key={message.id}
                 className={`page-assistant-message page-assistant-message-${message.role}`}
               >
-                <span>{message.role === 'assistant' ? 'FILSCORE SME AI' : 'You'}</span>
+                <span>{message.role === 'assistant' ? 'filscoresme SME AI' : 'You'}</span>
                 <p>{message.content}</p>
               </div>
             ))}
             {sending ? (
               <div className="page-assistant-message page-assistant-message-assistant" role="status">
-                <span>FILSCORE SME AI</span>
+                <span>filscoresme SME AI</span>
                 <p>Thinking...</p>
               </div>
             ) : null}
@@ -208,12 +208,12 @@ function FloatingChatbot({ pathname, authenticated, ready }: FloatingChatbotProp
         <button
           type="button"
           className="page-assistant-launcher"
-          aria-label={open ? 'Close FILSCORE SME AI assistant' : 'Open FILSCORE SME AI assistant'}
+          aria-label={open ? 'Close filscoresme SME AI assistant' : 'Open filscoresme SME AI assistant'}
           aria-expanded={open}
           onClick={() => setOpen((current) => !current)}
         >
           <span aria-hidden="true">AI</span>
-          <span>Ask FILSCORE SME</span>
+          <span>Ask filscoresme SME</span>
         </button>
         <span className="page-assistant-launcher-notice">{AI_DISCLAIMER}</span>
       </div>

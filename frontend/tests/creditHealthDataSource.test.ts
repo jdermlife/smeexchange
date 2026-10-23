@@ -18,7 +18,7 @@ describe('Credit Health database source policy', () => {
     expect(resolveDatabaseApplicationNo(params, true, '')).toBe('PRO-001')
   })
 
-  it('requires an explicit URL identifier on the FILSCORE SME route', () => {
+  it('requires an explicit URL identifier on the filscoresme SME route', () => {
     expect(resolveDatabaseApplicationNo(new URLSearchParams(), true, 'APP-SELECTED')).toBe('')
   })
 
@@ -28,7 +28,7 @@ describe('Credit Health database source policy', () => {
     expect(resolveDatabaseApplicationNo(params, false, 'APP-SELECTED')).toBe('')
   })
 
-  it('disables local Build Profile replication only for FILSCORE SME', () => {
+  it('disables local Build Profile replication only for filscoresme SME', () => {
     expect(allowsLocalBuildProfile(true)).toBe(false)
     expect(allowsLocalBuildProfile(false)).toBe(true)
   })

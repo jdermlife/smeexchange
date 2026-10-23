@@ -16,7 +16,7 @@ public class WatchSyncPlugin: CAPPlugin, CAPBridgedPlugin {
     ]
 
     private let appGroup =
-        "group.com.quantech.FILSCORE SME"
+        "group.com.quantech.filscoresme SME"
 
     private let snapshotKey =
         "watch.financialHealth.snapshot"

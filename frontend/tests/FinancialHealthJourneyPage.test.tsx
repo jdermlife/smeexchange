@@ -8,9 +8,9 @@ describe('FinancialHealthJourneyPage resources', () => {
   it('shows legal and support links after the six-stage journey', () => {
     render(<MemoryRouter><FinancialHealthJourneyPage /></MemoryRouter>)
 
-    const resources = screen.getByRole('navigation', { name: 'FILSCORE SME information and support' })
+    const resources = screen.getByRole('navigation', { name: 'filscoresme SME information and support' })
     const expectedLinks = [
-      ['About', '/about-FILSCORE SME'],
+      ['About', '/about-filscoresme SME'],
       ['Privacy', '/privacy'],
       ['Terms', '/terms'],
       ['Fees', '/fees'],

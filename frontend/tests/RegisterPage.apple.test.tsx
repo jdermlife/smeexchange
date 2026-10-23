@@ -62,7 +62,7 @@ async function completeAppleRegistrationChoices() {
   await user.click(consentBoxes[0])
   await user.click(consentBoxes[1])
   await user.click(screen.getByRole('radio', { name: /subscriber single profile/i }))
-  await user.click(screen.getByRole('checkbox', { name: /i consent to FILSCORE SME sharing my financial profile/i }))
+  await user.click(screen.getByRole('checkbox', { name: /i consent to filscoresme SME sharing my financial profile/i }))
 
   return user
 }
@@ -74,7 +74,7 @@ describe('RegisterPage Apple sign-up', () => {
   })
 
   beforeEach(() => {
-    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.FILSCORE SME.web')
+    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.filscoresme SME.web')
     vi.stubEnv('VITE_TURNSTILE_SITE_KEY', 'turnstile-site-key')
     mockNavigate.mockReset()
     mockCreateFreeSubscription.mockReset()
@@ -309,8 +309,8 @@ describe('RegisterPage Apple sign-up', () => {
 
     await waitFor(() => {
       expect(mockRequestAppleSignInToken).toHaveBeenCalledWith({
-        clientId: 'com.quantech.FILSCORE SME.web',
-        iosClientId: 'com.quantech.FILSCORE SME',
+        clientId: 'com.quantech.filscoresme SME.web',
+        iosClientId: 'com.quantech.filscoresme SME',
         redirectURI: `${window.location.origin}/auth/apple/callback`,
       })
     })

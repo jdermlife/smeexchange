@@ -518,7 +518,7 @@ def test_apple_callback_route_exchanges_code_and_redirects_to_android(app_client
 
     assert response.status_code == 303
     assert response.headers["location"] == (
-        "FILSCORE SME://apple-callback?success=true"
+        "filscoresme SME://apple-callback?success=true"
         "&id_token=apple-identity-token"
         "&access_token=apple-access-token"
         "&refresh_token=apple-refresh-token"
@@ -585,7 +585,7 @@ def test_apple_id_token_verifier_accepts_a_valid_rs256_token(monkeypatch):
     identity_token = security_routes.jwt.encode(
         {
             "iss": security_routes.APPLE_OAUTH_ISSUER,
-            "aud": "com.quantech.FILSCORE SME.web",
+            "aud": "com.quantech.filscoresme SME.web",
             "sub": "apple-user-123",
             "email": "apple-user@example.com",
             "email_verified": True,
@@ -605,7 +605,7 @@ def test_apple_id_token_verifier_accepts_a_valid_rs256_token(monkeypatch):
     monkeypatch.setattr(
         security_routes,
         "APPLE_OAUTH_CLIENT_ID",
-        "com.quantech.FILSCORE SME.web",
+        "com.quantech.filscoresme SME.web",
     )
 
     decoded = security_routes._verify_apple_id_token(identity_token)
@@ -646,7 +646,7 @@ def test_apple_id_token_verifier_reports_service_id_mismatch(monkeypatch):
     monkeypatch.setattr(
         security_routes,
         "APPLE_OAUTH_CLIENT_ID",
-        "com.quantech.FILSCORE SME.web",
+        "com.quantech.filscoresme SME.web",
     )
 
     with pytest.raises(HTTPException) as error:
@@ -670,7 +670,7 @@ def test_apple_id_token_verifier_accepts_native_ios_audience(monkeypatch):
     identity_token = security_routes.jwt.encode(
         {
             "iss": security_routes.APPLE_OAUTH_ISSUER,
-            "aud": "com.quantech.FILSCORE SME",
+            "aud": "com.quantech.filscoresme SME",
             "sub": "native-apple-user-123",
             "iat": now,
             "exp": now + timedelta(minutes=5),
@@ -681,7 +681,7 @@ def test_apple_id_token_verifier_accepts_native_ios_audience(monkeypatch):
     )
 
     monkeypatch.setattr(security_routes, "_load_apple_sign_in_keys", lambda: [public_jwk])
-    monkeypatch.setattr(security_routes, "APPLE_IOS_CLIENT_ID", "com.quantech.FILSCORE SME")
+    monkeypatch.setattr(security_routes, "APPLE_IOS_CLIENT_ID", "com.quantech.filscoresme SME")
 
     claims = security_routes._verify_apple_id_token(identity_token)
 

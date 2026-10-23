@@ -67,7 +67,7 @@ export const CREDIT_HEALTH_STEPS: CreditHealthStep[] = [
   },
   {
     number: 8,
-    title: 'FILSCORE SME',
+    title: 'filscoresme SME',
     description: 'Bring the verified Credit Health signals together and generate the final report.',
   },
 ];
@@ -219,7 +219,7 @@ export default function CreditHealthJourney() {
         <aside className="credit-health-journey-note" aria-label="Credit Health next steps">
           <strong>Continue improving after Step 8</strong>
           <p>
-            Take note of the FILSCORE SME recommendations. Use your Wealth Building Score to
+            Take note of the filscoresme SME recommendations. Use your Wealth Building Score to
             continuously improve your Credit Health while building and increasing your wealth.
           </p>
         </aside>

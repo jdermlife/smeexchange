@@ -133,7 +133,7 @@ def verify_apple_transaction(signed_transaction: str) -> VerifiedStorePurchase:
     payload = decode_apple_signed_payload(signed_transaction)
     now = datetime.now(timezone.utc)
 
-    expected_bundle_id = os.getenv("APPLE_BUNDLE_ID", "com.quantech.FILSCORE SME").strip()
+    expected_bundle_id = os.getenv("APPLE_BUNDLE_ID", "com.quantech.filscoresme SME").strip()
     expected_environment = os.getenv("APPLE_STORE_ENVIRONMENT", "Production").strip().lower()
     if str(payload.get("bundleId") or "") != expected_bundle_id:
         raise StorePurchaseVerificationError("StoreKit transaction belongs to another application")
@@ -208,7 +208,7 @@ def verify_google_play_purchase(purchase_token: str) -> VerifiedStorePurchase:
     except ImportError as exc:
         raise StoreBillingConfigurationError("google-auth is required for Google Play verification") from exc
 
-    package_name = os.getenv("GOOGLE_PLAY_PACKAGE_NAME", "com.quantech.FILSCORE SME").strip()
+    package_name = os.getenv("GOOGLE_PLAY_PACKAGE_NAME", "com.quantech.filscoresme SME").strip()
     if not purchase_token.strip():
         raise StorePurchaseVerificationError("Google Play purchase token is required")
     session = AuthorizedSession(_google_credentials())
@@ -265,7 +265,7 @@ def verify_google_play_product(product_id: str, purchase_token: str) -> Verified
     except ImportError as exc:
         raise StoreBillingConfigurationError("google-auth is required for Google Play verification") from exc
 
-    package_name = os.getenv("GOOGLE_PLAY_PACKAGE_NAME", "com.quantech.FILSCORE SME").strip()
+    package_name = os.getenv("GOOGLE_PLAY_PACKAGE_NAME", "com.quantech.filscoresme SME").strip()
     if not product_id.strip() or not purchase_token.strip():
         raise StorePurchaseVerificationError("Google Play product and purchase token are required")
     session = AuthorizedSession(_google_credentials())

@@ -82,7 +82,7 @@ describe('LoginPage Apple sign-in', () => {
 
   beforeEach(() => {
     vi.stubEnv('VITE_GOOGLE_CLIENT_ID', 'google-client-id')
-    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.FILSCORE SME.web')
+    vi.stubEnv('VITE_APPLE_CLIENT_ID', 'com.quantech.filscoresme SME.web')
     const storageMock = createStorageMock()
     Object.defineProperty(window, 'localStorage', {
       value: storageMock,
@@ -137,14 +137,14 @@ describe('LoginPage Apple sign-in', () => {
     expect(screen.getByRole('link', { name: 'Dispute Resolution' }).getAttribute('href')).toBe('/dispute-resolution')
   })
 
-  it('defaults free FILSCORE SME access to the SME Exchange Journey page', () => {
+  it('defaults free filscoresme SME access to the SME Exchange Journey page', () => {
     render(
       <MemoryRouter initialEntries={['/login']}>
         <LoginPage />
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('link', { name: /access FILSCORE SME free/i }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: /access filscoresme SME free/i }).getAttribute('href')).toBe(
       '/financial-health-journey',
     )
   })
@@ -347,8 +347,8 @@ describe('LoginPage Apple sign-in', () => {
 
     await waitFor(() => {
       expect(mockRequestAppleSignInToken).toHaveBeenCalledWith({
-        clientId: 'com.quantech.FILSCORE SME.web',
-        iosClientId: 'com.quantech.FILSCORE SME',
+        clientId: 'com.quantech.filscoresme SME.web',
+        iosClientId: 'com.quantech.filscoresme SME',
         redirectURI: `${window.location.origin}/auth/apple/callback`,
       })
     })

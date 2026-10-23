@@ -391,9 +391,9 @@ describe('BuildProfilePage', () => {
     await user.click(screen.getByRole('button', { name: 'Review Record' }))
     expect(mockNavigate).toHaveBeenLastCalledWith('/loan-repository?status=All&origin=build-profile')
 
-    await user.click(screen.getByRole('button', { name: 'Open FILSCORE SME Page' }))
+    await user.click(screen.getByRole('button', { name: 'Open filscoresme SME Page' }))
     expect(mockNavigate).toHaveBeenLastCalledWith('/lending-scorecard', {
-      state: { scorecardAction: 'open-FILSCORE SME' },
+      state: { scorecardAction: 'open-filscoresme SME' },
     })
 
     await user.click(screen.getByRole('button', { name: 'Approval Queue' }))
@@ -526,7 +526,7 @@ describe('BuildProfilePage', () => {
 
     let resolvePreparation!: (value: unknown) => void
     mockUpdateLoanApplication.mockImplementationOnce(() => new Promise((resolve) => { resolvePreparation = resolve }))
-    await userEvent.click(screen.getByRole('button', { name: /Step 12: FILSCORE SME Score Links/ }))
+    await userEvent.click(screen.getByRole('button', { name: /Step 12: filscoresme SME Score Links/ }))
 
     expect(screen.getByRole('dialog', { name: 'Computing Credit Health Score' })).toBeTruthy()
     expect(await screen.findByText('Preparing APP-REVIEW-1...')).toBeTruthy()
@@ -561,7 +561,7 @@ describe('BuildProfilePage', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Open Credit Health Score' }))
     await vi.waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/lending-scorecard/FILSCORE SME?applicationNo=APP-REVIEW-1')
+      expect(mockNavigate).toHaveBeenCalledWith('/lending-scorecard/filscoresme SME?applicationNo=APP-REVIEW-1')
     })
     await userEvent.click(screen.getByRole('button', { name: 'Open Wealth Building Score' }))
     await vi.waitFor(() => {
@@ -626,7 +626,7 @@ describe('BuildProfilePage', () => {
     render(<BuildProfilePage />)
     const profileId = screen.getByText(/^PRO-[A-Z0-9]{6}$/).textContent
 
-    await user.click(screen.getByRole('button', { name: /Step 12: FILSCORE SME Score Links/ }))
+    await user.click(screen.getByRole('button', { name: /Step 12: filscoresme SME Score Links/ }))
 
     expect(await screen.findByText(`${profileId} is ready. Credit Health will create a repository record when saved.`)).toBeTruthy()
     expect(mockFetchLoanApplication).not.toHaveBeenCalled()
@@ -634,14 +634,14 @@ describe('BuildProfilePage', () => {
 
     await user.click(screen.getByRole('button', { name: 'Open Credit Health Score' }))
     expect(mockNavigate).toHaveBeenLastCalledWith(`/lending-scorecard?profileId=${profileId}`, {
-      state: { scorecardAction: 'open-FILSCORE SME' },
+      state: { scorecardAction: 'open-filscoresme SME' },
     })
 
     await user.click(screen.getByRole('button', { name: 'Open Wealth Building Score' }))
     expect(mockNavigate).toHaveBeenLastCalledWith(`/net-worth-positioning?profileId=${profileId}`)
   })
 
-  it('creates FILSCORE SME from a local profile when its legacy application ID is missing', async () => {
+  it('creates filscoresme SME from a local profile when its legacy application ID is missing', async () => {
     const user = userEvent.setup()
     window.localStorage.setItem('fms:build-profile', JSON.stringify({
       profileId: 'APP-SAMPLE',
@@ -672,7 +672,7 @@ describe('BuildProfilePage', () => {
 
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenLastCalledWith('/lending-scorecard?profileId=APP-SAMPLE', {
-        state: { scorecardAction: 'open-FILSCORE SME' },
+        state: { scorecardAction: 'open-filscoresme SME' },
       })
     })
   })
@@ -726,7 +726,7 @@ describe('BuildProfilePage', () => {
         'PRO-AS6GKX',
         expect.objectContaining({ application_no: 'PRO-AS6GKX' }),
       )
-      expect(mockNavigate).toHaveBeenCalledWith('/lending-scorecard/FILSCORE SME?applicationNo=PRO-AS6GKX')
+      expect(mockNavigate).toHaveBeenCalledWith('/lending-scorecard/filscoresme SME?applicationNo=PRO-AS6GKX')
     })
   })
 
@@ -786,7 +786,7 @@ describe('BuildProfilePage', () => {
     expect(screen.getByText('What is your key investment objective?')).toBeTruthy()
     expect(screen.getAllByRole('radio')).toHaveLength(32)
 
-    await user.click(screen.getByRole('button', { name: /FILSCORE SME Score Links/ }))
+    await user.click(screen.getByRole('button', { name: /filscoresme SME Score Links/ }))
     expect(screen.getByRole('button', { name: 'Open Credit Health Score' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'Open Wealth Building Score' })).toBeTruthy()
   })
@@ -1566,11 +1566,11 @@ describe('BuildProfilePage', () => {
         riskRating: 'Moderate',
       }),
     ])
-    const aiAnalysisDropdown = screen.getByText('FILSCORE SME AI Analysis', { selector: 'summary' }).closest('details')!
+    const aiAnalysisDropdown = screen.getByText('filscoresme SME AI Analysis', { selector: 'summary' }).closest('details')!
     const comparisonSummaryHeading = screen.getByRole('heading', { name: 'Actual vs Desired / Target Summary and Recommendations' })
     expect(aiAnalysisDropdown.hasAttribute('open')).toBe(false)
     expect(aiAnalysisDropdown.contains(comparisonSummaryHeading)).toBe(true)
-    await user.click(screen.getByText('FILSCORE SME AI Analysis', { selector: 'summary' }))
+    await user.click(screen.getByText('filscoresme SME AI Analysis', { selector: 'summary' }))
     expect(aiAnalysisDropdown.hasAttribute('open')).toBe(true)
     expect(within(aiAnalysisDropdown).getByRole('heading', { name: 'Actual vs Desired / Target Summary and Recommendations' })).toBeTruthy()
     const summaryTitles = [
@@ -1754,6 +1754,6 @@ describe('BuildProfilePage', () => {
     expect(savedProfile.suitabilityAnswers['suitability-q8']).toBe('4')
 
     await user.click(screen.getByRole('button', { name: 'Continue to Step 12' }))
-    expect(screen.getByRole('heading', { name: 'Step 12: FILSCORE SME Credit Health and Wealth Building Score Links' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Step 12: filscoresme SME Credit Health and Wealth Building Score Links' })).toBeTruthy()
   })
 })

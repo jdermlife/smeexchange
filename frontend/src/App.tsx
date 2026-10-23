@@ -89,7 +89,7 @@ const RegisterPage = lazy(() => import('./pages/auth/RegisterPage'))
 const ForgotPasswordPage = lazy(() => import('./pages/auth/ForgotPasswordPage'))
 const ResetPasswordPage = lazy(() => import('./pages/auth/ResetPasswordPage'))
 const AccountSettingsPage = lazy(() => import('./pages/auth/AccountSettingsPage'))
-const AboutFILSCORE SMEPage = lazy(() => import('./pages/legal/AboutFILSCORE SMEPage'))
+const Aboutfilscoresme SMEPage = lazy(() => import('./pages/legal/Aboutfilscoresme SMEPage'))
 const PrivacyPage = lazy(() => import('./pages/legal/PrivacyPage'))
 const TermsPage = lazy(() => import('./pages/legal/TermsPage'))
 const SupportPage = lazy(() => import('./pages/legal/SupportPage'))
@@ -103,7 +103,7 @@ const PermissionManagementPage = lazy(() => import('./pages/admin/PermissionMana
 const CreditHealthMultiProductPage = lazy(() => import('./pages/admin/CreditHealthMultiProductPage'))
 const CalculationPage = lazy(() => import('./pages/admin/CalculationPage'))
 const AmlKycScoringPage = lazy(() => import('./pages/admin/AmlKycScoringPage'))
-const AboutFILSCORE SMEMobilePage = lazy(() => import('./pages/admin/AboutFILSCORE SMEMobilePage'))
+const Aboutfilscoresme SMEMobilePage = lazy(() => import('./pages/admin/Aboutfilscoresme SMEMobilePage'))
 const SmeLoanApplicationPage = lazy(() => import('./pages/admin/SmeLoanApplicationPage'))
 const SubscriptionManagementPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionManagementPage'))
 const SubscriptionPaymentPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionPaymentPage'))
@@ -170,7 +170,7 @@ const menuLinks: MenuLink[] = [
   { id: 'admin-roles', label: 'Admin Role Management' },
   { id: 'admin-permissions', label: 'Permission Management' },
   { id: 'sme', label: 'SME' },
-  { id: 'about-FILSCORE SME-mobile', label: 'About FILSCORE SME for Apps' },
+  { id: 'about-filscoresme SME-mobile', label: 'About filscoresme SME for Apps' },
   { id: 'subscription-payment', label: 'Subscription Payment' },
   { id: 'trial-expired', label: 'Trial Expired Reminder' },
 ]
@@ -184,7 +184,7 @@ const GRACE_PERIOD_CLEAR_PATH_PREFIXES = [
   '/payment/success',
   '/payment/cancel',
   '/fees',
-  '/about-FILSCORE SME',
+  '/about-filscoresme SME',
   '/support',
   '/privacy',
   '/terms',
@@ -221,7 +221,7 @@ function authenticatedPage(
 function RegistrationAccessNotice({ title, description }: { title: string; description: string }) {
   return (
     <section className="financial-health-registration-notice" aria-labelledby="registration-access-title">
-      <span>Free FILSCORE SME access</span>
+      <span>Free filscoresme SME access</span>
       <h2 id="registration-access-title">{title}</h2>
       <p>{description}</p>
       <div className="financial-health-registration-actions">
@@ -242,7 +242,7 @@ function SubscriptionAccessNotice({ verificationFailed = false }: { verification
       <p>
         {verificationFailed
           ? 'We could not confirm your subscription. Review your account subscription, then return to the Lending Scorecard.'
-          : 'Your trial includes a preview of Credit Health. Choose a monthly plan to use the Lending Scorecard and receive your FILSCORE SME assessment.'}
+          : 'Your trial includes a preview of Credit Health. Choose a monthly plan to use the Lending Scorecard and receive your filscoresme SME assessment.'}
       </p>
       <div className="financial-health-registration-actions">
         <Link to={verificationFailed ? '/subscriptions' : '/subscription-payment'} className="financial-health-registration-primary">
@@ -266,7 +266,7 @@ function CreditHealthScorecardPreview() {
       </section>
       <section className="psychometric-summary-grid">
         <article className="psychometric-summary-card psychometric-summary-card-highlight">
-          <span>FILSCORE SME</span>
+          <span>filscoresme SME</span>
           <strong>--</strong>
           <small>Complete your profile to calculate</small>
         </article>
@@ -578,7 +578,7 @@ const adminMenus = [
   'admin-roles',
   'admin-permissions',
   'sme',
-  'about-FILSCORE SME-mobile',
+  'about-filscoresme SME-mobile',
   'subscription-payment',
   'trial-expired',
 ]
@@ -599,7 +599,7 @@ const subscriberHiddenMenus = [
   'admin-users',
   'admin-roles',
   'admin-permissions',
-  'about-FILSCORE SME-mobile',
+  'about-filscoresme SME-mobile',
   'trial-expired',
 ]
 
@@ -782,7 +782,7 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
               <div className="app-brand-text">
                 <h2 className="app-brand-title">SME Exchange</h2>
                 <div className="app-brand-subtitle-row">
-                  <p className="app-brand-subtitle">FILSCORE SME TRACKER</p>
+                  <p className="app-brand-subtitle">filscoresme SME TRACKER</p>
                   {shouldShowBackButton ? (
                     <div className="app-mini-nav" aria-label="Page navigation controls">
                       <button
@@ -1315,7 +1315,7 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/lending-scorecard/FILSCORE SME"
+              path="/lending-scorecard/filscoresme SME"
               element={<LendingScorecardAccessGate authReady={authReady} currentUser={currentUser} />}
             />
 
@@ -1870,10 +1870,10 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/about-FILSCORE SME-mobile"
+              path="/about-filscoresme SME-mobile"
               element={
                 <ProtectedRoute roles={['admin']}>
-                  <AboutFILSCORE SMEMobilePage />
+                  <Aboutfilscoresme SMEMobilePage />
                 </ProtectedRoute>
               }
             />
@@ -1893,8 +1893,8 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/about-FILSCORE SME"
-              element={<AboutFILSCORE SMEPage />}
+              path="/about-filscoresme SME"
+              element={<Aboutfilscoresme SMEPage />}
             />
 
             <Route

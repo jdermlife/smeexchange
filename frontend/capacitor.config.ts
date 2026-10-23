@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.quantech.FILSCORE SME',
+  appId: 'com.quantech.filscoresme SME',
   appName: 'SME Exchange FS',
   webDir: 'dist',
  

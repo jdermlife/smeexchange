@@ -107,7 +107,7 @@ describe('loginWithApple', () => {
   })
 
   it('starts password login without waiting for backend health probes', async () => {
-    vi.stubEnv('VITE_API_URL', 'https://FILSCORE SME-ai.quantech.international')
+    vi.stubEnv('VITE_API_URL', 'https://filscoresme SME-ai.quantech.international')
     vi.stubEnv('VITE_API_FALLBACK_URL', '')
     const apiModule = await import('../src/api')
     const healthCheckClient = clients[0]
@@ -138,7 +138,7 @@ describe('loginWithApple', () => {
       username: 'fallback-user',
       password: 'not-a-real-password',
     }, {
-      baseURL: 'https://FILSCORE SME-ai.quantech.international',
+      baseURL: 'https://filscoresme SME-ai.quantech.international',
       timeout: 4000,
       _loginProviderAttempt: true,
     })
@@ -146,7 +146,7 @@ describe('loginWithApple', () => {
 
   it('caches only the working login provider URL after fast failover', async () => {
     vi.stubEnv('VITE_API_URL', 'https://fleetmanagement-dq9t.onrender.com')
-    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://FILSCORE SME-ai.quantech.international')
+    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://filscoresme SME-ai.quantech.international')
     const apiModule = await import('../src/api')
     const authClient = clients[1]
     authClient.post
@@ -170,20 +170,20 @@ describe('loginWithApple', () => {
     await apiModule.login({ username: 'fallback-user', password: 'not-a-real-password' })
 
     expect(authClient.post).toHaveBeenNthCalledWith(2, '/api/auth/login', expect.anything(),
-      expect.objectContaining({ baseURL: 'https://FILSCORE SME-ai.quantech.international' }))
+      expect.objectContaining({ baseURL: 'https://filscoresme SME-ai.quantech.international' }))
     expect(JSON.parse(window.localStorage.getItem('fms:auth:login-provider') || '{}')).toMatchObject({
-      baseUrl: 'https://FILSCORE SME-ai.quantech.international',
+      baseUrl: 'https://filscoresme SME-ai.quantech.international',
     })
     expect(window.localStorage.getItem('fms:auth:login-provider')).not.toContain('not-a-real-password')
   })
 
   it('rejects an SPA document and continues to the configured auth backend', async () => {
     vi.stubEnv('VITE_API_URL', 'https://localhost')
-    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://FILSCORE SME-ai.quantech.international')
+    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://filscoresme SME-ai.quantech.international')
     const apiModule = await import('../src/api')
     const authClient = clients[1]
     authClient.post
-      .mockResolvedValueOnce({ data: '<!doctype html><html><body>FILSCORE SME</body></html>' })
+      .mockResolvedValueOnce({ data: '<!doctype html><html><body>filscoresme SME</body></html>' })
       .mockResolvedValueOnce({
         data: {
           access_token: 'backend-access-token',
@@ -206,15 +206,15 @@ describe('loginWithApple', () => {
     })).resolves.toMatchObject({ token: 'backend-access-token' })
 
     expect(authClient.post).toHaveBeenNthCalledWith(2, '/api/auth/login', expect.anything(),
-      expect.objectContaining({ baseURL: 'https://FILSCORE SME-ai.quantech.international' }))
+      expect.objectContaining({ baseURL: 'https://filscoresme SME-ai.quantech.international' }))
     expect(JSON.parse(window.localStorage.getItem('fms:auth:login-provider') || '{}')).toMatchObject({
-      baseUrl: 'https://FILSCORE SME-ai.quantech.international',
+      baseUrl: 'https://filscoresme SME-ai.quantech.international',
     })
   })
 
   it('retries the Google token exchange on Contabo after a Render network timeout', async () => {
     vi.stubEnv('VITE_API_URL', 'https://fleetmanagement-dq9t.onrender.com')
-    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://FILSCORE SME-ai.quantech.international')
+    vi.stubEnv('VITE_API_FALLBACK_URL', 'https://filscoresme SME-ai.quantech.international')
     await import('../src/api')
     const healthCheckClient = clients[0]
     const authClient = clients[1]
@@ -236,10 +236,10 @@ describe('loginWithApple', () => {
     })
 
     expect(healthCheckClient.get).toHaveBeenCalledWith('/api/health', {
-      baseURL: 'https://FILSCORE SME-ai.quantech.international',
+      baseURL: 'https://filscoresme SME-ai.quantech.international',
     })
     expect(authClient.request).toHaveBeenCalledWith(expect.objectContaining({
-      baseURL: 'https://FILSCORE SME-ai.quantech.international',
+      baseURL: 'https://filscoresme SME-ai.quantech.international',
       method: 'post',
       url: '/api/auth/google-token',
       _failoverRetry: true,
@@ -379,7 +379,7 @@ describe('loginWithApple', () => {
       subscriber_type: undefined,
       lender_data_sharing_consent: undefined,
     }, {
-      baseURL: 'https://FILSCORE SME-ai.quantech.international',
+      baseURL: 'https://filscoresme SME-ai.quantech.international',
       timeout: 4000,
       _loginProviderAttempt: true,
     })

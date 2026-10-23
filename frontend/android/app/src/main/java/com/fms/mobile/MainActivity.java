@@ -1,4 +1,4 @@
-package com.quantech.FILSCORE SME;
+package com.quantech.filscoresme SME;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -79,7 +79,7 @@ public class MainActivity extends BridgeActivity
     //
     // Apple redirects to:
     //
-    // FILSCORE SME://apple-callback
+    // filscoresme SME://apple-callback
     //
     // Android routes that URL back to MainActivity.
     // =========================================================

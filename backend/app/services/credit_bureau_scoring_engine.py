@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 
-MODEL_NAME = "FILSCORE SME Credit Bureau Scorecard"
+MODEL_NAME = "filscoresme SME Credit Bureau Scorecard"
 MODEL_VERSION = "credit-bureau-scorecard-v1"
 MAX_RAW_SCORE = 110
 

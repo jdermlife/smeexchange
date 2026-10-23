@@ -1,7 +1,7 @@
 TYPE THE CONTABO PASSWORD IN THIS TERMINAL, THEN PRESS ENTER
 root@217.216.109.68's password:# Contabo Backend Deployment
 
-This deployment replaces the Render web service. The Vercel frontend keeps using its same-origin `/api` proxy, which now targets `FILSCORE SME-ai.quantech.international`.
+This deployment replaces the Render web service. The Vercel frontend keeps using its same-origin `/api` proxy, which now targets `filscoresme SME-ai.quantech.international`.
 
 ## Prerequisites
 
@@ -24,9 +24,9 @@ Replace every placeholder in `backend/.env.contabo`. Use the current production 
 Install the Nginx configuration and obtain a certificate:
 
 ```bash
-sudo cp ops/nginx/FILSCORE SME-api.conf /etc/nginx/sites-available/FILSCORE SME-api.conf
-sudo ln -s /etc/nginx/sites-available/FILSCORE SME-api.conf /etc/nginx/sites-enabled/FILSCORE SME-api.conf
-sudo certbot certonly --webroot -w /var/www/certbot -d FILSCORE SME-ai.quantech.international
+sudo cp ops/nginx/filscoresme SME-api.conf /etc/nginx/sites-available/filscoresme SME-api.conf
+sudo ln -s /etc/nginx/sites-available/filscoresme SME-api.conf /etc/nginx/sites-enabled/filscoresme SME-api.conf
+sudo certbot certonly --webroot -w /var/www/certbot -d filscoresme SME-ai.quantech.international
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -39,12 +39,12 @@ The certificate must exist before enabling the HTTPS server block. For a first c
 docker compose -f docker-compose.contabo.yml up -d --build
 docker compose -f docker-compose.contabo.yml ps
 curl --fail http://127.0.0.1:5000/health
-curl --fail https://FILSCORE SME-ai.quantech.international/api/health
+curl --fail https://filscoresme SME-ai.quantech.international/api/health
 ```
 
 The API container runs the established schema migration sequence once before Gunicorn starts and is reachable only through Nginx. Redis data persists in a Docker volume.
 
-After both health checks pass, deploy the updated Vercel configuration. Keep Render available until login, profile retrieval, FILSCORE SME computation, Apple login, and a database write all pass against Contabo; then delete the Render service.
+After both health checks pass, deploy the updated Vercel configuration. Keep Render available until login, profile retrieval, filscoresme SME computation, Apple login, and a database write all pass against Contabo; then delete the Render service.
 
 ## Operations
 

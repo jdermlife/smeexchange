@@ -481,7 +481,7 @@ def _start_recurring_billing_for_user(
             else:
                 if not payload.payment_method_id:
                     raise HTTPException(status_code=422, detail="PayMongo card authorization is required")
-                name_parts = (owning_user.username or "FILSCORE SME Subscriber").split(maxsplit=1)
+                name_parts = (owning_user.username or "filscoresme SME Subscriber").split(maxsplit=1)
                 provider_customer_id = create_paymongo_customer_api(
                     first_name=name_parts[0],
                     last_name=name_parts[1] if len(name_parts) > 1 else "Subscriber",
@@ -1175,7 +1175,7 @@ def receive_apple_store_notification(payload: AppleStoreNotificationRequest):
         data = notification.get("data")
         if not event_id or not isinstance(data, dict):
             raise StorePurchaseVerificationError("Apple notification is incomplete")
-        expected_bundle_id = os.getenv("APPLE_BUNDLE_ID", "com.quantech.FILSCORE SME").strip()
+        expected_bundle_id = os.getenv("APPLE_BUNDLE_ID", "com.quantech.filscoresme SME").strip()
         expected_environment = os.getenv("APPLE_STORE_ENVIRONMENT", "Production").strip().lower()
         if str(data.get("bundleId") or "") != expected_bundle_id:
             raise StorePurchaseVerificationError("Apple notification belongs to another application")

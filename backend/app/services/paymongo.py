@@ -179,7 +179,7 @@ def create_customer(*, first_name: str, last_name: str, email: str) -> str:
     payload = {
         "data": {
             "attributes": {
-                "first_name": first_name[:255] or "FILSCORE SME",
+                "first_name": first_name[:255] or "filscoresme SME",
                 "last_name": last_name[:255] or "Subscriber",
                 "email": email[:255],
                 "default_device": "email",

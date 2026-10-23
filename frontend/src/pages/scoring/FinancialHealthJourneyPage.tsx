@@ -8,7 +8,7 @@ import {
 } from '../../components/financial-health/FinancialJourneyGuide'
 
 const JOURNEY_RESOURCE_LINKS = [
-  { label: 'About', to: '/about-FILSCORE SME' },
+  { label: 'About', to: '/about-filscoresme SME' },
   { label: 'Privacy', to: '/privacy' },
   { label: 'Terms', to: '/terms' },
   { label: 'Fees', to: '/fees' },
@@ -25,7 +25,7 @@ export default function FinancialHealthJourneyPage() {
     <main className="psychometric-page financial-health-journey-page">
       <section className="psychometric-hero financial-health-journey-page-hero" aria-labelledby="financial-health-journey-page-title">
         <div className="psychometric-hero-copy">
-          <span className="psychometric-eyebrow">FILSCORE SME Guided Assessment</span>
+          <span className="psychometric-eyebrow">filscoresme SME Guided Assessment</span>
           <h1 id="financial-health-journey-page-title">Your SME Exchange Journey</h1>
           <p>GREETINGS! We wish you well today.</p>
           <p>Complete these steps to unlock the full power of your profile and receive more accurate financial recommendations.</p>
@@ -105,7 +105,7 @@ export default function FinancialHealthJourneyPage() {
         </div>
       </section>
 
-      <nav className="financial-health-journey-resource-links" aria-label="FILSCORE SME information and support">
+      <nav className="financial-health-journey-resource-links" aria-label="filscoresme SME information and support">
         {JOURNEY_RESOURCE_LINKS.map((resource) => (
           <Link key={resource.to} to={resource.to}>{resource.label}</Link>
         ))}

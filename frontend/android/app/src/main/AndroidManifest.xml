@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.quantech.FILSCORE SME"
+    package="com.quantech.filscoresme SME"
     android:versionCode="16"
     android:versionName="1.0.15">
 
@@ -37,11 +37,11 @@
     </queries>
 
     <permission
-        android:name="com.quantech.FILSCORE SME.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.quantech.filscoresme SME.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
     <uses-permission
-        android:name="com.quantech.FILSCORE SME.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+        android:name="com.quantech.filscoresme SME.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -67,7 +67,7 @@
         <!-- ================================================= -->
 
         <activity
-            android:name="com.quantech.FILSCORE SME.MainActivity"
+            android:name="com.quantech.filscoresme SME.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
             android:exported="true"
             android:label="@string/title_activity_main"
@@ -91,7 +91,7 @@
             <!--
                  Apple/Render redirects to:
 
-                 FILSCORE SME://apple-callback
+                 filscoresme SME://apple-callback
 
                  Android routes that URI back to
                  MainActivity.onNewIntent().
@@ -107,7 +107,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="FILSCORE SME"
+                    android:scheme="filscoresme SME"
                     android:host="apple-callback" />
 
             </intent-filter>
@@ -120,7 +120,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.quantech.FILSCORE SME.fileprovider"
+            android:authorities="com.quantech.filscoresme SME.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
 
@@ -144,7 +144,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.quantech.FILSCORE SME.androidx-startup"
+            android:authorities="com.quantech.filscoresme SME.androidx-startup"
             android:exported="false">
 
             <meta-data

@@ -1,4 +1,4 @@
-# FILSCORE SME Ollama fallback
+# filscoresme SME Ollama fallback
 
 The production fallback is intentionally isolated from the main API:
 

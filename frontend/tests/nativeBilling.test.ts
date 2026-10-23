@@ -38,14 +38,14 @@ const mapping = {
   id: 1,
   plan_id: null,
   platform: 'ANDROID' as const,
-  product_id: 'FILSCORE SME_reports',
+  product_id: 'filscoresme SME_reports',
   base_plan_id: null,
   product_type: 'INAPP' as const,
   entitlement_category: 'REPORTS' as const,
   is_active: true,
 }
 const product = {
-  identifier: 'FILSCORE SME_reports',
+  identifier: 'filscoresme SME_reports',
   title: 'Reports Access',
   description: 'Permanent reports access.',
   price: 49,
@@ -55,7 +55,7 @@ const product = {
   introductoryPrice: null,
 }
 const transaction = {
-  productIdentifier: 'FILSCORE SME_reports',
+  productIdentifier: 'filscoresme SME_reports',
   transactionId: 'GPA.1234',
   purchaseToken: 'android-purchase-token',
 }
@@ -77,21 +77,21 @@ describe('Android native one-time billing', () => {
   it('loads and purchases a durable INAPP product before acknowledging it', async () => {
     const products = await loadNativeOneTimeProducts()
     expect(nativeMocks.getProducts).toHaveBeenCalledWith({
-      productIdentifiers: ['FILSCORE SME_reports'],
+      productIdentifiers: ['filscoresme SME_reports'],
       productType: 'inapp',
     })
 
     await purchaseNativeOneTimeProduct(products[0], 42)
 
     expect(nativeMocks.purchaseProduct).toHaveBeenCalledWith(expect.objectContaining({
-      productIdentifier: 'FILSCORE SME_reports',
+      productIdentifier: 'filscoresme SME_reports',
       productType: 'inapp',
       isConsumable: false,
       autoAcknowledgePurchases: false,
     }))
     expect(apiMocks.verifyNativeStorePurchase).toHaveBeenCalledWith(expect.objectContaining({
       platform: 'ANDROID',
-      product_id: 'FILSCORE SME_reports',
+      product_id: 'filscoresme SME_reports',
       verification_data: 'android-purchase-token',
     }))
     expect(apiMocks.verifyNativeStorePurchase.mock.invocationCallOrder[0])
@@ -117,14 +117,14 @@ describe('Android native one-time billing', () => {
     apiMocks.listStoreProducts.mockResolvedValue([{
       ...mapping,
       platform: 'IOS',
-      product_id: 'com.quantech.FILSCORE SME.reports',
+      product_id: 'com.quantech.filscoresme SME.reports',
     }])
     nativeMocks.getProducts.mockResolvedValue({ products: [{
       ...product,
-      identifier: 'com.quantech.FILSCORE SME.reports',
+      identifier: 'com.quantech.filscoresme SME.reports',
     }] })
     nativeMocks.purchaseProduct.mockResolvedValue({
-      productIdentifier: 'com.quantech.FILSCORE SME.reports',
+      productIdentifier: 'com.quantech.filscoresme SME.reports',
       transactionId: '2000000123456789',
       jwsRepresentation: 'signed-storekit-transaction',
     })
@@ -134,7 +134,7 @@ describe('Android native one-time billing', () => {
 
     expect(apiMocks.verifyNativeStorePurchase).toHaveBeenCalledWith(expect.objectContaining({
       platform: 'IOS',
-      product_id: 'com.quantech.FILSCORE SME.reports',
+      product_id: 'com.quantech.filscoresme SME.reports',
       verification_data: 'signed-storekit-transaction',
     }))
     expect(apiMocks.verifyNativeStorePurchase.mock.invocationCallOrder[0])

@@ -248,19 +248,19 @@ GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID", "").strip()
 GOOGLE_IOS_CLIENT_ID = os.getenv("GOOGLE_IOS_CLIENT_ID", "").strip()
 APPLE_OAUTH_CLIENT_ID = (
     os.getenv("APPLE_OAUTH_CLIENT_ID", "").strip()
-    or "com.quantech.FILSCORE SME.web"
+    or "com.quantech.filscoresme SME.web"
 )
-APPLE_IOS_CLIENT_ID = os.getenv("APPLE_IOS_CLIENT_ID", "com.quantech.FILSCORE SME").strip()
+APPLE_IOS_CLIENT_ID = os.getenv("APPLE_IOS_CLIENT_ID", "com.quantech.filscoresme SME").strip()
 APPLE_KEY_ID = os.getenv("APPLE_KEY_ID", "").strip()
 APPLE_TEAM_ID = os.getenv("APPLE_TEAM_ID", "").strip()
 APPLE_PRIVATE_KEY = os.getenv("APPLE_PRIVATE_KEY", "").strip()
 APPLE_REDIRECT_URI = os.getenv(
     "APPLE_REDIRECT_URI",
-    "https://FILSCORE SME-ai.quantech.international/api/auth/apple/callback",
+    "https://filscoresme SME-ai.quantech.international/api/auth/apple/callback",
 ).strip()
 APPLE_ANDROID_REDIRECT_URI = os.getenv(
     "APPLE_ANDROID_REDIRECT_URI",
-    "FILSCORE SME://apple-callback",
+    "filscoresme SME://apple-callback",
 ).strip()
 APPLE_TOKEN_URL = "https://appleid.apple.com/auth/token"
 APPLE_OAUTH_ISSUER = "https://appleid.apple.com"

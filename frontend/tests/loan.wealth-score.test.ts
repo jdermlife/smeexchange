@@ -29,7 +29,7 @@ describe('updateLoanApplicationWealthScore', () => {
       wealth_certification_status: 'GENERATED_COMPLETE' as const,
     }
     const response = {
-      message: 'FILSCORE SME Wealth score updated',
+      message: 'filscoresme SME Wealth score updated',
       application_no: 'APP / 42',
       wealth_score: {
         ...payload,

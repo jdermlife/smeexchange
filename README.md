@@ -56,7 +56,7 @@ Note: Python 3.13+ is not currently supported for the FastAPI smoke-test stack i
 For production deployments, keep startup migrations disabled and run schema changes through the dedicated setup or migration scripts first.
 Before deploying the hardened PayPal flow, run `python migrate_paypal_payment_integrity.py` from `backend`.
 Before enabling recurring PayPal or PayMongo billing, run `python migrate_recurring_billing.py` from `backend`.
-The Render deployment performs idempotent startup migrations for FILSCORE SME composite/rating and Wealth columns. For manual deployments, run `python migrate_overall_scores_composite_fields.py` and `python migrate_overall_scores_wealth_fields.py` from `backend` before starting the API.
+The Render deployment performs idempotent startup migrations for filscoresme SME composite/rating and Wealth columns. For manual deployments, run `python migrate_overall_scores_composite_fields.py` and `python migrate_overall_scores_wealth_fields.py` from `backend` before starting the API.
 
 ### Frontend
 
@@ -66,7 +66,7 @@ The Render deployment performs idempotent startup migrations for FILSCORE SME co
    ```
    VITE_API_URL=http://localhost:5000
    VITE_APPLE_CLIENT_ID=your-apple-service-id
-   VITE_APPLE_IOS_CLIENT_ID=com.quantech.FILSCORE SME
+   VITE_APPLE_IOS_CLIENT_ID=com.quantech.filscoresme SME
    VITE_APPLE_REDIRECT_URI=https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback
    ```
 4. Start the dev server: `npm run dev`
@@ -92,14 +92,14 @@ curl -H "Authorization: Bearer <token>" http://localhost:5000/vehicles
 
 Configure Apple Sign-In in Apple Developer Console and mirror those values in backend and frontend environment variables.
 
-1. In Apple Developer Console, create or use a Service ID for web sign-in and enable Sign in with Apple for the `com.quantech.FILSCORE SME` App ID.
+1. In Apple Developer Console, create or use a Service ID for web sign-in and enable Sign in with Apple for the `com.quantech.filscoresme SME` App ID.
 2. Regenerate the iOS provisioning profile after enabling the capability.
 3. Register `fleetmanagement-flame.vercel.app` as a web domain and add the exact HTTPS callback URL as a Return URL. Apple does not accept `localhost` or an IP address.
 4. Set matching environment variables:
    - Backend: `APPLE_OAUTH_CLIENT_ID=your-apple-service-id`
-   - Backend: `APPLE_IOS_CLIENT_ID=com.quantech.FILSCORE SME`
+   - Backend: `APPLE_IOS_CLIENT_ID=com.quantech.filscoresme SME`
    - Frontend: `VITE_APPLE_CLIENT_ID=your-apple-service-id`
-   - Frontend: `VITE_APPLE_IOS_CLIENT_ID=com.quantech.FILSCORE SME`
+   - Frontend: `VITE_APPLE_IOS_CLIENT_ID=com.quantech.filscoresme SME`
    - Frontend: `VITE_APPLE_REDIRECT_URI=https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback`
 5. Keep each backend client ID aligned with its corresponding frontend web or iOS client ID.
 

@@ -241,7 +241,7 @@ export default function PortfolioAnalyticsDashboard() {
       <aside className="portfolio-dashboard-rail" aria-label="Portfolio dashboard navigation">
         <div className="portfolio-dashboard-brand">
           <span>F</span>
-          <div><strong>FILSCORE SME</strong><small>Portfolio intelligence</small></div>
+          <div><strong>filscoresme SME</strong><small>Portfolio intelligence</small></div>
         </div>
         <nav>
           {navItems.map(({ id, label, icon: Icon }) => (

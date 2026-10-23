@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getErrorMessage, login, loginWithApple, loginWithGoogle } from '../../api'
 import { requestAppleSignInToken } from '../../appleAuth'
 import { APP_NAME } from '../../brand'
-import loginLogo from '../../assets/FILSCORE SME-logo-clean.png'
+import loginLogo from '../../assets/filscoresme SME-logo-clean.png'
 import AuthProgressOverlay from '../../components/auth/AuthProgressOverlay'
 import { APP_CONFIG } from '../../config'
 import { getNativeGooglePlatform, isNativeGoogleSignIn, requestGoogleSignInToken } from '../../googleAuth'
@@ -360,7 +360,7 @@ export default function LoginPage() {
           <img className="login-art-logo" src={loginLogo} alt={APP_NAME} />
           <div className="login-art-brand-copy">
             <p className="login-art-brand-name">SME Exchange</p>
-            <p className="login-art-brand-tagline">FILSCORE SME TRACKER</p>
+            <p className="login-art-brand-tagline">filscoresme SME TRACKER</p>
           </div>
         </div>
 
@@ -386,7 +386,7 @@ export default function LoginPage() {
               to="/financial-health-journey"
               className="login-art-social-button login-art-social-button-apple login-art-free-access-button"
             >
-              Access FILSCORE SME Free
+              Access filscoresme SME Free
             </Link>
 
             <div className="login-art-new-user">
@@ -541,7 +541,7 @@ export default function LoginPage() {
             <Link to="/fees">Fees</Link>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
-            <Link to="/about-FILSCORE SME">About</Link>
+            <Link to="/about-filscoresme SME">About</Link>
             <Link to="/return-refund-policy">Returns &amp; Refunds</Link>
             <Link to="/customer-service">Customer Service</Link>
             <Link to="/dispute-resolution">Dispute Resolution</Link>

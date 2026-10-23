@@ -1,16 +1,16 @@
-export default function AboutFILSCORE SMEPage() {
+export default function Aboutfilscoresme SMEPage() {
   return (
     <div className="standalone-card auth-screen">
-      <h1>About FILSCORE SME</h1>
+      <h1>About filscoresme SME</h1>
       <p className="intro">
-        FILSCORE SME is Financial Intelligence for Life Success, Credit Optimization, Resilience & Empowerment.
+        filscoresme SME is Financial Intelligence for Life Success, Credit Optimization, Resilience & Empowerment.
       </p>
 
       <div className="stack-panel">
         <section className="card auth-helper-card">
-          <h3>What FILSCORE SME Does</h3>
+          <h3>What filscoresme SME Does</h3>
           <p>
-           FILSCORE SME helps users understand their overall financial well-being, improve their creditworthiness, grow savings and net worth, achieve financial goals, and make informed borrowing and investment decisions through intelligent insights, AI-powered analytics, and digital financial workflows.
+           filscoresme SME helps users understand their overall financial well-being, improve their creditworthiness, grow savings and net worth, achieve financial goals, and make informed borrowing and investment decisions through intelligent insights, AI-powered analytics, and digital financial workflows.
           </p>
         </section>
 
@@ -30,7 +30,7 @@ export default function AboutFILSCORE SMEPage() {
         <section className="card auth-helper-card">
           <h3>Who It Is For</h3>
           <p>
-           FILSCORE SME is designed for anyone seeking to improve SME Exchange, build wealth, and make better financial decisions.
+           filscoresme SME is designed for anyone seeking to improve SME Exchange, build wealth, and make better financial decisions.
 
             <ul>
               <li>Individuals & Families</li>

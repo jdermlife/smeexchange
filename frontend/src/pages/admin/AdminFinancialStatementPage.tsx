@@ -268,7 +268,7 @@ export default function FinancialStatementModal({
         </section>
 
         <section className="admin-cover-health" aria-label={`SME Exchange score ${financialHealthSummary.score} out of 1000`}>
-          <span className="admin-cover-kicker">FILSCORE SME Financial Vital Signs</span>
+          <span className="admin-cover-kicker">filscoresme SME Financial Vital Signs</span>
           <h2>SME Exchange</h2>
           <div className="admin-cover-health-groups">
             {financialHealthSummary.groups.map((group) => <div key={group.id}><strong>{group.label}</strong><span>{group.description}</span></div>)}
@@ -283,7 +283,7 @@ export default function FinancialStatementModal({
 
         <section className="admin-cover-credit">
           <CreditHealthScoreGraph scores={creditScores} />
-          <div className="admin-cover-credit-footer"><span>FILSCORE SME</span><strong>{profile?.completionPercent ?? 0}% information provided</strong></div>
+          <div className="admin-cover-credit-footer"><span>filscoresme SME</span><strong>{profile?.completionPercent ?? 0}% information provided</strong></div>
         </section>
 
         <section className="admin-cover-wealth">

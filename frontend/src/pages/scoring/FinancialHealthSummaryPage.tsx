@@ -37,7 +37,7 @@ import {
   financialHealthMetricSources,
 } from './financialHealthComputationSources'
 import { FINANCIAL_HEALTH_TOOL_RECOMMENDATIONS } from './financialHealthToolRecommendations'
-import { toFILSCORE SME } from './FILSCORE SMEScale'
+import { tofilscoresme SME } from './filscoresme SMEScale'
 import {
   computeNetWorthBuildingScore,
   type NetWorthBuildingDraftInput,
@@ -84,7 +84,7 @@ type LendingLeafSegment = {
   id: 'credit' | 'psychometric' | 'social' | 'nonStarter'
   label: string
   score: number | null
-  FILSCORE SME: number | null
+  filscoresme SME: number | null
   path: string
   fill: string
 }
@@ -1396,7 +1396,7 @@ useEffect(() => {
       id: 'credit',
       label: 'Credit Score',
       score: lendingLeafScores?.creditScore ?? null,
-      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.creditScore ?? null),
+      filscoresme SME: tofilscoresme SME(lendingLeafScores?.creditScore ?? null),
       path: 'M27 24H130C118 78 143 139 128 200C117 244 138 276 130 296H27Z',
       fill: scoreTone(lendingLeafScores?.creditScore ?? null),
     },
@@ -1404,7 +1404,7 @@ useEffect(() => {
       id: 'psychometric',
       label: 'Behaviour / Psychometric Score',
       score: lendingLeafScores?.psychometricScore ?? null,
-      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.psychometricScore ?? null),
+      filscoresme SME: tofilscoresme SME(lendingLeafScores?.psychometricScore ?? null),
       path: 'M130 24H233V118C205 104 174 135 134 116C140 82 123 52 130 24Z',
       fill: scoreTone(lendingLeafScores?.psychometricScore ?? null),
     },
@@ -1412,7 +1412,7 @@ useEffect(() => {
       id: 'social',
       label: 'Social Score',
       score: lendingLeafScores?.socialScore ?? null,
-      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.socialScore ?? null),
+      filscoresme SME: tofilscoresme SME(lendingLeafScores?.socialScore ?? null),
       path: 'M134 116C174 135 205 104 233 118V205C204 190 171 221 128 200C134 170 140 145 134 116Z',
       fill: scoreTone(lendingLeafScores?.socialScore ?? null),
     },
@@ -1420,7 +1420,7 @@ useEffect(() => {
       id: 'nonStarter',
       label: 'Non-Starter Score',
       score: lendingLeafScores?.nonStarterScore ?? null,
-      FILSCORE SME: toFILSCORE SME(lendingLeafScores?.nonStarterScore ?? null),
+      filscoresme SME: tofilscoresme SME(lendingLeafScores?.nonStarterScore ?? null),
       path: 'M128 200C171 221 204 190 233 205V296H130C138 276 117 244 128 200Z',
       fill: scoreTone(lendingLeafScores?.nonStarterScore ?? null),
     },
@@ -1437,11 +1437,11 @@ useEffect(() => {
         onClose={() => setIsFinancialStatementOpen(false)}
         financialHealthSummary={publishedSummary}
         creditScores={{
-          credit: toFILSCORE SME(lendingLeafScores?.creditScore ?? null),
+          credit: tofilscoresme SME(lendingLeafScores?.creditScore ?? null),
           creditBureau: null,
-          nonStarter: toFILSCORE SME(lendingLeafScores?.nonStarterScore ?? null),
-          social: toFILSCORE SME(lendingLeafScores?.socialScore ?? null),
-          psychometric: toFILSCORE SME(lendingLeafScores?.psychometricScore ?? null),
+          nonStarter: tofilscoresme SME(lendingLeafScores?.nonStarterScore ?? null),
+          social: tofilscoresme SME(lendingLeafScores?.socialScore ?? null),
+          psychometric: tofilscoresme SME(lendingLeafScores?.psychometricScore ?? null),
         }}
       /> : null}
       <FinancialJourneyGuide
@@ -1463,7 +1463,7 @@ useEffect(() => {
 
       <section className="psychometric-hero financial-health-hero psychometric-hero-with-journey-menu" aria-labelledby="financial-health-title">
         <div className="psychometric-hero-copy financial-health-hero-copy">
-          <span className="psychometric-eyebrow">FILSCORE SME Financial Vital Signs</span>
+          <span className="psychometric-eyebrow">filscoresme SME Financial Vital Signs</span>
           <h1 id="financial-health-title">SME Exchange</h1>
           <p hidden>
             One clear view of your financial stability, control, and future progress—calculated
@@ -1724,7 +1724,7 @@ useEffect(() => {
                 <th scope="col">Rating Explanation</th>
                 <th scope="col">Risk Alert</th>
                 <th scope="col">Opportunity</th>
-                <th scope="col">FILSCORE SME Tools</th>
+                <th scope="col">filscoresme SME Tools</th>
                 <th scope="col">Generic Products</th>
               </tr>
             </thead>
@@ -1739,7 +1739,7 @@ useEffect(() => {
                     <td data-label="Rating Explanation">{rating.explanation}</td>
                     <td data-label="Risk Alert">{product.score < 80 ? guidance?.negative : 'No current alert; maintain healthy habits.'}</td>
                     <td data-label="Opportunity">{guidance?.recommendation ?? product.outcome}</td>
-                    <td data-label="FILSCORE SME Tools">
+                    <td data-label="filscoresme SME Tools">
                       <div className="financial-health-tool-recommendations">
                         {tools.map((tool) => {
                           const hasActivity = journeyStepCompletion[tool.statusKey]
@@ -2226,7 +2226,7 @@ useEffect(() => {
                     <span>
                       {segment.score === null
                         ? 'Pending score'
-                        : `${segment.score}/100${segment.FILSCORE SME === null ? '' : ` • FILSCORE SME ${segment.FILSCORE SME}`}`}
+                        : `${segment.score}/100${segment.filscoresme SME === null ? '' : ` • filscoresme SME ${segment.filscoresme SME}`}`}
                     </span>
                   </div>
                 </article>

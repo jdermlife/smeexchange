@@ -48,8 +48,8 @@ def _signed_transaction(
     tmp_path,
     monkeypatch,
     *,
-    bundle_id: str = "com.quantech.FILSCORE SME",
-    product_id: str = "com.quantech.FILSCORE SME.single.monthly",
+    bundle_id: str = "com.quantech.filscoresme SME",
+    product_id: str = "com.quantech.filscoresme SME.single.monthly",
     expires: bool = True,
 ) -> str:
     root_key = ec.generate_private_key(ec.SECP256R1())
@@ -72,7 +72,7 @@ def _signed_transaction(
     root_path = tmp_path / "apple-root.pem"
     root_path.write_bytes(root_certificate.public_bytes(serialization.Encoding.PEM))
     monkeypatch.setenv("APPLE_ROOT_CA_PATH", str(root_path))
-    monkeypatch.setenv("APPLE_BUNDLE_ID", "com.quantech.FILSCORE SME")
+    monkeypatch.setenv("APPLE_BUNDLE_ID", "com.quantech.filscoresme SME")
     monkeypatch.setenv("APPLE_STORE_ENVIRONMENT", "Sandbox")
     now_millis = int(datetime.now(timezone.utc).timestamp() * 1000)
     payload = {
@@ -101,7 +101,7 @@ def test_verify_apple_transaction_accepts_trusted_storekit_jws(tmp_path, monkeyp
     verified = verify_apple_transaction(signed_transaction)
 
     assert verified.platform == "IOS"
-    assert verified.product_id == "com.quantech.FILSCORE SME.single.monthly"
+    assert verified.product_id == "com.quantech.filscoresme SME.single.monthly"
     assert verified.transaction_id == "2000000123456789"
     assert verified.status == "ACTIVE"
 
@@ -117,7 +117,7 @@ def test_verify_store_purchase_accepts_apple_non_consumable(tmp_path, monkeypatc
     signed_transaction = _signed_transaction(
         tmp_path,
         monkeypatch,
-        product_id="com.quantech.FILSCORE SME.reports",
+        product_id="com.quantech.filscoresme SME.reports",
         expires=False,
     )
 
@@ -125,10 +125,10 @@ def test_verify_store_purchase_accepts_apple_non_consumable(tmp_path, monkeypatc
         "IOS",
         signed_transaction,
         product_type="INAPP",
-        product_id="com.quantech.FILSCORE SME.reports",
+        product_id="com.quantech.filscoresme SME.reports",
     )
 
-    assert verified.product_id == "com.quantech.FILSCORE SME.reports"
+    assert verified.product_id == "com.quantech.filscoresme SME.reports"
     assert verified.status == "ACTIVE"
     assert verified.expires_at is None
 

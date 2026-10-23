@@ -22,7 +22,7 @@ describe('computeWealthCompositeScore', () => {
     expect(result.grade).toBe('B+')
   })
 
-  it('keeps the composite within the 200 to 900 FILSCORE SME range', () => {
+  it('keeps the composite within the 200 to 900 filscoresme SME range', () => {
     expect(computeWealthCompositeScore({
       netWorthPositioningScore: 0,
       wealthBehaviourScore: -10,

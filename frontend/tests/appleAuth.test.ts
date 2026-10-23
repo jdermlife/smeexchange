@@ -25,13 +25,13 @@ describe('requestAppleSignInToken', () => {
     })
 
     const result = await requestAppleSignInToken({
-      clientId: 'com.quantech.FILSCORE SME.web',
-      iosClientId: 'com.quantech.FILSCORE SME',
+      clientId: 'com.quantech.filscoresme SME.web',
+      iosClientId: 'com.quantech.filscoresme SME',
       redirectURI: 'https://unused-in-native.example/auth/apple/callback',
     })
 
     expect(socialLoginMocks.initialize).toHaveBeenCalledWith({
-      apple: { clientId: 'com.quantech.FILSCORE SME' },
+      apple: { clientId: 'com.quantech.filscoresme SME' },
     })
     expect(socialLoginMocks.login).toHaveBeenCalledWith({
       provider: 'apple',
@@ -63,12 +63,12 @@ describe('requestAppleSignInToken', () => {
     }
 
     const result = await requestAppleSignInToken({
-      clientId: 'com.quantech.FILSCORE SME.web',
+      clientId: 'com.quantech.filscoresme SME.web',
       redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
     })
 
     expect(init).toHaveBeenCalledWith({
-      clientId: 'com.quantech.FILSCORE SME.web',
+      clientId: 'com.quantech.filscoresme SME.web',
       scope: 'name email',
       redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
       state: expect.any(String),
@@ -82,7 +82,7 @@ describe('requestAppleSignInToken', () => {
     window.AppleID = undefined
 
     await expect(
-      requestAppleSignInToken({ clientId: 'com.quantech.FILSCORE SME.web' })
+      requestAppleSignInToken({ clientId: 'com.quantech.filscoresme SME.web' })
     ).rejects.toThrow('Apple Sign-In is not available right now.')
   })
 
@@ -101,7 +101,7 @@ describe('requestAppleSignInToken', () => {
 
     await expect(
       requestAppleSignInToken({
-        clientId: 'com.quantech.FILSCORE SME.web',
+        clientId: 'com.quantech.filscoresme SME.web',
         redirectURI: 'https://fleetmanagement-flame.vercel.app/backend/api/auth/apple/callback',
       })
     ).rejects.toThrow('invalid authorization state')

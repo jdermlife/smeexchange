@@ -7,7 +7,7 @@ export default function ReturnRefundPolicyPage() {
       <p className="intro">
         Effective Date: September 12, 2026
         <br />
-        Service: FILSCORE SME / SME Exchange
+        Service: filscoresme SME / SME Exchange
         <br />
         Service Provider: Quantech.International Solutions OPC
       </p>
@@ -16,7 +16,7 @@ export default function ReturnRefundPolicyPage() {
         <section className="card auth-helper-card">
           <h3>1. Digital Services</h3>
           <p>
-            FILSCORE SME provides digital subscriptions, financial-health tools, credit and lending
+            filscoresme SME provides digital subscriptions, financial-health tools, credit and lending
             workflows, document services, and AI-assisted features. Because no physical goods are
             delivered, there is no physical item to return. Requests involving an imperfect,
             unavailable, or incorrectly billed digital service are handled under this refund policy.
@@ -31,7 +31,7 @@ export default function ReturnRefundPolicyPage() {
             <li>The amount or subscription plan charged differs from the confirmed purchase.</li>
             <li>An unauthorized transaction is reported and verified through a reasonable review.</li>
             <li>
-              A paid service was materially unavailable because of a FILSCORE SME issue and was not
+              A paid service was materially unavailable because of a filscoresme SME issue and was not
               restored or otherwise remedied within a reasonable period.
             </li>
             <li>A refund is required by applicable law or the rules of the payment provider.</li>
@@ -90,7 +90,7 @@ export default function ReturnRefundPolicyPage() {
         <section className="card auth-helper-card">
           <h3>6. Review and Refund Timing</h3>
           <p>
-            FILSCORE SME aims to acknowledge a complete request within two business days and provide a
+            filscoresme SME aims to acknowledge a complete request within two business days and provide a
             decision within ten business days. Complex, fraudulent, or payment-provider reviews may
             take longer; the customer will be given a status update when additional time or
             information is needed.
@@ -107,7 +107,7 @@ export default function ReturnRefundPolicyPage() {
           <h3>7. Apple App Store Purchases</h3>
           <p>
             Apple processes payments, billing disputes, and refund decisions for subscriptions
-            purchased through the Apple App Store. FILSCORE SME cannot approve or issue refunds for
+            purchased through the Apple App Store. filscoresme SME cannot approve or issue refunds for
             Apple-managed purchases.
           </p>
           <p>
@@ -116,11 +116,11 @@ export default function ReturnRefundPolicyPage() {
               Report a Problem
             </a>{' '}
             service and follow Apple&apos;s instructions. To prevent a future renewal, open your Apple
-            Account subscription settings or use Manage Subscription in FILSCORE SME. Cancelling stops
+            Account subscription settings or use Manage Subscription in filscoresme SME. Cancelling stops
             future renewal but does not itself guarantee a refund.
           </p>
           <p>
-            FILSCORE SME support can assist with account access or service issues, but Apple determines
+            filscoresme SME support can assist with account access or service issues, but Apple determines
             refund eligibility and timing for App Store transactions.
           </p>
         </section>

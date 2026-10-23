@@ -361,7 +361,7 @@ export default function RegisterPage() {
             onChange={(event) => setLenderDataSharingConsent(event.target.checked)}
           />
           <span>
-            I consent to FILSCORE SME sharing my financial profile, loan application information,
+            I consent to filscoresme SME sharing my financial profile, loan application information,
             supporting documents, and credit scores with participating lenders solely to assess
             financing eligibility. This is optional, and I can withdraw consent in Account Settings.
           </span>
