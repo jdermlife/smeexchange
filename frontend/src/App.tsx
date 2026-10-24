@@ -103,6 +103,13 @@ const CreditHealthMultiProductPage = lazy(() => import('./pages/admin/CreditHeal
 const CalculationPage = lazy(() => import('./pages/admin/CalculationPage'))
 const AmlKycScoringPage = lazy(() => import('./pages/admin/AmlKycScoringPage'))
 const SmeLoanApplicationPage = lazy(() => import('./pages/admin/SmeLoanApplicationPage'))
+const AboutFilscoreSMEMobilePage = () => (
+  <section className="card">
+    <h1>About filscoresme SME for Apps</h1>
+    <p>Learn about the filscoresme SME mobile app.</p>
+  </section>
+)
+const AboutFilscoresmeSMEPage = AboutFilscoreSMEMobilePage
 const SubscriptionManagementPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionManagementPage'))
 const SubscriptionPaymentPage = lazyWithRetry(() => import('./pages/subscriptions/SubscriptionPaymentPage'))
 const PaymentSuccessPage = lazyWithRetry(() => import('./pages/subscriptions/PaymentSuccessPage'))
@@ -1868,10 +1875,10 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
             />
 
             <Route
-              path="/about-filscoresme SME-mobile"
+              path="/about-filscoresme-sme-mobile"
               element={
                 <ProtectedRoute roles={['admin']}>
-                  <Aboutfilscoresme SMEMobilePage />
+                  <AboutFilscoreSMEMobilePage />
                 </ProtectedRoute>
               }
             />
@@ -1892,7 +1899,7 @@ const shouldMuteGracePeriodPage = isGracePeriod && !isGracePeriodClearPath(locat
 
             <Route
               path="/about-filscoresme SME"
-              element={<Aboutfilscoresme SMEPage />}
+              element={<AboutFilscoresmeSMEPage />}
             />
 
             <Route
