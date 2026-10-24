@@ -1,4 +1,4 @@
-export const ABOUT_filscoresme SME_MOBILE_CONTENT = `filscoresme SME is a financial intelligence platform designed to help people understand, organize, and strengthen their financial lives. The Apple and Android applications bring the platform's guided tools into a convenient mobile experience, allowing authorized users to review financial information, complete profile details, monitor progress, and access relevant workflows from supported phones and tablets. The mobile editions are intended to complement the secure web platform while preserving a consistent experience across devices.
+export const ABOUT_FILscoreSME_MOBILE_CONTENT = `FILSCORE SME is a financial intelligence platform designed to help people understand, organize, and strengthen their financial lives. The Apple and Android applications bring the platform's guided tools into a convenient mobile experience, allowing authorized users to review financial information, complete profile details, monitor progress, and access relevant workflows from supported phones and tablets. The mobile editions are intended to complement the secure web platform while preserving a consistent experience across devices.
 
 The application focuses on practical financial awareness. Users can build or update a financial profile, review a SME Exchange Dashboard, work through budgeting and debt management activities, and examine Credit Health and Wealth Building results when their subscription permits access. Information is presented in structured sections so users can move through complex financial topics in manageable steps. Mobile navigation is optimized for repeated use, making it easier to return to unfinished tasks or review updated information.
 
@@ -16,16 +16,23 @@ filscoresme SME aims to provide a clear, inclusive, and responsible experience a
 
 It does not expose proprietary scoring formulas, internal model parameters, or private customer records. Instead, it explains the purpose and boundaries of the mobile applications. Administrators should ensure that published descriptions, privacy disclosures, permission declarations, screenshots, and support guidance remain consistent with the behavior of each released build.`
 
-export default function Aboutfilscoresme SMEMobilePage() {
-  const paragraphs = ABOUT_filscoresme SME_MOBILE_CONTENT.split('\n\n')
+
+
+export default function AboutFilscoreSMEMobilePage() {
+  const paragraphs = ABOUT_FILscoreSME_MOBILE_CONTENT.split('\n\n')
 
   return (
-    <main className="standalone-card auth-screen">
-      <h1>About filscoresme SME for Apple and Android</h1>
-      <div className="stack-panel">
-        <section className="card auth-helper-card">
-          {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </section>
+    <main className="mx-auto w-full max-w-4xl px-4 py-8">
+      <h1 className="mb-6 text-2xl font-bold">
+        About FILSCORE SME Mobile
+      </h1>
+
+      <div className="space-y-4">
+        {paragraphs.map((paragraph, index) => (
+          <p key={index} className="leading-7">
+            {paragraph}
+          </p>
+        ))}
       </div>
     </main>
   )
