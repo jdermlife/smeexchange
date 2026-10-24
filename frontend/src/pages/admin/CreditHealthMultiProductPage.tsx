@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCurrentUser, getErrorMessage } from '../../api'
 import { fetchLoanApplications, type LoanApplicationRecord } from '../../api/loan'
-import { tofilscoresme SME, getfilscoresme SMEBand } from '../scoring/filscoresme SMEScale'
+import { toFilScoreSME, getFilScoreSMEBand } from '../scoring/filscoreScale'
 
 interface CreditScore {
   score: number | null
@@ -98,26 +98,26 @@ export default function CreditHealthMultiProductPage() {
       const borrowerNameForProduct = app.borrower_name || 'Unknown Applicant'
       const normalizedProductType = formatProductType(app.product_type)
 
-      // Convert raw scores to filscoresme SME for the certificate panel.
-      const creditfilscoresme SME = app.overall_scores?.credit_score
-        ? tofilscoresme SME(app.overall_scores.credit_score)
+      // Convert raw scores to FILSCORE SME for the certificate panel.
+      const creditFilScoreSME = app.overall_scores?.credit_score
+        ? toFilScoreSME(app.overall_scores.credit_score)
         : null
-      const creditBand = creditfilscoresme SME ? getfilscoresme SMEBand(creditfilscoresme SME) : null
+      const creditBand = creditFilScoreSME ? getFilScoreSMEBand(creditFilScoreSME) : null
 
-      const fraudfilscoresme SME = app.overall_scores?.fraud_score
-        ? tofilscoresme SME(app.overall_scores.fraud_score)
+      const fraudFilScoreSME = app.overall_scores?.fraud_score
+        ? toFilScoreSME(app.overall_scores.fraud_score)
         : null
-      const fraudBand = fraudfilscoresme SME ? getfilscoresme SMEBand(fraudfilscoresme SME) : null
+      const fraudBand = fraudFilScoreSME ? getFilScoreSMEBand(fraudFilScoreSME) : null
 
-      const socialfilscoresme SME = app.overall_scores?.social_score
-        ? tofilscoresme SME(app.overall_scores.social_score)
+      const socialFilScoreSME = app.overall_scores?.social_score
+        ? toFilScoreSME(app.overall_scores.social_score)
         : null
-      const socialBand = socialfilscoresme SME ? getfilscoresme SMEBand(socialfilscoresme SME) : null
+      const socialBand = socialFilScoreSME ? getFilScoreSMEBand(socialFilScoreSME) : null
 
-      const psychofilscoresme SME = app.overall_scores?.psychometric_score
-        ? tofilscoresme SME(app.overall_scores.psychometric_score)
+      const psychoFilScoreSME = app.overall_scores?.psychometric_score
+        ? toFilScoreSME(app.overall_scores.psychometric_score)
         : null
-      const psychoBand = psychofilscoresme SME ? getfilscoresme SMEBand(psychofilscoresme SME) : null
+      const psychoBand = psychoFilScoreSME ? getFilScoreSMEBand(psychoFilScoreSME) : null
 
       return {
         productType: normalizedProductType,
@@ -125,22 +125,22 @@ export default function CreditHealthMultiProductPage() {
         applicationNo: app.application_no,
         borrowerName: borrowerNameForProduct,
         creditScore: {
-          score: creditfilscoresme SME,
+          score: creditFilScoreSME,
           label: 'Credit Score',
           grade: creditBand?.grade,
         },
         psychometricScore: {
-          score: psychofilscoresme SME,
+          score: psychoFilScoreSME,
           label: 'Credit Values Score',
           grade: psychoBand?.grade,
         },
         socialScore: {
-          score: socialfilscoresme SME,
+          score: socialFilScoreSME,
           label: 'Social Score',
           grade: socialBand?.grade,
         },
         fraudScore: {
-          score: fraudfilscoresme SME,
+          score: fraudFilScoreSME,
           label: 'Non-Starter Score',
           grade: fraudBand?.grade,
         },
@@ -175,7 +175,7 @@ export default function CreditHealthMultiProductPage() {
     }
   }
 
-  const renderfilscoresme SMECertificate = (product: ProductCredit, allProducts: ProductCredit[]) => {
+  const renderFilScoreSMECertificate = (product: ProductCredit, allProducts: ProductCredit[]) => {
     const mainProductType = normalizeProductType(product.productType)
     const supplementalProducts = SUPPLEMENTAL_PRODUCT_TYPES
       .map((productType) => {
@@ -208,7 +208,7 @@ export default function CreditHealthMultiProductPage() {
           CERTIFICATION OF CREDIT READINESS ASSESSMENT
         </div>
         <div className="credit-health-certificate-title" style={{ fontSize: '36px', fontWeight: '900', color: '#1e3a8a', margin: '12px 0' }}>
-          filscoresme SME
+          FILSCORE SME
         </div>
       </div>
 
@@ -225,7 +225,7 @@ export default function CreditHealthMultiProductPage() {
 
       {/* Certification Statement */}
       <div className="credit-health-certificate-statement" style={{ fontSize: '12px', color: '#666', marginBottom: 24, fontStyle: 'italic' }}>
-        This certifies that the above application completed the filscoresme SME assessment workflow and the summarized results below were generated for credit evaluation and certification use.
+        This certifies that the above application completed the FILSCORE SME assessment workflow and the summarized results below were generated for credit evaluation and certification use.
       </div>
 
       {/* Main Score Boxes - 3 column layout */}
@@ -422,7 +422,7 @@ export default function CreditHealthMultiProductPage() {
     <div className="standalone-card">
       <h1>Credit Health Multi Product</h1>
       <p className="intro">
-        View filscoresme SME Certification and Credit Scores for the latest applicant record.
+        View FILSCORE SME Certification and Credit Scores for the latest applicant record.
       </p>
 
       {message ? <p className="status-message">{message}</p> : null}
@@ -437,10 +437,10 @@ export default function CreditHealthMultiProductPage() {
             <div>
               <h2 style={{ marginBottom: 8 }}>{selectedApplicant.name}</h2>
               <p className="intro" style={{ marginBottom: 24 }}>
-                filscoresme SME Certification and Credit Scores for the latest record
+                FILSCORE SME Certification and Credit Scores for the latest record
               </p>
 
-              {renderfilscoresme SMECertificate(selectedApplicant.mainProduct, selectedApplicant.products)}
+              {renderFilScoreSMECertificate(selectedApplicant.mainProduct, selectedApplicant.products)}
             </div>
           )}
 
@@ -456,3 +456,4 @@ export default function CreditHealthMultiProductPage() {
     </div>
   )
 }
+
