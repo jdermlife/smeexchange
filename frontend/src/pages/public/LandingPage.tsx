@@ -72,7 +72,7 @@ export default function LandingPage() {
       <header className="landing-nav">
         <Link className="landing-brand" to="/" aria-label={`${APP_NAME} home`}>
           <img src={brandLogoDataUri} alt="" aria-hidden="true" />
-          <span>{APP_NAME}<small>Financial intelligence for life</small></span>
+          <span>{APP_NAME}<small>Global SME Portfolio</small></span>
         </Link>
         <nav aria-label="Main navigation">
           <a href="#tools">Tools</a>
@@ -86,8 +86,8 @@ export default function LandingPage() {
         <section className="landing-hero" aria-labelledby="landing-title">
           <img className="landing-hero-mark" src={brandLogoDataUri} alt="" aria-hidden="true" />
           <div className="landing-hero-copy">
-            <p className="landing-eyebrow">One dashboard. Your full financial picture.</p>
-            <h1 id="landing-title">filscoresme SME ai - Your SME Exchange Dashboard</h1>
+            <p className="landing-eyebrow">Raise Funds. Issues a Note.  Invest. Grow your Portfolio</p>
+            <h1 id="landing-title"> Your SME Exchange Dashboard</h1>
             <p className="landing-hero-lead">
               Understand your money, strengthen your credit readiness, and turn financial data into
               decisions you can act on.
