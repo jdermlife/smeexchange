@@ -31,23 +31,23 @@
   "rewrites": [
     {
       "source": "/api/auth/login",
-      "destination": "https://filscoresme SME-ai.quantech.international/api/auth/login"
+      "destination": "https://smeexchange.vercel.app/api/auth/login"
     },
     {
       "source": "/api/auth/google-token",
-      "destination": "https://filscoresme SME-ai.quantech.international/api/auth/google-token"
+      "destination": "https://smeexchange.vercel.app/api/auth/google-token"
     },
     {
       "source": "/api/auth/apple-token",
-      "destination": "https://filscoresme SME-ai.quantech.international/api/auth/apple-token"
+      "destination": "https://smeexchange.vercel.app/api/auth/apple-token"
     },
     {
       "source": "/api/:path*",
-      "destination": "https://filscoresme SME-ai.quantech.international/api/:path*"
+      "destination": "https://smeexchange.vercel.app/api/:path*"
     },
     {
       "source": "/backend/:path*",
-      "destination": "https://filscoresme SME-ai.quantech.international/:path*"
+      "destination": "https://smeexchange.vercel.app/:path*"
     },
     {
       "source": "/((?!assets/).*)",
