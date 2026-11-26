@@ -43,11 +43,11 @@
     },
     {
       "source": "/api/:path*",
-      "destination": "https://smeexchange.vercel.app/api/:path*"
+      "destination": "https://smeexchange.onrender.com/api/:path*"
     },
     {
       "source": "/backend/:path*",
-      "destination": "https://smeexchange.vercel.app/:path*"
+      "destination": "https://smeexchange.onrender.com/:path*"
     },
     {
       "source": "/((?!assets/).*)",
