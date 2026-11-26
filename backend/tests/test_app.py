@@ -95,6 +95,16 @@ def test_health_and_home_endpoints(app_client):
     assert "message" in home_response.json()
 
 
+def test_google_callback_readiness_endpoint(app_client):
+    client, _auth_module, _fake_db = app_client
+
+    response = client.get("/auth/google/callback")
+
+    assert response.status_code == 200
+    assert "Google Sign-In callback is ready" in response.text
+    assert response.headers["Cache-Control"] == "no-store"
+
+
 def test_unhandled_errors_include_cors_headers(app_client):
     client, _auth_module, _fake_db = app_client
 

@@ -218,6 +218,11 @@ docker compose -f docker-compose.yml.txt up -d backend prometheus grafana
 | VITE_PAYPAL_CLIENT_ID | PayPal JavaScript SDK client ID; must match the backend sandbox or live environment | empty |
 | PAYPAL_CLIENT_ID | PayPal REST API client ID | Required for PayPal payments |
 | PAYPAL_CLIENT_SECRET | PayPal REST API client secret; backend only | Required for PayPal payments |
+
+Google web authentication uses the Google Identity Services popup and posts its ID token to
+`/api/auth/google-token`. Configure each deployed frontend URL as an **Authorized JavaScript
+origin** in Google Cloud. `/auth/google/callback` is a compatibility/readiness endpoint, not an
+OAuth authorization-code exchange endpoint.
 | PAYPAL_WEBHOOK_ID | PayPal webhook ID used for signature verification | Required for PayPal webhooks |
 | PAYPAL_API_BASE_URL | PayPal REST API base URL; sandbox or live must match the credentials | https://api-m.sandbox.paypal.com |
 | PAYPAL_TIMEOUT_SECONDS | PayPal REST API request timeout | 15 |

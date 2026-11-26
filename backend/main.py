@@ -58,6 +58,7 @@ from app.routes.audit_logs import router as audit_logs_router
 from app.routes.notifications import router as notifications_router
 from app.routes.security import router as security_router, admin_router as security_admin_router
 from app.routes.apple_auth import router as apple_auth_router
+from app.routes.google_auth import router as google_auth_router
 from app.routes.fleet_operations import router as fleet_operations_router
 from app.routes.autosave_drafts import router as autosave_drafts_router
 from app.routes.profile_history import router as profile_history_router
@@ -538,6 +539,7 @@ app.include_router(documents_router)
 app.include_router(audit_logs_router)
 app.include_router(notifications_router)
 app.include_router(apple_auth_router)
+app.include_router(google_auth_router)
 app.include_router(security_router, prefix="/api")
 app.include_router(security_admin_router, prefix="/api")
 app.include_router(autosave_drafts_router, prefix="/api")
